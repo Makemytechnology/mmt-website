@@ -9,6 +9,7 @@ export function SectionCTA({
   buttonLabel?: string;
   href?: string;
 }) {
+  const external = href.startsWith("mailto:") || href.startsWith("http");
   return (
     <section className="bg-coral">
       <div className="container-x py-20 md:py-24 text-center">
@@ -16,7 +17,13 @@ export function SectionCTA({
           {headline}
         </h2>
         <div className="mt-8 flex justify-center">
-          <ButtonLink href={href} variant="ghost" size="lg" className="bg-white text-coral hover:bg-white/90">
+          <ButtonLink
+            href={href}
+            external={external}
+            variant="ghost"
+            size="lg"
+            className="bg-white text-coral hover:bg-white/90"
+          >
             {buttonLabel}
           </ButtonLink>
         </div>

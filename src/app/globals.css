@@ -30,9 +30,69 @@ body {
   }
 }
 
+@keyframes mmt-beam-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mmt-beam-spin {
+  animation: mmt-beam-spin 6s linear infinite;
+}
+
+@keyframes mmt-drone-spin-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes mmt-drone-spin-ccw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.mmt-rotor-cw {
+  animation: mmt-drone-spin-cw 0.22s linear infinite;
+  will-change: transform;
+}
+.mmt-rotor-ccw {
+  animation: mmt-drone-spin-ccw 0.22s linear infinite;
+  will-change: transform;
+}
+
+@keyframes mmt-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.mmt-gradient-text {
+  animation: mmt-gradient-shift 6s ease-in-out infinite;
+}
+
+@keyframes mmt-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.mmt-marquee-track {
+  animation: mmt-marquee-scroll var(--marquee-duration, 40s) linear infinite;
+  animation-direction: var(--marquee-direction, normal);
+}
+
+.mmt-marquee:hover .mmt-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mmt-beam-spin,
+  .mmt-gradient-text,
+  .mmt-marquee-track,
+  .mmt-rotor-cw,
+  .mmt-rotor-ccw {
+    animation: none;
+  }
+}
+
 @layer components {
   .container-x {
-    @apply max-w-7xl mx-auto px-6 md:px-8;
+    @apply w-full mx-auto px-6 md:px-10 lg:px-14;
   }
   .section-y {
     @apply py-20 md:py-28;

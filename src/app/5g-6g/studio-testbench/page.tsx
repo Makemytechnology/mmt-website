@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
+  ArrowLeft,
   KeyRound,
   Network,
   PhoneCall,
@@ -10,7 +12,11 @@ import {
   Radio,
   Satellite,
 } from "lucide-react";
+import { ButtonLink } from "@/components/Button";
+import { StatusPill } from "@/components/StatusPill";
+import { SectionCTA } from "@/components/SectionCTA";
 import { Reveal } from "@/components/Reveal";
+import { DemoVideo } from "@/components/DemoVideo";
 
 export const metadata: Metadata = {
   title: "Studio TestBench — 5G SA Core Network Tester",
@@ -107,29 +113,103 @@ const suites: { id: string; name: string; tests: number }[] = [
 export default function StudioTestbenchPage() {
   return (
     <>
-      {/* Stat strip — compact */}
-      <section className="bg-navy text-white">
-        <div className="container-x py-6 md:py-8 grid grid-cols-3 gap-3 md:gap-4">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="rounded-xl bg-white/5 ring-1 ring-inset ring-white/10 p-4 md:p-5 text-center"
-            >
-              <div className="font-display text-3xl md:text-4xl font-bold text-coral leading-none">
-                {s.number}
-              </div>
-              <div className="mt-1.5 text-[0.6rem] md:text-xs tracking-[0.18em] uppercase font-semibold text-white/75">
-                {s.label}
+      {/* Compact tagline header */}
+      <section className="bg-navyDeep text-white">
+        <div className="container-x pt-6 pb-6 md:pt-8 md:pb-8">
+          <Link
+            href="/5g-6g"
+            className="inline-flex items-center gap-2 text-xs text-skyLight/70 hover:text-coral focus-ring rounded mb-4"
+          >
+            <ArrowLeft size={14} aria-hidden="true" /> Back to 5G/6G Studio
+          </Link>
+          <div className="text-center">
+            <p className="eyebrow mb-3">Studio TestBench · MMT 5G/6G Studio</p>
+            <h1 className="font-display font-bold tracking-tight text-3xl md:text-4xl lg:text-5xl text-white leading-tight">
+              Studio TestBench.
+            </h1>
+            <p className="mt-3 text-sm md:text-base italic text-coral font-display">
+              5G SA Core network tester — 202 test cases, 19 Robot suites.
+            </p>
+            <div className="mt-4 flex flex-wrap justify-center items-center gap-3">
+              <StatusPill tone="flagship">Shipping · v1.0</StatusPill>
+              <StatusPill tone="dev">Python · Robot Framework</StatusPill>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo video — full-width showcase at the top (pending since no MP4 yet) */}
+      <section className="bg-navyDeep">
+        <div className="container-x pb-12 md:pb-16">
+          <Reveal>
+            <div className="max-w-5xl mx-auto">
+              <DemoVideo
+                src="/studio-testbench-demo.mp4"
+                label="Studio TestBench demo video"
+                pending
+                pendingMessage="Demo video coming soon. Drop the .mp4 into /public/studio-testbench-demo.mp4 to enable autoplay."
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="max-w-3xl mx-auto mt-8 text-center">
+              <p className="lede text-white/85">
+                Studio TestBench (SA Tester) emulates gNBs and UEs against any 5G
+                Standalone Core. Strictly 3GPP / IMS / RFC compliant — tests fail on
+                non-spec responses. 202 test cases across 19 Robot Framework suites cover
+                NAS/NGAP, GTP-U, IMS, slicing, mobility, positioning, IoT, and NTN.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center items-center gap-4">
+                <ButtonLink
+                  href="mailto:info@makemytechnology.com?subject=Studio%20TestBench%20demo"
+                  variant="primary"
+                  size="lg"
+                  external
+                >
+                  Schedule demo
+                </ButtonLink>
+                <ButtonLink href="/5g-6g/studio-core" variant="outlineLight" size="lg">
+                  See Studio Core
+                </ButtonLink>
               </div>
             </div>
-          ))}
+          </Reveal>
+
+          {/* Key-stats strip — moved below the video as a row */}
+          <Reveal delay={0.18}>
+            <div className="max-w-5xl mx-auto mt-12">
+              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {stats.map((s) => (
+                  <li
+                    key={s.label}
+                    className="rounded-lg bg-white/5 ring-1 ring-white/10 px-4 py-4 text-center"
+                  >
+                    <span className="block font-display text-3xl font-bold text-coral leading-none">
+                      {s.number}
+                    </span>
+                    <span className="mt-2 block text-[0.65rem] tracking-[0.18em] uppercase font-semibold text-white/75">
+                      {s.label}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Capabilities grid — 9 features */}
-      <section className="bg-bg py-5 md:py-7">
+      <section className="bg-bg section-y">
         <div className="container-x">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <Reveal>
+            <h2 className="display-h2 text-navy max-w-3xl">What it tests.</h2>
+            <p className="mt-4 text-lg text-ink2 max-w-3xl">
+              Nine feature areas, each backed by Robot Framework suites that drive emulated
+              gNBs and UEs against a target 5G SA core. Strictly spec-compliant — tests
+              fail on non-3GPP behaviour.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {capabilities.map((c, i) => {
               const Icon = c.icon;
               return (
@@ -151,12 +231,13 @@ export default function StudioTestbenchPage() {
       </section>
 
       {/* 19 Test Suites — compact list */}
-      <section className="bg-bgAlt py-5 md:py-7">
+      <section className="bg-bgAlt section-y">
         <div className="container-x">
           <Reveal>
             <h2 className="display-h3 text-navy">19 Robot Framework suites.</h2>
             <p className="mt-2 text-sm text-muted">
-              202 test cases in total. Strictly 3GPP / IMS / RFC compliant — tests fail on non-spec responses.
+              202 test cases in total. Strictly 3GPP / IMS / RFC compliant — tests fail on
+              non-spec responses.
             </p>
           </Reveal>
           <ul className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
@@ -179,6 +260,8 @@ export default function StudioTestbenchPage() {
           </ul>
         </div>
       </section>
+
+      <SectionCTA headline="Ready to validate your 5G core? Let’s talk." />
     </>
   );
 }

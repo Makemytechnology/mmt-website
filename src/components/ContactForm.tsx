@@ -1,137 +1,182 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Button } from "./Button";
-import { verticals } from "@/content/verticals";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "ok" | "error";
+
+const verticals = [
+  { value: "", label: "Select a vertical (optional)" },
+  { value: "5g-6g", label: "5G / 6G Studio" },
+  { value: "iot", label: "IoT Fabric" },
+  { value: "ai", label: "Cognify (AI)" },
+  { value: "drone-corridor", label: "SkyShield · DroneWay (Robotics)" },
+  { value: "quantum", label: "QGuard (Quantum)" },
+  { value: "other", label: "Other / not sure" },
+];
 
 export function ContactForm() {
   const params = useSearchParams();
-  const initialVertical = params.get("vertical") ?? "";
+  const initialVertical = params?.get("vertical") ?? "";
+  const initialPackage = params?.get("package") ?? "";
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [vertical, setVertical] = useState(initialVertical);
+  const [message, setMessage] = useState(
+    initialPackage
+      ? `I'm interested in the ${initialPackage.replace(/-/g, " ")} package. `
+      : "",
+  );
   const [status, setStatus] = useState<Status>("idle");
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [interest, setInterest] = useState<string[]>(initialVertical ? [initialVertical] : []);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  useEffect(() => {
-    if (initialVertical && !interest.includes(initialVertical)) {
-      setInterest([initialVertical]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialVertical]);
-
-  const validSlugs = useMemo(() => verticals.map((v) => v.slug), []);
-
-  function toggleInterest(slug: string) {
-    setInterest((cur) => (cur.includes(slug) ? cur.filter((s) => s !== slug) : [...cur, slug]));
-  }
-
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
-    setErrorMsg(null);
-    const fd = new FormData(e.currentTarget);
-    const payload = {
-      name: String(fd.get("name") ?? "").trim(),
-      email: String(fd.get("email") ?? "").trim(),
-      organisation: String(fd.get("organisation") ?? "").trim(),
-      message: String(fd.get("message") ?? "").trim(),
-      interest: interest.filter((s) => validSlugs.includes(s)),
-    };
+    setErrorMsg("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ name, email, company, vertical, message }),
       });
-      if (!res.ok) throw new Error(`Request failed (${res.status})`);
-      setStatus("success");
-      e.currentTarget.reset();
-      setInterest([]);
-    } catch (err) {
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error ?? `Server responded with ${res.status}`);
+      }
+      setStatus("ok");
+      setName("");
+      setEmail("");
+      setCompany("");
+      setVertical("");
+      setMessage("");
+    } catch (err: unknown) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
     }
-  }
+  };
 
-  if (status === "success") {
+  if (status === "ok") {
     return (
-      <div className="rounded-2xl bg-coralLight ring-1 ring-coral/30 p-8 text-navy">
-        <h2 className="display-h3">Thank you — we&rsquo;ll be in touch shortly.</h2>
-        <p className="mt-3 text-ink2">
-          Your message has reached the MMT team. We typically respond within one business day.
+      <div
+        role="status"
+        className="rounded-2xl bg-bgAlt ring-1 ring-line p-8 text-center"
+      >
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-coral text-white">
+          <CheckCircle2 size={28} aria-hidden />
+        </div>
+        <h2 className="mt-5 font-display text-2xl font-semibold text-navy">
+          Thanks — message received.
+        </h2>
+        <p className="mt-3 text-ink2 leading-relaxed max-w-md mx-auto">
+          We&rsquo;ll route this to the right vertical lead and get back to you within a
+          working day or two.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 inline-flex items-center text-sm font-semibold text-coral hover:underline focus-ring rounded"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-coral hover:underline focus-ring rounded"
         >
-          Send another message →
+          Send another message
         </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-6" noValidate>
+    <form onSubmit={onSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
-        <Field label="Name" name="name" required />
-        <Field label="Email" name="email" type="email" required />
+        <Field
+          label="Name"
+          name="name"
+          value={name}
+          onChange={setName}
+          required
+          autoComplete="name"
+        />
+        <Field
+          label="Email"
+          name="email"
+          type="email"
+          value={email}
+          onChange={setEmail}
+          required
+          autoComplete="email"
+        />
       </div>
-      <Field label="Organisation" name="organisation" required />
 
-      <fieldset>
-        <legend className="block text-sm font-semibold text-navy">I&rsquo;m interested in</legend>
-        <p className="text-xs text-muted mt-1">Select all that apply.</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {verticals.map((v) => {
-            const on = interest.includes(v.slug);
-            return (
-              <button
-                type="button"
-                key={v.slug}
-                onClick={() => toggleInterest(v.slug)}
-                aria-pressed={on}
-                className={`px-3.5 py-2 rounded-full text-sm font-medium ring-1 transition focus-ring ${
-                  on
-                    ? "bg-coral text-white ring-coral"
-                    : "bg-white text-navy ring-line hover:ring-coral hover:text-coral"
-                }`}
-              >
-                {v.name}
-              </button>
-            );
-          })}
-        </div>
-      </fieldset>
+      <Field
+        label="Company / organisation"
+        name="company"
+        value={company}
+        onChange={setCompany}
+        autoComplete="organization"
+      />
 
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-navy">
-          Message
+        <label
+          htmlFor="vertical"
+          className="block text-xs uppercase tracking-wider font-semibold text-muted mb-2"
+        >
+          Which vertical interests you?
+        </label>
+        <select
+          id="vertical"
+          name="vertical"
+          value={vertical}
+          onChange={(e) => setVertical(e.target.value)}
+          className="w-full rounded-lg bg-white ring-1 ring-line px-4 py-3 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-bg"
+        >
+          {verticals.map((v) => (
+            <option key={v.value} value={v.value}>
+              {v.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label
+          htmlFor="message"
+          className="block text-xs uppercase tracking-wider font-semibold text-muted mb-2"
+        >
+          Message <span className="text-coral">*</span>
         </label>
         <textarea
           id="message"
           name="message"
+          required
           rows={5}
-          className="mt-2 w-full rounded-lg border border-line bg-white px-4 py-3 text-ink focus-ring focus:border-coral"
-          placeholder="Tell us about your project, timelines, or questions."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="A few lines about your project, timeline, and what you'd like to discuss."
+          className="w-full rounded-lg bg-white ring-1 ring-line px-4 py-3 text-sm text-navy placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-bg resize-y"
         />
       </div>
 
-      {status === "error" && (
-        <p role="alert" className="text-sm text-coral">
-          {errorMsg ?? "Something went wrong. Please try again."}
-        </p>
-      )}
+      {status === "error" ? (
+        <div
+          role="alert"
+          className="flex items-start gap-3 rounded-lg bg-coralLight ring-1 ring-coral/30 px-4 py-3 text-sm text-navy"
+        >
+          <AlertCircle size={18} className="text-coral mt-0.5 shrink-0" aria-hidden />
+          <span>
+            <span className="font-semibold">Couldn&rsquo;t send:</span> {errorMsg || "Please try again."}
+          </span>
+        </div>
+      ) : null}
 
-      <div className="flex items-center gap-3">
-        <Button type="submit" variant="primary" size="lg" disabled={status === "submitting"}>
-          {status === "submitting" ? "Sending…" : "Send message"}
-        </Button>
-        <p className="text-xs text-muted">We&rsquo;ll never share your details.</p>
-      </div>
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="inline-flex items-center gap-2 rounded-full bg-coral text-white font-semibold px-7 py-3.5 text-base hover:bg-coral/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-60 disabled:pointer-events-none transition-colors"
+      >
+        {status === "submitting" ? "Sending…" : "Send message"}
+        <Send size={16} aria-hidden />
+      </button>
     </form>
   );
 }
@@ -139,25 +184,37 @@ export function ContactForm() {
 function Field({
   label,
   name,
-  type = "text",
+  value,
+  onChange,
   required,
+  type = "text",
+  autoComplete,
 }: {
   label: string;
   name: string;
-  type?: string;
+  value: string;
+  onChange: (v: string) => void;
   required?: boolean;
+  type?: string;
+  autoComplete?: string;
 }) {
   return (
     <div>
-      <label htmlFor={name} className="block text-sm font-semibold text-navy">
-        {label} {required && <span className="text-coral" aria-hidden="true">*</span>}
+      <label
+        htmlFor={name}
+        className="block text-xs uppercase tracking-wider font-semibold text-muted mb-2"
+      >
+        {label} {required ? <span className="text-coral">*</span> : null}
       </label>
       <input
         id={name}
         name={name}
         type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
         required={required}
-        className="mt-2 w-full rounded-lg border border-line bg-white px-4 py-3 text-ink focus-ring focus:border-coral"
+        autoComplete={autoComplete}
+        className="w-full rounded-lg bg-white ring-1 ring-line px-4 py-3 text-sm text-navy placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-bg"
       />
     </div>
   );

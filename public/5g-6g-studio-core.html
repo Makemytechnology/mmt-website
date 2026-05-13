@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>MMT Studio Core — Solution Document</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="MMT Studio Core solution document — a self-contained 5G Standalone core. All NFs implemented natively in Python with a C/DPDK UPF data plane. Includes IMS (P/I/S-CSCF, HSS, MMTEL), MCX (PTT/Video/Data), MEC, eSIM and V2X." />
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --navy-deep:#061428;
+    --ink:#1A1A1A;
+    --ink2:#3D3D3D;
+    --muted:#6B7280;
+    --line:#D1D5DB;
+    --bg:#FFFFFF;
+    --bg-alt:#F7F9FC;
+    --coral:#E85A4F;
+    --coral-light:#FBE1DD;
+    --gold:#F2A65A;
+    --sky:#4A90C2;
+    --sky-light:#D6E7F2;
+    --green:#22c55e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{background:var(--bg-alt);line-height:1.55;font-size:14px}
+  .page{max-width:880px;margin:0 auto;padding:48px;background:var(--bg);box-shadow:0 10px 40px rgba(11,31,58,.08);border-radius:8px;margin-top:32px;margin-bottom:32px}
+
+  /* Banner */
+  .banner{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 100%);color:#fff;border-radius:12px;padding:36px 32px;margin-bottom:32px;position:relative;overflow:hidden}
+  .banner::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 30%, rgba(232,90,79,.25), transparent 50%);pointer-events:none}
+  .banner .eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:12px;position:relative}
+  .banner h1{font-size:36px;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px;position:relative}
+  .banner .tagline{font-size:15px;font-style:italic;color:var(--coral);margin-bottom:18px;position:relative}
+  .banner .pills{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+  .banner .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+  .banner .pill.flagship{background:rgba(242,166,90,.18);border-color:rgba(242,166,90,.4);color:var(--gold)}
+
+  h2{font-size:22px;font-weight:700;letter-spacing:-0.01em;color:var(--navy);margin:32px 0 10px;border-bottom:2px solid var(--line);padding-bottom:8px}
+  h3{font-size:15px;font-weight:700;color:var(--navy);margin:18px 0 8px}
+  p{margin-bottom:10px;color:var(--ink2);line-height:1.6}
+  ul,ol{margin:8px 0 12px 22px;color:var(--ink2)}
+  li{margin-bottom:4px;line-height:1.55}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;background:var(--bg-alt);padding:1px 6px;border-radius:4px;color:var(--coral);border:1px solid var(--line)}
+
+  /* Meta strip */
+  .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+  .meta .cell{background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  .meta .label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+  .meta .value{font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:var(--navy);margin-top:4px}
+
+  /* NF grid */
+  .nfs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0 16px}
+  .nf{background:var(--bg-alt);border:1px solid var(--line);border-radius:6px;padding:8px 4px;text-align:center;font-family:ui-monospace,monospace;font-size:11px;font-weight:700;color:var(--navy)}
+  .companion{background:var(--coral-light);border-color:rgba(232,90,79,.3);color:var(--navy)}
+
+  /* DNN table */
+  table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:12px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:var(--navy);color:#fff;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+  td:first-child{font-family:ui-monospace,monospace;font-weight:700;color:var(--navy);border-left:3px solid var(--coral);white-space:nowrap}
+  td.proto{font-family:ui-monospace,monospace;font-size:11px;color:var(--muted)}
+
+  /* Spec table */
+  .spec-table th:first-child{width:200px}
+  .spec-table td{color:var(--ink2)}
+  .spec-table td:first-child{font-family:ui-monospace,monospace;font-weight:700;color:var(--navy);border-left:none}
+
+  /* Highlight box */
+  .highlight{background:var(--coral-light);border-left:4px solid var(--coral);padding:14px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+  .highlight strong{color:var(--coral)}
+
+  /* Footer */
+  .footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);text-align:center}
+  .footer strong{color:var(--navy)}
+
+  /* Header bar with brand */
+  .head{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand-mark{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;letter-spacing:.04em}
+  .brand-text .name{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+  .brand-text .sub{font-size:11px;color:var(--muted)}
+  .head .doc-id{text-align:right;font-size:10px;color:var(--muted);letter-spacing:.08em}
+  .doc-id strong{color:var(--ink);display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+
+  /* Print */
+  .print-bar{position:fixed;top:16px;right:16px;background:var(--coral);color:#fff;padding:8px 16px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;border:none;box-shadow:0 6px 20px rgba(232,90,79,.4);transition:transform .15s ease;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .print-bar:hover{transform:translateY(-1px)}
+  @media print{
+    body{background:#fff;font-size:12px}
+    .page{box-shadow:none;border-radius:0;margin:0;padding:24px;max-width:none}
+    .print-bar{display:none}
+    h2{page-break-after:avoid}
+    table,.nfs,.meta{page-break-inside:avoid}
+    .banner{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<button class="print-bar" onclick="window.print()">⤓ Save as PDF / Print</button>
+
+<div class="page">
+
+  <header class="head">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-text">
+        <div class="name">MakeMyTechnology</div>
+        <div class="sub">Center of Excellence · Bengaluru, India</div>
+      </div>
+    </div>
+    <div class="doc-id">
+      <strong>Solution Doc</strong>
+      MMT-SC-v1.0 · 2026
+    </div>
+  </header>
+
+  <div class="banner">
+    <div class="eyebrow">MMT 5G/6G Studio · Solution Document</div>
+    <h1>Studio Core</h1>
+    <div class="tagline">Python control plane. C/DPDK data plane.</div>
+    <div class="pills">
+      <span class="pill flagship">⚑ Flagship · Shipping v1.0</span>
+      <span class="pill">3GPP Rel-17</span>
+      <span class="pill">5G Standalone</span>
+      <span class="pill">N78 · 100 MHz</span>
+    </div>
+  </div>
+
+  <h2>1. Overview</h2>
+  <p>
+    <strong>MMT Studio Core</strong> is a self-contained 5G Standalone (SA) core network.
+    All network functions are implemented natively in Python (no third-party stacks bundled
+    in); the UPF data plane is a C/DPDK forwarder for wire-speed packet processing.
+  </p>
+  <p>
+    13 5G core NFs ship in the same repository — AMF, SMF, UPF, AUSF, UDM, UDR, NSSF, PCF,
+    CHF, NWDAF, AF, LMF, GMLC — alongside higher-layer services for IMS (P/I/S-CSCF, HSS,
+    MMTEL), MCX (MCPTT, MCVideo, MCData), MEC, eSIM and V2X. Run <code>./run.sh</code>
+    once and you have a working 5G SA core talking to gNBs and UEs over the standard 3GPP
+    reference points.
+  </p>
+
+  <div class="highlight">
+    <strong>One repo, one entry point.</strong> Python control plane handles
+    5G-AKA / NAS security / IMS-AKA, the 5GMM and 5GSM state machines and all NGAP/SBI
+    procedures. The UPF C/DPDK fast path (<code>libupf_dp.so</code>) owns GTP-U
+    encap/decap, QoS enforcement, SDF filtering and per-PDR/QER/URR policing.
+  </div>
+
+  <h2>2. Key Specifications</h2>
+  <div class="meta">
+    <div class="cell">
+      <div class="label">Compliance</div>
+      <div class="value">3GPP Rel-17</div>
+    </div>
+    <div class="cell">
+      <div class="label">Mode</div>
+      <div class="value">5G Standalone</div>
+    </div>
+    <div class="cell">
+      <div class="label">Control plane</div>
+      <div class="value">Python · single repo</div>
+    </div>
+    <div class="cell">
+      <div class="label">Data plane</div>
+      <div class="value">C / DPDK · libupf_dp.so</div>
+    </div>
+  </div>
+
+  <table class="spec-table">
+    <tbody>
+      <tr><td>Network functions</td><td>13 5G core NFs + IMS · MCX · MEC · eSIM · V2X · NTN · IoT · DPI · LI</td></tr>
+      <tr><td>DNN service domains</td><td>8 (Internet, IMS, MCX, IoT, Location, Enterprise, Emergency, V2X)</td></tr>
+      <tr><td>Deployment</td><td>Bare metal · KVM · LXC · Docker</td></tr>
+      <tr><td>OS</td><td>Linux (kernel 5.15+) · RT kernel optional</td></tr>
+      <tr><td>Tuned NICs</td><td>Intel X710 / X810 series · Mellanox CX-5/6 (DPDK)</td></tr>
+      <tr><td>Database</td><td>PostgreSQL (prod) · SQLite (dev / lab)</td></tr>
+      <tr><td>Telemetry</td><td>Prometheus metrics · OpenTelemetry traces · structured logs</td></tr>
+      <tr><td>Management</td><td>REST API · CLI · Studio Fleet web UI</td></tr>
+      <tr><td>Capacity (single node)</td><td>≥ 100 k attached UEs · &gt; 20 Gbps UPF throughput</td></tr>
+      <tr><td>Standard interfaces</td><td>N2 (NGAP) · N3 (GTP-U) · N4 (PFCP) · N6 · N9 · SBI HTTP/2</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Network Functions</h2>
+  <h3>13 5G Core NFs (all in Python)</h3>
+  <div class="nfs">
+    <div class="nf">AMF</div>
+    <div class="nf">SMF</div>
+    <div class="nf">UPF</div>
+    <div class="nf">AUSF</div>
+    <div class="nf">UDM</div>
+    <div class="nf">UDR</div>
+    <div class="nf">NSSF</div>
+    <div class="nf">PCF</div>
+    <div class="nf">CHF</div>
+    <div class="nf">NWDAF</div>
+    <div class="nf">AF</div>
+    <div class="nf">LMF</div>
+    <div class="nf">GMLC</div>
+  </div>
+
+  <h3>Higher-Layer Services</h3>
+  <div class="nfs">
+    <div class="nf companion">IMS</div>
+    <div class="nf companion">MCX</div>
+    <div class="nf companion">MEC</div>
+    <div class="nf companion">eSIM</div>
+    <div class="nf companion">V2X</div>
+    <div class="nf companion">NTN</div>
+    <div class="nf companion">IoT</div>
+    <div class="nf companion">DPI · LI · Emergency</div>
+  </div>
+
+  <h2>4. Eight DNN Service Domains</h2>
+  <p>
+    A single SMF/UPF instance serves all eight DNN service domains concurrently. Each
+    domain has its own QoS profile, charging rules, and edge-routing policy.
+  </p>
+  <table>
+    <thead>
+      <tr><th>DNN</th><th>Service</th><th>Protocols / Features</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>internet</td><td>General data + FWA</td><td class="proto">QoS, Slicing, RedCap, MEC</td></tr>
+      <tr><td>ims</td><td>VoNR / ViNR / VoWiFi</td><td class="proto">SIP, IMS-AKA, 6-way conf</td></tr>
+      <tr><td>mcx</td><td>Mission-Critical PTT</td><td class="proto">MCPTT, MCVideo, MCData</td></tr>
+      <tr><td>iot</td><td>IoT / M2M / NIDD</td><td class="proto">oneM2M, PSM, eDRX, Ambient IoT</td></tr>
+      <tr><td>location</td><td>Positioning / LBS</td><td class="proto">E-CID, RTT, TDOA, Geofence</td></tr>
+      <tr><td>enterprise</td><td>Private 5G · MEC</td><td class="proto">ULCL, I-UPF, DPI, Edge</td></tr>
+      <tr><td>emergency</td><td>E911 / NTN Satellite</td><td class="proto">Priority, GMLC, NTN</td></tr>
+      <tr><td>v2x</td><td>Vehicle / Drone</td><td class="proto">V2X sidelink, URLLC, UAV</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5. Architecture</h2>
+  <h3>5.1 Control plane (Python)</h3>
+  <ul>
+    <li><strong>All NFs in one repository</strong> — AMF, SMF, AUSF, UDM, UDR, PCF, NSSF, CHF, NWDAF, AF, LMF, GMLC implemented natively in Python 3.12. No third-party NF black boxes.</li>
+    <li><strong>5GMM + 5GSM state machines</strong> — full timer management, registration, deregistration, paging, service request, session establishment / modification / release per TS 24.501.</li>
+    <li><strong>NGAP / SCTP</strong> — all mandatory NGAP procedures per TS 38.413.</li>
+    <li><strong>5G-AKA + NAS security</strong> — Milenage, SUCI/SUPI, AUTS re-sync, NEA0-3 ciphering, NIA1-3 integrity per TS 33.501.</li>
+    <li><strong>IMS</strong> — native SIP stack with P/I/S-CSCF, HSS Cx/Dx, IMS-AKA, IPsec SAs, VoNR, ViNR, conference, mid-call upgrade per TS 23.228 / 33.203 / 24.229.</li>
+    <li><strong>MCX</strong> — MCPTT voice, MCVideo, MCData SDS, floor control, groups per TS 23.379 / 380 / 281.</li>
+  </ul>
+  <h3>5.2 Data plane (C / DPDK)</h3>
+  <ul>
+    <li><strong>libupf_dp.so</strong> — a C/DPDK shared library that owns the fast path; allocates hugepages automatically on first run.</li>
+    <li><strong>DPDK poll-mode drivers</strong> on Intel 700/800-series NICs for wire-speed forwarding.</li>
+    <li><strong>PFCP / N4</strong> — PDR / FAR / QER / URR pushed from SMF to UPF per TS 29.244.</li>
+    <li><strong>GTP-U / N3</strong> tunnels between gNB and UPF per TS 29.281.</li>
+    <li><strong>SDF filtering</strong> + per-S-NSSAI slicing-aware routing on the fast path.</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>Why this matters:</strong> A 5G core where the control plane is Python is easy
+    to extend, easy to instrument, and easy to debug. The data plane stays in C/DPDK so
+    you don&rsquo;t pay a perf tax. Everything runs from a single <code>./run.sh</code> —
+    no Kubernetes operators, no service-mesh sidecars, no hidden init containers.
+  </div>
+
+  <h2>6. Standards Compliance</h2>
+  <ul>
+    <li>3GPP Rel-17 System Architecture — TS 23.501, TS 23.502</li>
+    <li>3GPP NGAP — TS 38.413</li>
+    <li>3GPP NAS-5G — TS 24.501</li>
+    <li>3GPP RRC (interoperability) — TS 38.331</li>
+    <li>3GPP GTP-U — TS 29.281</li>
+    <li>3GPP PFCP / N4 — TS 29.244</li>
+    <li>3GPP IMS — TS 24.229 / 24.147</li>
+    <li>3GPP Positioning — TS 23.273 / 38.305</li>
+    <li>3GPP NTN — TS 38.821</li>
+    <li>3GPP V2X — TS 23.287</li>
+    <li>3GPP QoS — TS 23.501 / 23.203 (5QI / QCI profiles)</li>
+  </ul>
+
+  <h2>7. Deployment Options</h2>
+  <ol>
+    <li><strong>Tabletop lab</strong> — single workstation, paired with Studio gNB + Studio Field. Up and attaching UEs in &lt; 30 min.</li>
+    <li><strong>Edge appliance</strong> — 1U / 2U rackmount Studio Core appliance pre-tuned for production pilots.</li>
+    <li><strong>Operator deployment</strong> — bare-metal or hypervisor, geo-redundant pair, customised NRF / NSSF policy.</li>
+    <li><strong>Private 5G</strong> — single-site enterprise deployment with ULCL/I-UPF for local breakout.</li>
+  </ol>
+
+  <h2>8. What Ships in the Bundle</h2>
+  <ul>
+    <li>Self-contained Python control plane (versioned, all packages bundled in <code>libs/</code>)</li>
+    <li><code>libupf_dp.so</code> data-plane shared library</li>
+    <li>Reference configuration files for the 8 default DNN profiles</li>
+    <li>Sample SIM provisioning scripts for the UDM</li>
+    <li>Test SIMs (programmable) — when bundled with the Complete 5G Setup package</li>
+    <li>Studio Fleet web-UI for monitoring and orchestration</li>
+    <li>Robot Framework conformance test suite (Studio TestBench, 202 cases)</li>
+    <li>Solution documentation, deployment runbook, troubleshooting guide</li>
+  </ul>
+
+  <h2>9. Use Cases</h2>
+  <ul>
+    <li><strong>5G testbed for telecom training</strong> — instructor-led lab with the Studio Academy LMS.</li>
+    <li><strong>Operator interop lab</strong> — vendor-neutral end-to-end testing of new gNBs, UEs and apps.</li>
+    <li><strong>Private 5G for industrial sites</strong> — campus coverage with deterministic URLLC slices.</li>
+    <li><strong>Defence / mission-critical</strong> — MCPTT / MCData over a fully-owned 5G core.</li>
+    <li><strong>Research / R&amp;D</strong> — instrumented core for protocol experiments, slicing studies, NWDAF data collection.</li>
+  </ul>
+
+  <h2>10. Get in Touch</h2>
+  <p>
+    Studio Core is shipping today. To request a demo, pricing, or a custom deployment
+    discussion, reach the MMT engineering team directly:
+  </p>
+  <ul>
+    <li>Email — <a href="mailto:info@makemytechnology.com">info@makemytechnology.com</a></li>
+    <li>Phone — +91 63610 31970</li>
+    <li>Location — Visvesvaraya Technological University Regional Center, Bengaluru, India</li>
+  </ul>
+
+  <div class="footer">
+    © 2026 <strong>MakeMyTechnology</strong> · All rights reserved. <br/>
+    This document is a high-level technical summary. Detailed deployment guides, API
+    references, and conformance reports are provided to design-partner customers under
+    NDA.
+  </div>
+
+</div>
+
+</body>
+</html>
