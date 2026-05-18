@@ -8,9 +8,9 @@ import { Marquee } from "@/components/Marquee";
 import { verticals } from "@/content/verticals";
 
 export const metadata: Metadata = {
-  title: "MakeMyTechnology — Deep ed-tech Center of Excellence",
+  title: "MakeMyTechnology — Deep Edu-Tech Center of Excellence",
   description:
-    "MakeMyTechnology builds independent deep-tech products across 5G/6G, IoT, AI, robotics, and quantum-safe security. Spec-faithful engineering. Production-ready software and hardware.",
+    "MakeMyTechnology is a Deep Edu-Tech Center of Excellence building independent products across 5G/6G, IoT, AI, robotics, and quantum-safe security. Spec-faithful engineering. Production-ready software and hardware.",
   alternates: { canonical: "/" },
 };
 
@@ -54,10 +54,13 @@ export default function HomePage() {
       <section className="bg-bg section-y">
         <div className="container-x">
           <Reveal>
-            <p className="eyebrow text-coral">Five programmes</p>
-            <h2 className="display-h2 text-navy mt-3 max-w-3xl">
+            <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-coral">
+              Deep Edu-Tech Center of Excellence
+            </p>
+            <p className="eyebrow text-navy/60 mt-6">Five programmes</p>
+            <h1 className="display-h2 text-navy mt-3 max-w-3xl">
               Independent verticals. Shared engineering culture.
-            </h2>
+            </h1>
             <p className="mt-4 text-lg text-ink2 max-w-3xl">
               Each programme has its own product family and roadmap. 5G/6G is flagship and
               shipping today; the others are in active development with design partners.

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s · MakeMyTechnology",
   },
   description:
-    "MakeMyTechnology is a deep ed-tech Center of Excellence building independent products across 5G/6G, IoT, AI, drone corridor technology, and quantum-safe security.",
+    "MakeMyTechnology is a Deep Edu-Tech Center of Excellence building independent products across 5G/6G, IoT, AI, drone corridor technology, and quantum-safe security.",
   openGraph: {
     type: "website",
     siteName: "MakeMyTechnology",
