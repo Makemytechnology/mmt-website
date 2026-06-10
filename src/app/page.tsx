@@ -18,7 +18,7 @@ const industryVerticals = [
 ];
 
 export const metadata: Metadata = {
-  title: "MakeMyTechnology — Deep Edu-Tech Center of Excellence",
+  title: "MakeMyTechnology",
   description:
     "Deep Edu-Tech Center of Excellence with five platforms — 5G/6G Studio, IoT Fabric, Cognify, QGuard, and Robotics Solutions — serving Railways, Defence, Smart City, Energy, Ports, and Mining. Spec-faithful engineering. Production-ready software and hardware.",
   alternates: { canonical: "/" },
@@ -232,6 +232,83 @@ export default function HomePage() {
                   </p>
                 </figcaption>
               </figure>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FIND US — address left, real Google Map right */}
+      <section className="bg-white section-y border-t border-line">
+        <div className="container-x">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+            {/* Address — left */}
+            <Reveal className="lg:col-span-5 flex">
+              <div className="w-full rounded-2xl bg-bg ring-1 ring-line p-6 md:p-8 flex flex-col">
+                <p className="eyebrow text-coral">Find us</p>
+                <h2 className="display-h2 text-navy mt-3">Visit our Bengaluru lab.</h2>
+                <p className="mt-4 text-base text-ink2 leading-relaxed">
+                  Drop in for a workshop, a demo, or a coffee. We&apos;re inside the VTU
+                  Regional Center campus in Naagarabhaavi, Bengaluru.
+                </p>
+
+                <ul className="mt-6 space-y-4 text-sm">
+                  <li className="flex gap-3">
+                    <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
+                    <span className="text-ink2">
+                      <span className="block font-semibold text-navy mb-0.5">Address</span>
+                      Visvesvaraya Technological University Regional Center,<br />
+                      1st Main Rd, RHCS Layout, Annapoorneshwari Nagar,<br />
+                      Naagarabhaavi, Bengaluru, Karnataka 560091, India
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
+                    <span className="text-ink2">
+                      <span className="block font-semibold text-navy mb-0.5">Phone</span>
+                      <a href="tel:+916361031970" className="hover:text-coral transition">
+                        +91 63610 31970
+                      </a>
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
+                    <span className="text-ink2">
+                      <span className="block font-semibold text-navy mb-0.5">Email</span>
+                      <a href="mailto:info@makemytechnology.com" className="hover:text-coral transition">
+                        info@makemytechnology.com
+                      </a>
+                    </span>
+                  </li>
+                </ul>
+
+                <div className="mt-auto pt-6">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Visvesvaraya+Technological+University+Regional+Center+Bengaluru"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-coral hover:text-coral/80 transition"
+                  >
+                    Open in Google Maps
+                    <span aria-hidden>→</span>
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Map — right */}
+            <Reveal className="lg:col-span-7" delay={0.08}>
+              <div className="h-full min-h-[420px] rounded-2xl overflow-hidden ring-1 ring-line shadow-md">
+                <iframe
+                  title="MakeMyTechnology — VTU Regional Center, Bengaluru"
+                  src="https://www.google.com/maps?q=Visvesvaraya+Technological+University+Regional+Center+Bengaluru&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: 420 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
             </Reveal>
           </div>
         </div>
