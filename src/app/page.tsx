@@ -245,26 +245,25 @@ export default function HomePage() {
             <Reveal className="lg:col-span-5 flex">
               <div className="w-full rounded-2xl bg-bg ring-1 ring-line p-6 md:p-8 flex flex-col">
                 <p className="eyebrow text-coral">Visit MakeMyTechnology</p>
-                <h2 className="display-h2 text-navy mt-3">See the 5G stack live.</h2>
+                <h2 className="display-h2 text-navy mt-3">Deep Edu-Tech, end to end.</h2>
                 <p className="mt-4 text-base text-ink2 leading-relaxed">
-                  Come to our Bengaluru lab to see the complete MMT 5G/6G Studio running
-                  end-to-end — Studio Core, gNB, TestBench, Fleet, and Field on real
-                  hardware. Request a hands-on setup walkthrough or a deep dive into the
-                  5G tech stack with our engineers.
+                  MakeMyTechnology is a Deep Edu-Tech company providing complete 5G lab
+                  setups, M2M / IoT sensor platforms, and Studio Academy — our LMS-based
+                  learning management software built for students.
                 </p>
 
                 <ul className="mt-6 space-y-2.5 text-sm text-ink2">
                   <li className="flex gap-3">
                     <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
-                    <span><span className="font-semibold text-navy">See the 5G setup live</span> — Core, gNB, UE emulator, fleet dashboard</span>
+                    <span><span className="font-semibold text-navy">5G Lab Setup</span> — complete teaching and research lab</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
-                    <span><span className="font-semibold text-navy">Request a setup</span> — pilot trial at your site or in our lab</span>
+                    <span><span className="font-semibold text-navy">M2M / IoT Sensors</span> — oneM2M multi-tenant edge platform</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
-                    <span><span className="font-semibold text-navy">Deep dive into the tech stack</span> — Python control plane, C/DPDK UPF, Kotlin/Compose, Robot Framework</span>
+                    <span><span className="font-semibold text-navy">Studio Academy LMS</span> — learning management software for students</span>
                   </li>
                 </ul>
 
