@@ -244,12 +244,29 @@ export default function HomePage() {
             {/* Address — left */}
             <Reveal className="lg:col-span-5 flex">
               <div className="w-full rounded-2xl bg-bg ring-1 ring-line p-6 md:p-8 flex flex-col">
-                <p className="eyebrow text-coral">Find us</p>
-                <h2 className="display-h2 text-navy mt-3">Visit our Bengaluru lab.</h2>
+                <p className="eyebrow text-coral">Visit MakeMyTechnology</p>
+                <h2 className="display-h2 text-navy mt-3">See the 5G stack live.</h2>
                 <p className="mt-4 text-base text-ink2 leading-relaxed">
-                  Drop in for a workshop, a demo, or a coffee. We&apos;re inside the VTU
-                  Regional Center campus in Naagarabhaavi, Bengaluru.
+                  Come to our Bengaluru lab to see the complete MMT 5G/6G Studio running
+                  end-to-end — Studio Core, gNB, TestBench, Fleet, and Field on real
+                  hardware. Request a hands-on setup walkthrough or a deep dive into the
+                  5G tech stack with our engineers.
                 </p>
+
+                <ul className="mt-6 space-y-2.5 text-sm text-ink2">
+                  <li className="flex gap-3">
+                    <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
+                    <span><span className="font-semibold text-navy">See the 5G setup live</span> — Core, gNB, UE emulator, fleet dashboard</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
+                    <span><span className="font-semibold text-navy">Request a setup</span> — pilot trial at your site or in our lab</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
+                    <span><span className="font-semibold text-navy">Deep dive into the tech stack</span> — Python control plane, C/DPDK UPF, Kotlin/Compose, Robot Framework</span>
+                  </li>
+                </ul>
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li className="flex gap-3">
