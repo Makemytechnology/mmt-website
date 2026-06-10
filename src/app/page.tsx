@@ -245,11 +245,11 @@ export default function HomePage() {
             <Reveal className="lg:col-span-5 flex">
               <div className="w-full rounded-2xl bg-bg ring-1 ring-line p-6 md:p-8 flex flex-col">
                 <p className="eyebrow text-coral">Visit MakeMyTechnology</p>
-                <h2 className="display-h2 text-navy mt-3">Deep Edu-Tech, end to end.</h2>
+                <h2 className="display-h2 text-navy mt-3">Deep Edu-Tech Center of Excellence.</h2>
                 <p className="mt-4 text-base text-ink2 leading-relaxed">
-                  MakeMyTechnology is a Deep Edu-Tech company providing complete 5G lab
-                  setups, M2M / IoT sensor platforms, and Studio Academy — our LMS-based
-                  learning management software built for students.
+                  MakeMyTechnology is a Deep Edu-Tech Center of Excellence providing
+                  complete 5G lab setups, M2M / IoT sensor platforms, and Studio Academy —
+                  our LMS-based learning management software built for students.
                 </p>
 
                 <ul className="mt-6 space-y-2.5 text-sm text-ink2">
