@@ -20,7 +20,7 @@ const industryVerticals = [
 export const metadata: Metadata = {
   title: "MakeMyTechnology",
   description:
-    "Deep Edu-Tech Center of Excellence with five platforms — 5G/6G Studio, IoT Fabric, Cognify, QGuard, and Robotics Solutions — serving Railways, Defence, Smart City, Energy, Ports, and Mining. Spec-faithful engineering. Production-ready software and hardware.",
+    "Deep Edu-Tech Center of Excellence with six platforms — 5G/6G Studio, IoT Fabric, GNU Radio Kit, Cognify, QGuard, and Robotics Solutions — serving Railways, Defence, Smart City, Energy, Ports, and Mining. Spec-faithful engineering. Production-ready software and hardware.",
   alternates: { canonical: "/" },
 };
 
@@ -67,7 +67,7 @@ export default function HomePage() {
             <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-coral">
               Deep Edu-Tech Center of Excellence
             </p>
-            <p className="eyebrow text-navy/60 mt-6">Five platforms</p>
+            <p className="eyebrow text-navy/60 mt-6">Six platforms</p>
             <h1 className="display-h2 text-navy mt-3 max-w-3xl">
               Independent platforms. Shared engineering culture.
             </h1>
@@ -76,7 +76,7 @@ export default function HomePage() {
               and shipping today; the others are in active development with design partners.
             </p>
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 md:gap-6">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {verticals.map((v, i) => (
               <Reveal key={v.slug} delay={i * 0.06}>
                 <VerticalCard v={v} />

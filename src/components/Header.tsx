@@ -10,6 +10,7 @@ const navLinks: { href: string; label: string }[] = [
   { href: "/", label: "Home" },
   { href: "/5g-6g", label: "5G/6G Studio" },
   { href: "/iot", label: "IoT" },
+  { href: "/gnu-radio", label: "GNU Radio" },
   { href: "/ai", label: "AI" },
   { href: "/drone-corridor", label: "Robotics" },
   { href: "/quantum", label: "Quantum" },

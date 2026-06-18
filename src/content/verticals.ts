@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Network, Cpu, Brain, Plane, Atom } from "lucide-react";
+import { Network, Cpu, Brain, Plane, Atom, Radio } from "lucide-react";
 
 export type VerticalStatus = "FLAGSHIP · SHIPPING" | "SHIPPING" | "IN DEVELOPMENT" | "RESEARCH PHASE";
 
@@ -33,6 +33,15 @@ export const verticals: Vertical[] = [
     status: "SHIPPING",
     tagline: "oneM2M multi-tenant platform with edge gateways.",
     icon: Cpu,
+  },
+  {
+    slug: "gnu-radio",
+    href: "/gnu-radio",
+    name: "GNU Radio",
+    product: "MMT GNU Radio Kit",
+    status: "SHIPPING",
+    tagline: "210 SDR experiments on real ADALM-Pluto hardware. Powered by GNU Radio.",
+    icon: Radio,
   },
   {
     slug: "ai",
