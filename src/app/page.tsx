@@ -76,7 +76,7 @@ export default function HomePage() {
               and shipping today; the others are in active development with design partners.
             </p>
           </Reveal>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
             {verticals.map((v, i) => (
               <Reveal key={v.slug} delay={i * 0.06}>
                 <VerticalCard v={v} />

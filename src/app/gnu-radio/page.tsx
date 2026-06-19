@@ -66,7 +66,7 @@ export default function GnuRadioPage() {
         <div className="container-x relative pt-16 pb-16 md:pt-20 md:pb-20 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-6">
             <p className="eyebrow mb-6">GNU Radio Vertical · MMT CoE</p>
-            <h1 className="display-h1 text-white">MMT GNU Radio Kit</h1>
+            <h1 className="display-h1 text-white">MMT-GNU Kit</h1>
             <p className="mt-6 text-2xl md:text-3xl italic text-coral font-display max-w-2xl">
               210 wireless experiments on real software-defined radio.
             </p>
@@ -80,6 +80,26 @@ export default function GnuRadioPage() {
               (ADALM-Pluto, bladeRF) through a TX→RX loopback, falling back to a built-in channel
               simulator when no radio is attached.
             </p>
+
+            {/* Academic price — surfaced up top */}
+            <div className="mt-7 rounded-2xl bg-white/5 ring-1 ring-inset ring-gold/30 px-5 py-4 inline-block">
+              <p className="text-[0.65rem] tracking-[0.18em] uppercase font-semibold text-gold">
+                Special academic price · for institutions
+              </p>
+              <div className="mt-2 flex items-baseline gap-3">
+                <span className="font-display text-lg md:text-xl font-semibold text-white/40 line-through">
+                  ₹1,00,000
+                </span>
+                <span className="font-display text-4xl md:text-5xl font-bold text-gold leading-none">
+                  ₹50,000
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-wide text-white/60">
+                  / kit
+                </span>
+              </div>
+              <p className="mt-1.5 text-xs text-skyLight/70">Advanced Communication Lab Kit</p>
+            </div>
+
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <ButtonLink href={ctaHref} variant="primary" size="lg">
                 Request a demo

@@ -12,6 +12,10 @@ export type Vertical = {
   tagline: string;
   icon: LucideIcon;
   flagship?: boolean;
+  /** Optional academic price shown on the home card (e.g. the GNU kit). */
+  price?: string;
+  /** Optional struck-through original price shown beside `price`. */
+  priceWas?: string;
 };
 
 export const verticals: Vertical[] = [
@@ -37,11 +41,13 @@ export const verticals: Vertical[] = [
   {
     slug: "gnu-radio",
     href: "/gnu-radio",
-    name: "GNU Radio",
-    product: "MMT GNU Radio Kit",
+    name: "MMT-GNU Kit",
+    product: "Advanced Communication Lab Kit",
     status: "SHIPPING",
     tagline: "210 SDR experiments on real ADALM-Pluto hardware. Powered by GNU Radio.",
     icon: Radio,
+    price: "₹50,000",
+    priceWas: "₹1,00,000",
   },
   {
     slug: "ai",

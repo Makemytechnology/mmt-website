@@ -63,14 +63,14 @@ export function VerticalCard({ v }: { v: Vertical }) {
         />
 
         <div
-          className="relative p-6 md:p-7 flex flex-col grow"
+          className="relative p-4 md:p-5 flex flex-col grow"
           style={{ transform: "translateZ(30px)" }}
         >
           {/* === Block 1: Icon (fixed height) === */}
-          <div className="h-12 mb-5">
+          <div className="h-10 mb-3.5">
             <div
               className={cn(
-                "inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-navy shadow-md",
+                "inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-navy shadow-md",
                 "transition-transform duration-300 ease-out",
                 "group-hover:scale-110 group-hover:-rotate-6",
                 isFlagship
@@ -80,47 +80,69 @@ export function VerticalCard({ v }: { v: Vertical }) {
               aria-hidden
               style={{ transform: "translateZ(40px)" }}
             >
-              <Icon size={22} strokeWidth={1.75} />
+              <Icon size={18} strokeWidth={1.75} />
             </div>
           </div>
 
           {/* === Block 2: Title + product (fixed height block) === */}
-          <div className="min-h-[78px] mb-5">
-            <h3 className="font-display text-xl font-semibold text-white leading-tight">
+          <div className="min-h-[64px] mb-3.5">
+            <h3 className="font-display text-base md:text-lg font-semibold text-white leading-tight">
               {v.name}
             </h3>
-            <hr className={cn("my-3", isFlagship ? "border-white/25" : "border-white/15")} />
-            <p className="text-sm font-bold text-white leading-snug">{v.product}</p>
+            <hr className={cn("my-2.5", isFlagship ? "border-white/25" : "border-white/15")} />
+            <p className="text-xs md:text-sm font-bold text-white leading-snug">{v.product}</p>
           </div>
 
           {/* === Block 3: Status pill (fixed-height row) === */}
-          <div className="h-7 mb-5 flex items-center">
+          <div className="min-h-[1.75rem] mb-3.5 flex items-center">
             <StatusPill tone={statusToTone(v.status)}>{v.status}</StatusPill>
           </div>
 
-          {/* === Block 4: Tagline (fixed min-height = 4 lines so all cards
-                 hit the same vertical position for the Explore link) === */}
+          {/* === Block 4: Tagline (fixed min-height so all cards hit the same
+                 vertical position for the Explore link) === */}
           <p
             className={cn(
-              "text-sm leading-relaxed min-h-[84px]",
+              "text-xs leading-relaxed min-h-[72px]",
               isFlagship ? "text-white/95" : "text-white/80",
             )}
           >
             {v.tagline}
           </p>
 
+          {/* Optional academic price (e.g. the MMT-GNU Kit) */}
+          {v.price ? (
+            <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+              {v.priceWas ? (
+                <span
+                  className={cn(
+                    "text-[0.65rem] line-through",
+                    isFlagship ? "text-white/60" : "text-white/45",
+                  )}
+                >
+                  {v.priceWas}
+                </span>
+              ) : null}
+              <span className="font-display text-lg font-bold text-gold leading-none">
+                {v.price}
+              </span>
+              <span className="text-[0.6rem] font-semibold uppercase tracking-wide text-white/60">
+                / kit
+              </span>
+            </div>
+          ) : null}
+
           {/* === Block 5: Explore (always pinned to the bottom) === */}
           <div
             className={cn(
-              "mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold",
+              "mt-auto pt-4 inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold",
               "transition-all duration-300 ease-out",
-              "group-hover:gap-3 group-hover:translate-x-1",
+              "group-hover:gap-2.5 group-hover:translate-x-1",
               isFlagship ? "text-white" : "text-coral",
             )}
           >
             Explore
             <ArrowRight
-              size={16}
+              size={14}
               aria-hidden
               className="transition-transform duration-300 group-hover:translate-x-1"
             />

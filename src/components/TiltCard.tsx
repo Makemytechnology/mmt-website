@@ -78,7 +78,7 @@ export function TiltCard({
       }}
       className={`group ${className ?? ""} relative`}
     >
-      <div className="relative" style={{ transformStyle: "preserve-3d" }}>
+      <div className="relative h-full" style={{ transformStyle: "preserve-3d" }}>
         {children}
         {glare ? (
           <motion.div
