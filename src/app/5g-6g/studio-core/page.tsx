@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Github } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
 import { SectionCTA } from "@/components/SectionCTA";
@@ -85,6 +85,22 @@ export default function StudioCorePage() {
                 >
                   Schedule demo
                 </ButtonLink>
+              </div>
+              <div className="mt-6">
+                <p className="text-sm text-white/75">
+                  Use this to download the MMT Studio 5G/6G — the open-source
+                  SA-core and Tester software.
+                </p>
+                <div className="mt-3 flex justify-center">
+                  <ButtonLink
+                    href="https://github.com/Makemytechnology/mmt-studio-5g6g.git"
+                    variant="outlineLight"
+                    size="lg"
+                    external
+                  >
+                    <Github size={18} aria-hidden="true" /> View on GitHub
+                  </ButtonLink>
+                </div>
               </div>
             </div>
           </Reveal>
