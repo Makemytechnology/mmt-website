@@ -30,8 +30,7 @@ Live site: `https://makemytechnology.com` (after deployment)
 | `/5g-6g/studio-fleet` | Studio Fleet — Python / Flask orchestrator · 26 blueprints · 25 services · 8 Robot libs |
 | `/5g-6g/studio-field` | Studio Field — Kotlin / Jetpack Compose Android app · DIAG · 7-day Pro trial |
 | `/iot`, `/ai`, `/drone-corridor`, `/quantum` | In-development verticals |
-| `/contact` | Contact form (POSTs to `/api/contact`) + sidebar with email, phone, address, map |
-| `/api/contact` | Form submission endpoint — validates, logs, returns `{ ok: true }`. Wire to your email service (Resend / SendGrid) in production |
+| `/contact` | Contact form (embedded [Tally](https://tally.so) form — Tally hosts it and emails submissions) + sidebar with email, phone, address, map |
 
 `/contact` is intentionally **not** in the top navigation. It's reachable via every
 SectionCTA and the "Talk to us" buttons.
@@ -118,8 +117,7 @@ mmt-website/
 │   │   ├── page.tsx          Home — verticals first, stats, marquee, setup, CTA
 │   │   ├── 5g-6g/            Studio family pages
 │   │   ├── iot/ ai/ ...      Vertical pages
-│   │   ├── contact/          Form + sidebar
-│   │   ├── api/contact/      POST handler
+│   │   ├── contact/          Tally form embed + sidebar
 │   │   ├── icon.png          Tab favicon (auto-injected by Next.js)
 │   │   ├── apple-icon.png    iOS home-screen icon
 │   │   ├── sitemap.ts        Auto-generated sitemap.xml for SEO

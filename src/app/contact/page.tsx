@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { MapPin, Mail, Phone, Clock } from "lucide-react";
-import { ContactForm } from "@/components/ContactForm";
+import { TallyForm } from "@/components/TallyForm";
 
 export const metadata: Metadata = {
   title: "Contact — MakeMyTechnology",
@@ -29,9 +28,7 @@ export default function ContactPage() {
       <section className="bg-bg section-y">
         <div className="container-x grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-7">
-            <Suspense fallback={<div className="text-muted">Loading form…</div>}>
-              <ContactForm />
-            </Suspense>
+            <TallyForm />
           </div>
 
           <aside className="lg:col-span-5">
