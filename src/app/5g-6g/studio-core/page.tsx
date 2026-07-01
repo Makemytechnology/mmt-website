@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Github } from "lucide-react";
+import { ArrowLeft, Github, Youtube } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
 import { SectionCTA } from "@/components/SectionCTA";
@@ -91,7 +91,7 @@ export default function StudioCorePage() {
                   Use this to download the MMT Studio 5G/6G — the open-source
                   SA-core and Tester software.
                 </p>
-                <div className="mt-3 flex justify-center">
+                <div className="mt-3 flex flex-wrap justify-center items-center gap-4">
                   <ButtonLink
                     href="https://github.com/Makemytechnology/mmt-studio-5g6g.git"
                     variant="outlineLight"
@@ -99,6 +99,14 @@ export default function StudioCorePage() {
                     external
                   >
                     <Github size={18} aria-hidden="true" /> View on GitHub
+                  </ButtonLink>
+                  <ButtonLink
+                    href="https://youtu.be/SxSrm2ETy0Q?si=VG7IzJ3oVmFxVl0_"
+                    variant="outlineLight"
+                    size="lg"
+                    external
+                  >
+                    <Youtube size={18} aria-hidden="true" /> Watch on YouTube
                   </ButtonLink>
                 </div>
               </div>
