@@ -194,12 +194,11 @@ export default function StudioGnbPage() {
                 Request a demo
               </ButtonLink>
               <ButtonLink
-                href="/docs/mmt-gnb-specifications.pdf"
+                href="/documents/gnb-specifications"
                 variant="outlineLight"
                 size="lg"
-                external
               >
-                <FileText size={18} aria-hidden="true" /> Download spec sheet
+                <FileText size={18} aria-hidden="true" /> View spec sheet
               </ButtonLink>
               <ButtonLink href="/5g-6g/studio-core" variant="outlineLight" size="lg">
                 Pairs with Studio Core

@@ -78,12 +78,11 @@ export default function StudioCorePage() {
                   Download solution doc
                 </ButtonLink>
                 <ButtonLink
-                  href="/docs/mmt-studio-5g-manual.docx"
+                  href="/documents/studio-5g-manual"
                   variant="outlineLight"
                   size="lg"
-                  external
                 >
-                  <FileText size={18} aria-hidden="true" /> Download Studio manual
+                  <FileText size={18} aria-hidden="true" /> View Studio manual
                 </ButtonLink>
                 <ButtonLink
                   href="mailto:info@makemytechnology.com?subject=Studio%20Core%20demo"

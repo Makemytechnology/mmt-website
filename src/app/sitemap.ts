@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/drone-corridor",
     "/quantum",
     "/contact",
+    "/documents/gnb-specifications",
+    "/documents/studio-5g-manual",
+    "/documents/5g-system-engineering-syllabus",
   ];
   const now = new Date();
   return routes.map((path) => ({

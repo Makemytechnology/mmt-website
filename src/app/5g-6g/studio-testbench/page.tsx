@@ -144,10 +144,8 @@ export default function StudioTestbenchPage() {
           <Reveal>
             <div className="max-w-5xl mx-auto">
               <DemoVideo
-                src="/studio-testbench-demo.mp4"
+                src="/studio-core-demo.mp4"
                 label="Studio TestBench demo video"
-                pending
-                pendingMessage="Demo video coming soon. Drop the .mp4 into /public/studio-testbench-demo.mp4 to enable autoplay."
               />
             </div>
           </Reveal>

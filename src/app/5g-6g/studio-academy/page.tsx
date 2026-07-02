@@ -203,12 +203,11 @@ export default function StudioAcademyPage() {
                   Request a demo
                 </ButtonLink>
                 <ButtonLink
-                  href="/docs/5g-system-engineering-syllabus.docx"
+                  href="/documents/5g-system-engineering-syllabus"
                   variant="outlineLight"
                   size="lg"
-                  external
                 >
-                  <FileText size={18} aria-hidden="true" /> Download syllabus
+                  <FileText size={18} aria-hidden="true" /> View syllabus
                 </ButtonLink>
                 <ButtonLink href="/5g-6g/studio-core" variant="outlineLight" size="lg">
                   Labs run on Studio Core
