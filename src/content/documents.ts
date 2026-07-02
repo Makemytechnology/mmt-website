@@ -16,15 +16,6 @@ export const SITE_ORIGIN = "https://www.makemytechnology.com";
 
 export const documents: DocEntry[] = [
   {
-    slug: "studio-core-solution",
-    title: "Studio Core — Solution Document",
-    subtitle: "The full MMT 5G/6G Studio Core solution document",
-    file: "/5g-6g-studio-core.html",
-    type: "html",
-    backHref: "/5g-6g/studio-core",
-    backLabel: "Back to Studio Core",
-  },
-  {
     slug: "gnb-specifications",
     title: "MMT gNB — Specifications",
     subtitle: "Portable 5G Standalone base station · full RF & system spec sheet",

@@ -74,48 +74,34 @@ export default function StudioCorePage() {
                 single <code className="font-mono text-coral">./run.sh</code>.
               </p>
               <div className="mt-6 flex flex-wrap justify-center items-center gap-4">
-                <ButtonLink href="/documents/studio-core-solution" variant="primary" size="lg">
-                  View solution doc
+                <ButtonLink href="/documents/studio-5g-manual" variant="primary" size="lg">
+                  <FileText size={18} aria-hidden="true" /> View the document
                 </ButtonLink>
                 <ButtonLink
-                  href="/documents/studio-5g-manual"
+                  href="/contact?vertical=5g-6g&package=studio-core"
                   variant="outlineLight"
                   size="lg"
-                >
-                  <FileText size={18} aria-hidden="true" /> View Studio manual
-                </ButtonLink>
-                <ButtonLink
-                  href="mailto:info@makemytechnology.com?subject=Studio%20Core%20demo"
-                  variant="outlineLight"
-                  size="lg"
-                  external
                 >
                   Schedule demo
                 </ButtonLink>
               </div>
-              <div className="mt-6">
-                <p className="text-sm text-white/75">
-                  Use this to download the MMT Studio 5G/6G — the open-source
-                  SA-core and Tester software.
-                </p>
-                <div className="mt-3 flex flex-wrap justify-center items-center gap-4">
-                  <ButtonLink
-                    href="https://github.com/Makemytechnology/mmt-studio-5g6g.git"
-                    variant="outlineLight"
-                    size="lg"
-                    external
-                  >
-                    <Github size={18} aria-hidden="true" /> View on GitHub
-                  </ButtonLink>
-                  <ButtonLink
-                    href="https://youtu.be/SxSrm2ETy0Q?si=VG7IzJ3oVmFxVl0_"
-                    variant="outlineLight"
-                    size="lg"
-                    external
-                  >
-                    <Youtube size={18} aria-hidden="true" /> Watch on YouTube
-                  </ButtonLink>
-                </div>
+              <div className="mt-4 flex flex-wrap justify-center items-center gap-4">
+                <ButtonLink
+                  href="https://github.com/Makemytechnology/mmt-studio-5g6g.git"
+                  variant="outlineLight"
+                  size="lg"
+                  external
+                >
+                  <Github size={18} aria-hidden="true" /> View on GitHub
+                </ButtonLink>
+                <ButtonLink
+                  href="https://youtu.be/SxSrm2ETy0Q?si=VG7IzJ3oVmFxVl0_"
+                  variant="outlineLight"
+                  size="lg"
+                  external
+                >
+                  <Youtube size={18} aria-hidden="true" /> Watch on YouTube
+                </ButtonLink>
               </div>
             </div>
           </Reveal>
