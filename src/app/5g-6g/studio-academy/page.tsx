@@ -335,8 +335,8 @@ export default function StudioAcademyPage() {
                   <Image
                     src={s.src}
                     alt={`${s.title} — ${s.caption}`}
-                    width={1600}
-                    height={1200}
+                    width={1200}
+                    height={800}
                     className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
                   />
                   <figcaption className="bg-white px-4 py-3">
