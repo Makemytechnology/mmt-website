@@ -42,19 +42,22 @@ const platformFacts: { icon: typeof Radio; label: string; detail: string }[] = [
 
 const screenshots: { src: string; title: string; caption: string }[] = [
   {
-    src: "/gnu-radio-course.jpg",
-    title: "Guided course",
-    caption: "Chapter sidebar, the full experiment catalog, and a per-chapter overview.",
+    src: "/gnu-radio-hardware.png",
+    title: "Hardware & radios",
+    caption:
+      "The TX→RX loopback signal chain with live device detection — ADALM-Pluto, bladeRF 2×2, and the built-in channel simulator.",
   },
   {
-    src: "/gnu-radio-flowgraph.jpg",
-    title: "GNU Radio flowgraph",
-    caption: "Each experiment's signal chain — TX path, ADALM-Pluto, RX path, DSP and sinks.",
+    src: "/gnu-radio-runlab.png",
+    title: "Run Lab · live spectrum",
+    caption:
+      "Each experiment's workbench — tune parameters and run on real SDR or simulation, with live spectrum and constellation plots.",
   },
   {
-    src: "/gnu-radio-foxhunt.jpg",
-    title: "Spectrum Fox Hunt",
-    caption: "Live spectrum + waterfall mini-game — dial in the hidden tone's offset.",
+    src: "/gnu-radio-progress.png",
+    title: "Progress dashboard",
+    caption:
+      "XP, levels and badges with per-category completion across all 15 experiment categories.",
   },
 ];
 
@@ -120,10 +123,10 @@ export default function GnuRadioPage() {
             <Reveal delay={0.08}>
               <figure className="overflow-hidden rounded-2xl ring-1 ring-inset ring-white/15 bg-black shadow-2xl">
                 <Image
-                  src="/gnu-radio-course.jpg"
-                  alt="MMT-GNU Wireless Experiments Platform — course view with chapter sidebar, the full experiment catalog, and a chapter overview."
-                  width={1600}
-                  height={840}
+                  src="/gnu-radio-course.png"
+                  alt="MMT-GNU Kit — Wireless & Communication Engineering course view with chapter sidebar, guided course progress, and the student profile."
+                  width={1920}
+                  height={1005}
                   className="w-full h-auto block"
                   priority
                 />
