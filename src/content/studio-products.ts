@@ -9,6 +9,7 @@ export type StudioProduct = {
   icon: LucideIcon;
   href?: string; // when set, card is a link; otherwise it renders as a static card
   flagship?: boolean;
+  doc?: { href: string; label: string }; // optional downloadable document (spec/manual/syllabus)
 };
 
 export const studioProducts: StudioProduct[] = [
@@ -32,6 +33,7 @@ export const studioProducts: StudioProduct[] = [
     icon: Boxes,
     href: "/5g-6g/studio-core",
     flagship: true,
+    doc: { href: "/docs/mmt-studio-5g-manual.docx", label: "Studio manual" },
     bullets: [
       "13 NFs · IMS · MCX · MEC · eSIM · V2X",
       "5G-AKA · NAS security · VoNR + ViNR",
@@ -45,6 +47,7 @@ export const studioProducts: StudioProduct[] = [
     sub: "5G Base Station (gNB)",
     icon: RadioTower,
     href: "/5g-6g/studio-gnb",
+    doc: { href: "/docs/mmt-gnb-specifications.pdf", label: "Spec sheet" },
     bullets: [
       "N78 band (3.3–3.8 GHz) · 100 MHz TDD",
       "4×4 MIMO",
@@ -84,6 +87,7 @@ export const studioProducts: StudioProduct[] = [
     sub: "AI-Powered LMS",
     icon: GraduationCap,
     href: "/5g-6g/studio-academy",
+    doc: { href: "/docs/5g-system-engineering-syllabus.docx", label: "Syllabus" },
     bullets: [
       "Django LMS with 11 apps",
       "AI Tutor across Claude, GPT, Gemini, Ollama",

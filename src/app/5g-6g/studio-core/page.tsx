@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Github, Youtube } from "lucide-react";
+import { ArrowLeft, Github, Youtube, FileText } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
 import { SectionCTA } from "@/components/SectionCTA";
@@ -76,6 +76,14 @@ export default function StudioCorePage() {
               <div className="mt-6 flex flex-wrap justify-center items-center gap-4">
                 <ButtonLink href="/5g-6g-studio-core.html" variant="primary" size="lg" external>
                   Download solution doc
+                </ButtonLink>
+                <ButtonLink
+                  href="/docs/mmt-studio-5g-manual.docx"
+                  variant="outlineLight"
+                  size="lg"
+                  external
+                >
+                  <FileText size={18} aria-hidden="true" /> Download Studio manual
                 </ButtonLink>
                 <ButtonLink
                   href="mailto:info@makemytechnology.com?subject=Studio%20Core%20demo"

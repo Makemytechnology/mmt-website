@@ -13,6 +13,7 @@ import {
   Server,
   Layers,
   Presentation,
+  FileText,
 } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
@@ -200,6 +201,14 @@ export default function StudioAcademyPage() {
                   size="lg"
                 >
                   Request a demo
+                </ButtonLink>
+                <ButtonLink
+                  href="/docs/5g-system-engineering-syllabus.docx"
+                  variant="outlineLight"
+                  size="lg"
+                  external
+                >
+                  <FileText size={18} aria-hidden="true" /> Download syllabus
                 </ButtonLink>
                 <ButtonLink href="/5g-6g/studio-core" variant="outlineLight" size="lg">
                   Labs run on Studio Core

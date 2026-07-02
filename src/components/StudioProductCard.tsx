@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TiltCard } from "./TiltCard";
 import { BeamBorder } from "./BeamBorder";
@@ -15,7 +15,6 @@ export function StudioProductCard({ p }: { p: StudioProduct }) {
     isFlagship
       ? "bg-coral text-white ring-coral/60 shadow-lg shadow-coral/20 hover:shadow-coral/40"
       : "bg-navy text-white ring-white/10 shadow-lg shadow-black/20 hover:shadow-coral/30",
-    linkable ? "focus-ring" : "",
   );
 
   const inner = (
@@ -61,28 +60,40 @@ export function StudioProductCard({ p }: { p: StudioProduct }) {
           ))}
         </ul>
 
-        {linkable ? (
-          <div className="mt-auto pt-2 inline-flex items-center gap-2 text-sm font-semibold text-white opacity-90 group-hover:opacity-100 group-hover:translate-x-1 transition">
-            Explore
-            <ArrowRight size={16} aria-hidden="true" />
-          </div>
-        ) : (
-          <div className="mt-auto pt-2 inline-flex items-center text-[0.65rem] tracking-[0.18em] uppercase font-semibold text-white/55">
-            Coming soon
-          </div>
-        )}
+        <div className="mt-auto pt-2 flex items-center justify-between gap-3">
+          {linkable && p.href ? (
+            <Link
+              href={p.href}
+              aria-label={`${p.title} — ${p.sub}`}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white opacity-90 group-hover:opacity-100 group-hover:translate-x-1 transition focus-ring rounded after:absolute after:inset-0 after:content-['']"
+            >
+              Explore
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          ) : (
+            <span className="inline-flex items-center text-[0.65rem] tracking-[0.18em] uppercase font-semibold text-white/55">
+              Coming soon
+            </span>
+          )}
+
+          {p.doc ? (
+            <a
+              href={p.doc.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Download ${p.title} ${p.doc.label}`}
+              className="relative z-10 inline-flex items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/20 px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-inset ring-white/20 transition focus-ring shrink-0"
+            >
+              <FileText size={13} aria-hidden="true" />
+              {p.doc.label}
+            </a>
+          ) : null}
+        </div>
       </div>
     </>
   );
 
-  const card =
-    linkable && p.href ? (
-      <Link href={p.href} className={base} aria-label={`${p.title} — ${p.sub}`}>
-        {inner}
-      </Link>
-    ) : (
-      <article className={base}>{inner}</article>
-    );
+  const card = <article className={base}>{inner}</article>;
 
   const tilt = (
     <TiltCard className="relative h-full rounded-2xl" intensity={8}>
