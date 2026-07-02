@@ -12,12 +12,14 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero — compact so the form fits without scrolling */}
       <section className="bg-navyDeep text-white">
-        <div className="container-x pt-20 pb-12 md:pt-28 md:pb-16">
-          <p className="eyebrow mb-6">Contact</p>
-          <h1 className="display-h1 text-white max-w-3xl">Talk to the MMT team.</h1>
-          <p className="mt-6 max-w-2xl lede">
+        <div className="container-x pt-8 pb-6 md:pt-10 md:pb-8">
+          <p className="eyebrow mb-2">Contact</p>
+          <h1 className="font-display font-bold tracking-tight text-2xl md:text-3xl text-white max-w-3xl">
+            Talk to the MMT team.
+          </h1>
+          <p className="mt-2 max-w-2xl text-sm md:text-base text-skyLight/85">
             Tell us about your project. We&rsquo;ll route the conversation to the right
             vertical lead.
           </p>
@@ -25,8 +27,8 @@ export default function ContactPage() {
       </section>
 
       {/* Form + sidebar */}
-      <section className="bg-bg section-y">
-        <div className="container-x grid lg:grid-cols-12 gap-12">
+      <section className="bg-bg py-8 md:py-10">
+        <div className="container-x grid lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="lg:col-span-7">
             <TallyForm />
           </div>
