@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/5g-6g/studio-testbench",
     "/5g-6g/studio-fleet",
     "/5g-6g/studio-field",
+    "/5g-6g/studio-academy",
     "/iot",
     "/gnu-radio",
     "/ai",

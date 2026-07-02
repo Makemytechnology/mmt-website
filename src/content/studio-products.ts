@@ -83,6 +83,7 @@ export const studioProducts: StudioProduct[] = [
     title: "Studio Academy",
     sub: "AI-Powered LMS",
     icon: GraduationCap,
+    href: "/5g-6g/studio-academy",
     bullets: [
       "Django LMS with 11 apps",
       "AI Tutor across Claude, GPT, Gemini, Ollama",
