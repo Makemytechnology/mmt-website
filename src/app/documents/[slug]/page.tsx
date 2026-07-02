@@ -38,9 +38,11 @@ export default async function DocumentViewerPage({
   const viewerSrc =
     doc.type === "pdf"
       ? `${doc.file}#view=FitH`
-      : `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
-          `${SITE_ORIGIN}${doc.file}`,
-        )}`;
+      : doc.type === "html"
+        ? doc.file
+        : `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
+            `${SITE_ORIGIN}${doc.file}`,
+          )}`;
 
   return (
     <>

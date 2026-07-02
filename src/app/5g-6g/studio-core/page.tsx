@@ -74,8 +74,8 @@ export default function StudioCorePage() {
                 single <code className="font-mono text-coral">./run.sh</code>.
               </p>
               <div className="mt-6 flex flex-wrap justify-center items-center gap-4">
-                <ButtonLink href="/5g-6g-studio-core.html" variant="primary" size="lg" external>
-                  Download solution doc
+                <ButtonLink href="/documents/studio-core-solution" variant="primary" size="lg">
+                  View solution doc
                 </ButtonLink>
                 <ButtonLink
                   href="/documents/studio-5g-manual"
