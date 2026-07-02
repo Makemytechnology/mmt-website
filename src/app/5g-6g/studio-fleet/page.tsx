@@ -15,6 +15,7 @@ import {
   Bell,
   Database,
   Boxes,
+  FileText,
 } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
@@ -212,11 +213,13 @@ export default function StudioFleetPage() {
                 in a browser UI for RF / RAN / core engineers.
               </p>
               <div className="mt-6 flex flex-wrap justify-center items-center gap-4">
+                <ButtonLink href="/documents/cots-manual" variant="primary" size="lg">
+                  <FileText size={18} aria-hidden="true" /> View the document
+                </ButtonLink>
                 <ButtonLink
-                  href="mailto:info@makemytechnology.com?subject=Studio%20Fleet%20demo"
-                  variant="primary"
+                  href="/contact?vertical=5g-6g&package=studio-fleet"
+                  variant="outlineLight"
                   size="lg"
-                  external
                 >
                   Schedule demo
                 </ButtonLink>

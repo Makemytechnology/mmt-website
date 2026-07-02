@@ -19,6 +19,7 @@ export const studioProducts: StudioProduct[] = [
     sub: "SA Tester · gNB + UE emulator",
     icon: FlaskConical,
     href: "/5g-6g/studio-testbench",
+    doc: { href: "/documents/studio-5g-manual", label: "Studio manual" },
     bullets: [
       "202 test cases · 19 Robot Framework suites",
       "5G-AKA · NAS/NGAP · GTP-U · IMS-AKA",
@@ -74,6 +75,7 @@ export const studioProducts: StudioProduct[] = [
     sub: "Python · Flask · Robot",
     icon: Server,
     href: "/5g-6g/studio-fleet",
+    doc: { href: "/documents/cots-manual", label: "COTS manual" },
     bullets: [
       "26 Flask blueprints · 25 services",
       "Mobile + BS + 5G core log collection",

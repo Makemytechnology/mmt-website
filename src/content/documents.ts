@@ -34,6 +34,15 @@ export const documents: DocEntry[] = [
     backLabel: "Back to Studio Core",
   },
   {
+    slug: "cots-manual",
+    title: "MMT COTS — Manual",
+    subtitle: "The complete MMT COTS user & reference manual",
+    file: "/docs/mmt-cots-manual.pdf",
+    type: "pdf",
+    backHref: "/5g-6g/studio-fleet",
+    backLabel: "Back to Studio Fleet",
+  },
+  {
     slug: "5g-system-engineering-syllabus",
     title: "5G System Engineering — Syllabus",
     subtitle: "Studio Academy · the 8-module MMT-5G-SE course syllabus",

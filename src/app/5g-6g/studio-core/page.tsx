@@ -84,6 +84,9 @@ export default function StudioCorePage() {
                 >
                   Schedule demo
                 </ButtonLink>
+                <ButtonLink href="/5g-6g/studio-testbench" variant="outlineLight" size="lg">
+                  See Studio TestBench
+                </ButtonLink>
               </div>
               <div className="mt-4 flex flex-wrap justify-center items-center gap-4">
                 <ButtonLink

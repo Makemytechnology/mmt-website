@@ -65,7 +65,7 @@ export function StudioProductCard({ p }: { p: StudioProduct }) {
             <Link
               href={p.href}
               aria-label={`${p.title} — ${p.sub}`}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-white opacity-90 hover:opacity-100 hover:translate-x-1 transition focus-ring rounded"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white opacity-90 group-hover:opacity-100 group-hover:translate-x-1 transition focus-ring rounded after:absolute after:inset-0 after:content-['']"
             >
               Explore
               <ArrowRight size={16} aria-hidden="true" />
