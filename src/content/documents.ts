@@ -9,8 +9,10 @@ export type DocEntry = {
 };
 
 // Absolute site origin — used by the Microsoft Office online viewer, which must
-// fetch the .docx from a publicly reachable URL (works in production).
-export const SITE_ORIGIN = "https://makemytechnology.com";
+// fetch the .docx from a publicly reachable URL. Must be the canonical www host:
+// the non-www domain 308-redirects to www, and the Office viewer does not follow
+// redirects (it reports "file not found").
+export const SITE_ORIGIN = "https://www.makemytechnology.com";
 
 export const documents: DocEntry[] = [
   {
