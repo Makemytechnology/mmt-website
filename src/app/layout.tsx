@@ -18,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://makemytechnology.com"),
+  metadataBase: new URL("https://www.makemytechnology.com"),
   title: {
     default: "MakeMyTechnology",
     template: "%s · MakeMyTechnology",

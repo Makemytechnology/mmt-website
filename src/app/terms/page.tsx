@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms",
   description: "MakeMyTechnology terms of use.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
