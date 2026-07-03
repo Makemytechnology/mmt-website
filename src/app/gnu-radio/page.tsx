@@ -52,22 +52,40 @@ const platformFacts: { icon: typeof Radio; label: string; detail: string }[] = [
 
 const screenshots: { src: string; title: string; caption: string }[] = [
   {
-    src: "/gnu-radio-hardware.png",
+    src: "/gnu-experiments.png",
+    title: "Experiment library",
+    caption:
+      "All 210 experiments across 15 categories — DSP, modulation, OFDM, MIMO, channel coding and more, filterable and searchable.",
+  },
+  {
+    src: "/gnu-hardware.png",
     title: "Hardware & radios",
     caption:
       "The TX→RX loopback signal chain with live device detection — ADALM-Pluto, bladeRF 2×2, and the built-in channel simulator.",
   },
   {
-    src: "/gnu-radio-runlab.png",
+    src: "/gnu-runlab.png",
     title: "Run Lab · live spectrum",
     caption:
       "Each experiment's workbench — tune parameters and run on real SDR or simulation, with live spectrum and constellation plots.",
   },
   {
-    src: "/gnu-radio-progress.png",
-    title: "Progress dashboard",
+    src: "/gnu-foxhunt.png",
+    title: "Spectrum Fox Hunt",
     caption:
-      "XP, levels and badges with per-category completion across all 15 experiment categories.",
+      "A gamified spectrum + waterfall challenge — find the hidden tone and dial in its offset for points.",
+  },
+  {
+    src: "/gnu-grc.png",
+    title: "GRC Lab",
+    caption:
+      "Generate a runnable GNU Radio Companion .grc flowgraph for any experiment, or upload one to inspect it.",
+  },
+  {
+    src: "/gnu-profile.png",
+    title: "Profile & resume",
+    caption:
+      "Per-student XP, levels and badges, with a built-in resume builder that turns completed labs into skills.",
   },
 ];
 
@@ -136,10 +154,10 @@ export default function GnuRadioPage() {
             <Reveal delay={0.08}>
               <figure className="overflow-hidden rounded-2xl ring-1 ring-inset ring-white/15 bg-black shadow-2xl">
                 <Image
-                  src="/gnu-radio-course.png"
-                  alt="MMT-GNU Kit — Wireless & Communication Engineering course view with chapter sidebar, guided course progress, and the student profile."
-                  width={1920}
-                  height={1005}
+                  src="/gnu-course.png"
+                  alt="MMT-GNU Kit — the Wireless & Communication Engineering course home, showing the guided chapter list and 210-experiment catalog."
+                  width={1200}
+                  height={547}
                   className="w-full h-auto block"
                   priority
                 />
@@ -344,13 +362,15 @@ export default function GnuRadioPage() {
             {screenshots.map((s, i) => (
               <Reveal key={s.src} delay={i * 0.06}>
                 <figure className="group overflow-hidden rounded-2xl ring-1 ring-line shadow-md bg-black">
-                  <Image
-                    src={s.src}
-                    alt={`${s.title} — ${s.caption}`}
-                    width={1600}
-                    height={900}
-                    className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
-                  />
+                  <div className="relative aspect-[16/10] overflow-hidden bg-black">
+                    <Image
+                      src={s.src}
+                      alt={`${s.title} — ${s.caption}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                  </div>
                   <figcaption className="bg-white px-4 py-3">
                     <div className="text-[0.6rem] tracking-[0.18em] uppercase font-bold text-coral">
                       {s.title}
