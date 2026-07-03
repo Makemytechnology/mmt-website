@@ -157,7 +157,7 @@ export default function GnuRadioPage() {
                   src="/gnu-course.png"
                   alt="MMT-GNU Kit — the Wireless & Communication Engineering course home, showing the guided chapter list and 210-experiment catalog."
                   width={1200}
-                  height={547}
+                  height={637}
                   className="w-full h-auto block"
                   priority
                 />
