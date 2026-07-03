@@ -9,11 +9,15 @@ import {
   Boxes,
   FlaskConical,
   ExternalLink,
+  FileText,
+  Download,
+  Presentation,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill, statusToTone } from "@/components/StatusPill";
 import { SectionCTA } from "@/components/SectionCTA";
+import { SlideDeck } from "@/components/SlideDeck";
 import {
   gnuCategories,
   gnuChapters,
@@ -29,6 +33,12 @@ export const metadata: Metadata = {
 };
 
 const ctaHref = "/contact?vertical=gnu-radio";
+
+// Exported MMT-GNU overview deck (12 slides) — auto-plays on the page.
+const overviewSlides = Array.from(
+  { length: 12 },
+  (_, i) => `/gnu-slides/slide-${String(i + 1).padStart(2, "0")}.png`,
+);
 
 // Hardware / platform facts (mmt-gnu README + catalog)
 const platformFacts: { icon: typeof Radio; label: string; detail: string }[] = [
@@ -107,6 +117,9 @@ export default function GnuRadioPage() {
               <ButtonLink href={ctaHref} variant="primary" size="lg">
                 Request a demo
               </ButtonLink>
+              <ButtonLink href="/documents/gnu-manual" variant="outlineLight" size="lg">
+                <FileText size={18} aria-hidden="true" /> View the manual
+              </ButtonLink>
               <a
                 href="https://www.gnuradio.org/"
                 target="_blank"
@@ -133,6 +146,31 @@ export default function GnuRadioPage() {
               </figure>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* 1b — Auto-playing overview deck */}
+      <section className="bg-navyDeep text-white border-t border-white/5">
+        <div className="container-x pb-14 md:pb-20">
+          <Reveal>
+            <div className="flex items-center gap-2 mb-4">
+              <Presentation size={18} className="text-coral" aria-hidden="true" />
+              <p className="eyebrow text-coral !mb-0">Overview · auto-playing deck</p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div className="max-w-5xl mx-auto">
+              <SlideDeck
+                slides={overviewSlides}
+                interval={2000}
+                label="MMT-GNU Kit overview"
+              />
+              <p className="mt-3 text-center text-xs text-skyLight/60">
+                Slides advance automatically every 2 seconds · hover to pause, or use the
+                arrows.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -323,6 +361,39 @@ export default function GnuRadioPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 6b — Flyer */}
+      <section className="bg-bg section-y">
+        <div className="container-x">
+          <Reveal>
+            <div className="flex items-center gap-2">
+              <FileText size={18} className="text-coral" aria-hidden="true" />
+              <p className="eyebrow text-coral !mb-0">Kit flyer</p>
+            </div>
+            <h2 className="display-h3 text-navy mt-3">The MMT GNU Radio Kit, on one page.</h2>
+            <p className="mt-2 text-sm text-muted max-w-2xl">
+              A quick-reference flyer for the kit — hand it to faculty, labs, or procurement.
+            </p>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div className="mt-8 max-w-4xl mx-auto">
+              <div className="rounded-2xl overflow-hidden ring-1 ring-line bg-white shadow-md">
+                <iframe
+                  src="/docs/mmt-gnu-flyer.pdf#view=FitH"
+                  title="MMT GNU Radio Kit flyer"
+                  className="w-full h-[70vh] min-h-[520px] block border-0"
+                  loading="lazy"
+                />
+              </div>
+              <div className="mt-4 flex justify-center">
+                <ButtonLink href="/docs/mmt-gnu-flyer.pdf" variant="outlineDark" size="lg" external>
+                  <Download size={18} aria-hidden="true" /> Download flyer
+                </ButtonLink>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

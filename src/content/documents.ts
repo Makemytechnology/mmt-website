@@ -34,6 +34,15 @@ export const documents: DocEntry[] = [
     backLabel: "Back to Studio Core",
   },
   {
+    slug: "gnu-manual",
+    title: "MMT GNU Radio Kit — Manual",
+    subtitle: "The complete MMT GNU Radio Kit user & reference manual",
+    file: "/docs/mmt-gnu-manual.pdf",
+    type: "pdf",
+    backHref: "/gnu-radio",
+    backLabel: "Back to MMT-GNU Kit",
+  },
+  {
     slug: "cots-manual",
     title: "MMT COTS — Manual",
     subtitle: "The complete MMT COTS user & reference manual",

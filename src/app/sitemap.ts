@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/documents/gnb-specifications",
     "/documents/studio-5g-manual",
     "/documents/cots-manual",
+    "/documents/gnu-manual",
     "/documents/5g-system-engineering-syllabus",
   ];
   const now = new Date();
