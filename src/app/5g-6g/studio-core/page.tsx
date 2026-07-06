@@ -98,7 +98,7 @@ export default function StudioCorePage() {
                   <Github size={18} aria-hidden="true" /> View on GitHub
                 </ButtonLink>
                 <ButtonLink
-                  href="https://youtu.be/SxSrm2ETy0Q?si=VG7IzJ3oVmFxVl0_"
+                  href="https://youtu.be/tbLNVpx6Tbc?si=VrFekyqN3ZrksJTL"
                   variant="outlineLight"
                   size="lg"
                   external
