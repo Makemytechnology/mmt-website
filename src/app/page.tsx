@@ -31,12 +31,6 @@ const orgJsonLd = {
   name: "MakeMyTechnology",
   url: "https://makemytechnology.com",
   email: "info@makemytechnology.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Bengaluru",
-    addressRegion: "Karnataka",
-    addressCountry: "IN",
-  },
   description:
     "MakeMyTechnology builds independent deep-tech products across 5G/6G, IoT, AI, robotics, and quantum-safe security.",
 };
@@ -235,14 +229,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FIND US — address left, real Google Map right */}
+      {/* About / contact card */}
       <section className="bg-white section-y border-t border-line">
         <div className="container-x">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
-            {/* Address — left */}
-            <Reveal className="lg:col-span-5 flex">
-              <div className="w-full rounded-2xl bg-bg ring-1 ring-line p-6 md:p-8 flex flex-col">
-                <p className="eyebrow text-coral">Visit MakeMyTechnology</p>
+          <div className="max-w-3xl mx-auto">
+            <Reveal>
+              <div className="w-full rounded-2xl bg-bg ring-1 ring-line p-6 md:p-8">
+                <p className="eyebrow text-coral">About MakeMyTechnology</p>
                 <h2 className="display-h2 text-navy mt-3">Deep Edu-Tech Center of Excellence.</h2>
                 <p className="mt-4 text-base text-ink2 leading-relaxed">
                   MakeMyTechnology is a Deep Edu-Tech Center of Excellence providing
@@ -279,13 +272,6 @@ export default function HomePage() {
                   <li className="flex gap-3">
                     <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
                     <span className="text-ink2">
-                      <span className="block font-semibold text-navy mb-0.5">Based in</span>
-                      Bengaluru, Karnataka, India
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
-                    <span className="text-ink2">
                       <span className="block font-semibold text-navy mb-0.5">Phone</span>
                       <a href="tel:+916361031970" className="hover:text-coral transition">
                         +91 63610 31970
@@ -302,34 +288,6 @@ export default function HomePage() {
                     </span>
                   </li>
                 </ul>
-
-                <div className="mt-auto pt-6">
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=Bengaluru+Karnataka+India"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-coral hover:text-coral/80 transition"
-                  >
-                    Open in Google Maps
-                    <span aria-hidden>→</span>
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-
-            {/* Map — right */}
-            <Reveal className="lg:col-span-7" delay={0.08}>
-              <div className="h-full min-h-[420px] rounded-2xl overflow-hidden ring-1 ring-line shadow-md">
-                <iframe
-                  title="MakeMyTechnology — Bengaluru, India"
-                  src="https://www.google.com/maps?q=Bengaluru+Karnataka+India&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, minHeight: 420 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
               </div>
             </Reveal>
           </div>

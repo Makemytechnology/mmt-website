@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Mail, Phone, Clock } from "lucide-react";
+import { Mail, Phone, Clock } from "lucide-react";
 import { TallyForm } from "@/components/TallyForm";
 
 export const metadata: Metadata = {
@@ -61,15 +61,6 @@ export default function ContactPage() {
                   >
                     +91 63610 31970
                   </a>
-                </dd>
-              </div>
-
-              <div>
-                <dt className="text-xs uppercase tracking-wider font-semibold text-muted flex items-center gap-2">
-                  <MapPin size={14} className="text-coral" aria-hidden /> Based in
-                </dt>
-                <dd className="mt-1 pl-6 leading-relaxed">
-                  Bengaluru, Karnataka, India
                 </dd>
               </div>
 
