@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe } from "lucide-react";
 import { VerticalCard } from "@/components/VerticalCard";
 import { Reveal } from "@/components/Reveal";
@@ -32,11 +33,8 @@ const orgJsonLd = {
   email: "info@makemytechnology.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress:
-      "Visvesvaraya Technological University Regional Center, 1st Main Rd, RHCS Layout, Annapoorneshwari Nagar, Naagarabhaavi",
     addressLocality: "Bengaluru",
     addressRegion: "Karnataka",
-    postalCode: "560091",
     addressCountry: "IN",
   },
   description:
@@ -248,14 +246,24 @@ export default function HomePage() {
                 <h2 className="display-h2 text-navy mt-3">Deep Edu-Tech Center of Excellence.</h2>
                 <p className="mt-4 text-base text-ink2 leading-relaxed">
                   MakeMyTechnology is a Deep Edu-Tech Center of Excellence providing
-                  complete 5G lab setups, M2M / IoT sensor platforms, and Studio Academy —
-                  our LMS-based learning management software built for students.
+                  complete 5G lab setups, the Advanced GNU Radio Kit, M2M / IoT sensor
+                  platforms, and Studio Academy — our LMS-based learning management
+                  software built for students.
                 </p>
 
                 <ul className="mt-6 space-y-2.5 text-sm text-ink2">
                   <li className="flex gap-3">
                     <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
                     <span><span className="font-semibold text-navy">5G Lab Setup</span> — complete teaching and research lab</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
+                    <span>
+                      <Link href="/gnu-radio" className="font-semibold text-navy hover:text-coral transition">
+                        Advanced GNU Radio Kit
+                      </Link>{" "}
+                      — 210 hands-on SDR experiments on real radios
+                    </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
@@ -271,10 +279,8 @@ export default function HomePage() {
                   <li className="flex gap-3">
                     <span className="mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-coral shrink-0" aria-hidden />
                     <span className="text-ink2">
-                      <span className="block font-semibold text-navy mb-0.5">Address</span>
-                      Visvesvaraya Technological University Regional Center,<br />
-                      1st Main Rd, RHCS Layout, Annapoorneshwari Nagar,<br />
-                      Naagarabhaavi, Bengaluru, Karnataka 560091, India
+                      <span className="block font-semibold text-navy mb-0.5">Based in</span>
+                      Bengaluru, Karnataka, India
                     </span>
                   </li>
                   <li className="flex gap-3">
@@ -299,7 +305,7 @@ export default function HomePage() {
 
                 <div className="mt-auto pt-6">
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=Visvesvaraya+Technological+University+Regional+Center+Bengaluru"
+                    href="https://www.google.com/maps/search/?api=1&query=Bengaluru+Karnataka+India"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm font-semibold text-coral hover:text-coral/80 transition"
@@ -315,8 +321,8 @@ export default function HomePage() {
             <Reveal className="lg:col-span-7" delay={0.08}>
               <div className="h-full min-h-[420px] rounded-2xl overflow-hidden ring-1 ring-line shadow-md">
                 <iframe
-                  title="MakeMyTechnology — VTU Regional Center, Bengaluru"
-                  src="https://www.google.com/maps?q=Visvesvaraya+Technological+University+Regional+Center+Bengaluru&output=embed"
+                  title="MakeMyTechnology — Bengaluru, India"
+                  src="https://www.google.com/maps?q=Bengaluru+Karnataka+India&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: 420 }}

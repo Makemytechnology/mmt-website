@@ -1,7 +1,6 @@
 import { MapPin } from "lucide-react";
 
-const ADDRESS =
-  "Visvesvaraya Technological University Regional Center, 1st Main Rd, RHCS Layout, Annapoorneshwari Nagar, Naagarabhaavi, Bengaluru, Karnataka 560091";
+const ADDRESS = "Bengaluru, Karnataka, India";
 
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   ADDRESS,

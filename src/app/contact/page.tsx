@@ -69,11 +69,7 @@ export default function ContactPage() {
                   <MapPin size={14} className="text-coral" aria-hidden /> Based in
                 </dt>
                 <dd className="mt-1 pl-6 leading-relaxed">
-                  Visvesvaraya Technological University Regional Center,
-                  <br />
-                  1st Main Rd, RHCS Layout, Annapoorneshwari Nagar,
-                  <br />
-                  Naagarabhaavi, Bengaluru, Karnataka 560091
+                  Bengaluru, Karnataka, India
                 </dd>
               </div>
 
