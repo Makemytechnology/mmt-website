@@ -48,6 +48,13 @@ export default function StudioOverviewPage() {
                     tag: "Studio Core · gNB",
                     caption: "A portable MMT 5G/6G Studio deployed on campus at PES University.",
                   },
+                  {
+                    src: "/setup-sona.jpg",
+                    alt: "MMT 5G/6G Studio deployed at Sona College of Technology — a tripod-mounted MMT unit between MMT and Sona-branded monitors with a server rack.",
+                    eyebrow: "Live deployment · Sona College of Technology",
+                    tag: "Studio Core · gNB",
+                    caption: "A full MMT 5G/6G Studio lab set up at Sona College of Technology.",
+                  },
                 ]}
               />
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
