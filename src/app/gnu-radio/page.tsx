@@ -135,7 +135,7 @@ export default function GnuRadioPage() {
               <p className="mt-1.5 text-xs text-skyLight/70">Advanced Communication Lab Kit</p>
               <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-coral">
                 <Radio size={13} strokeWidth={2.5} aria-hidden="true" />
-                Every kit ships with a real SDR (ADALM-Pluto) — free
+                Every kit ships with a real SDR (Software Defined Radio) — free
               </p>
             </div>
 
