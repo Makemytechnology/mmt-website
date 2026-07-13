@@ -113,7 +113,11 @@ export default function GnuRadioPage() {
             </p>
 
             {/* Academic price — surfaced up top */}
-            <div className="mt-7 rounded-2xl bg-white/5 ring-1 ring-inset ring-gold/30 px-5 py-4 inline-block">
+            <div className="relative mt-9 rounded-2xl bg-white/5 ring-1 ring-inset ring-gold/30 px-5 py-4 inline-block">
+              {/* Free SDR promo badge */}
+              <span className="absolute -top-3.5 -right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-coral text-white text-[0.62rem] font-bold uppercase tracking-wider px-3 py-1.5 shadow-lg shadow-coral/30 ring-2 ring-navyDeep animate-pulse">
+                <Radio size={12} strokeWidth={2.5} aria-hidden="true" /> Free SDR included
+              </span>
               <p className="text-[0.65rem] tracking-[0.18em] uppercase font-semibold text-gold">
                 Special academic price · for institutions
               </p>
@@ -129,6 +133,10 @@ export default function GnuRadioPage() {
                 </span>
               </div>
               <p className="mt-1.5 text-xs text-skyLight/70">Advanced Communication Lab Kit</p>
+              <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-coral">
+                <Radio size={13} strokeWidth={2.5} aria-hidden="true" />
+                Every kit ships with a real SDR (ADALM-Pluto) — free
+              </p>
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
