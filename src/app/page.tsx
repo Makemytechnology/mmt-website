@@ -78,39 +78,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* VERTICALS — industries we serve */}
-      <section className="bg-white section-y border-t border-line">
-        <div className="container-x">
-          <Reveal>
-            <p className="eyebrow text-coral">Verticals we serve</p>
-            <h2 className="display-h2 text-navy mt-3 max-w-3xl">
-              Built for mission-critical industries.
-            </h2>
-            <p className="mt-4 text-lg text-ink2 max-w-3xl">
-              Our platforms power deployments across the sectors where reliability,
-              security, and spec-faithful engineering are non-negotiable.
-            </p>
-          </Reveal>
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
-            {industryVerticals.map((v, i) => {
-              const Icon = v.icon;
-              return (
-                <Reveal key={v.name} delay={i * 0.05}>
-                  <div className="group relative h-full rounded-xl bg-bg ring-1 ring-line p-5 md:p-6 text-center hover:ring-coral/40 hover:shadow-md transition">
-                    <div className="mx-auto w-12 h-12 rounded-full bg-coral/10 ring-1 ring-coral/20 flex items-center justify-center group-hover:bg-coral/15 transition">
-                      <Icon className="w-6 h-6 text-coral" strokeWidth={1.75} />
-                    </div>
-                    <div className="mt-3 font-display font-semibold text-navy text-sm md:text-base">
-                      {v.name}
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* YOUTUBE — we're on YouTube */}
       <section className="bg-navy text-white border-t border-white/5">
         <div className="container-x py-12 md:py-16">
@@ -141,6 +108,39 @@ export default function HomePage() {
               </a>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* VERTICALS — industries we serve */}
+      <section className="bg-white section-y border-t border-line">
+        <div className="container-x">
+          <Reveal>
+            <p className="eyebrow text-coral">Verticals we serve</p>
+            <h2 className="display-h2 text-navy mt-3 max-w-3xl">
+              Built for mission-critical industries.
+            </h2>
+            <p className="mt-4 text-lg text-ink2 max-w-3xl">
+              Our platforms power deployments across the sectors where reliability,
+              security, and spec-faithful engineering are non-negotiable.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
+            {industryVerticals.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <Reveal key={v.name} delay={i * 0.05}>
+                  <div className="group relative h-full rounded-xl bg-bg ring-1 ring-line p-5 md:p-6 text-center hover:ring-coral/40 hover:shadow-md transition">
+                    <div className="mx-auto w-12 h-12 rounded-full bg-coral/10 ring-1 ring-coral/20 flex items-center justify-center group-hover:bg-coral/15 transition">
+                      <Icon className="w-6 h-6 text-coral" strokeWidth={1.75} />
+                    </div>
+                    <div className="mt-3 font-display font-semibold text-navy text-sm md:text-base">
+                      {v.name}
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
