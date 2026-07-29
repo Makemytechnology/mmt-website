@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe } from "lucide-react";
+import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, Youtube } from "lucide-react";
 import { VerticalCard } from "@/components/VerticalCard";
 import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
@@ -53,7 +53,7 @@ export default function HomePage() {
       />
 
       {/* PLATFORMS — first section of the page */}
-      <section className="bg-bg section-y">
+      <section className="bg-bg pt-8 pb-20 md:pt-10 md:pb-28">
         <div className="container-x">
           <Reveal>
             <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-coral">
@@ -108,6 +108,39 @@ export default function HomePage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* YOUTUBE — we're on YouTube */}
+      <section className="bg-navy text-white border-t border-white/5">
+        <div className="container-x py-12 md:py-16">
+          <Reveal>
+            <div className="rounded-2xl bg-gradient-to-r from-coral/15 via-coral/5 to-transparent ring-1 ring-inset ring-coral/25 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-coral text-white shrink-0 shadow-lg shadow-coral/30">
+                  <Youtube size={26} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="eyebrow !text-coral !mb-1">We&rsquo;re on YouTube</p>
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-white">
+                    See MMT in action.
+                  </h2>
+                  <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-xl">
+                    Demos, live setups, and deep-dives across our 5G/6G Studio, GNU Radio
+                    Kit, and more — straight from our lab.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://www.youtube.com/@bixbisystemspvtltd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-coral text-white font-semibold px-7 py-3.5 text-base hover:bg-coral/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-navy transition-colors"
+              >
+                <Youtube size={18} aria-hidden="true" /> Visit our channel
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
