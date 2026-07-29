@@ -55,6 +55,13 @@ export default function StudioOverviewPage() {
                     tag: "Studio Core · gNB",
                     caption: "A full MMT 5G/6G Studio lab set up at Sona College of Technology.",
                   },
+                  {
+                    src: "/setup-nit.jpg",
+                    alt: "MMT 5G/6G Studio demonstrated at the NIT Warangal conference — a tripod-mounted MMT unit with a terminal, a drone, and a laptop showing a live map.",
+                    eyebrow: "Conference · NIT Warangal",
+                    tag: "Studio Core · gNB · Drone",
+                    caption: "MMT 5G/6G Studio demonstrated at the NIT Warangal conference.",
+                  },
                 ]}
               />
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
