@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, Youtube } from "lucide-react";
+import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, ChevronRight } from "lucide-react";
 import { VerticalCard } from "@/components/VerticalCard";
 import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
@@ -79,33 +79,105 @@ export default function HomePage() {
       </section>
 
       {/* YOUTUBE — we're on YouTube */}
-      <section className="bg-navy text-white border-t border-white/5">
+      <section className="bg-navyDeep">
         <div className="container-x py-12 md:py-16">
           <Reveal>
-            <div className="rounded-2xl bg-gradient-to-r from-coral/15 via-coral/5 to-transparent ring-1 ring-inset ring-coral/25 px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="flex items-start gap-4">
-                <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-coral text-white shrink-0 shadow-lg shadow-coral/30">
-                  <Youtube size={26} aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="eyebrow !text-coral !mb-1">We&rsquo;re on YouTube</p>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-white">
-                    See MMT in action.
-                  </h2>
-                  <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-xl">
-                    Demos, live setups, and deep-dives across our 5G/6G Studio, GNU Radio
-                    Kit, and more — straight from our lab.
-                  </p>
+            {/* gradient border wrapper */}
+            <div className="rounded-[1.75rem] p-px bg-gradient-to-r from-coral/70 via-white/10 to-sky/60 shadow-2xl shadow-black/50">
+              <div className="relative overflow-hidden rounded-[1.7rem] bg-[#0A1526]">
+                {/* red glow (left) */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -left-24 top-1/2 -translate-y-1/2 h-[28rem] w-[28rem] rounded-full bg-coral/25 blur-3xl"
+                />
+                {/* halftone dots (right) */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-y-0 right-0 w-2/3"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(rgba(255,255,255,0.14) 1.1px, transparent 1.1px)",
+                    backgroundSize: "15px 15px",
+                    WebkitMaskImage: "linear-gradient(to right, transparent, black 85%)",
+                    maskImage: "linear-gradient(to right, transparent, black 85%)",
+                  }}
+                />
+
+                <div className="relative flex flex-col md:flex-row md:items-center gap-6 md:gap-8 px-6 py-8 md:px-10 md:py-9">
+                  {/* Glossy YouTube play mark with halo */}
+                  <div className="relative shrink-0 mx-auto md:mx-0">
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 -m-5 rounded-full bg-coral/30 blur-2xl"
+                    />
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 -m-3 rounded-full ring-1 ring-white/10"
+                    />
+                    <span className="relative inline-flex items-center justify-center w-[4.5rem] h-[4.5rem] rounded-[1.5rem] bg-gradient-to-b from-[#ff4136] to-[#c81e14] shadow-lg shadow-coral/40 ring-1 ring-white/25">
+                      {/* top gloss */}
+                      <span
+                        aria-hidden
+                        className="absolute inset-x-1 top-1 h-1/2 rounded-t-[1.2rem] bg-gradient-to-b from-white/30 to-transparent"
+                      />
+                      <svg
+                        width="34"
+                        height="34"
+                        viewBox="0 0 24 24"
+                        fill="white"
+                        aria-hidden="true"
+                        className="relative drop-shadow"
+                      >
+                        <path d="M9 6.5v11l9-5.5z" />
+                      </svg>
+                    </span>
+                  </div>
+
+                  {/* Text */}
+                  <div className="flex-1 min-w-0 text-center md:text-left">
+                    <p className="text-[0.7rem] md:text-xs font-bold uppercase tracking-[0.28em] text-coral">
+                      We&rsquo;re on YouTube
+                    </p>
+                    <h2 className="mt-2 font-display text-3xl md:text-4xl font-bold text-white leading-tight">
+                      See MMT in action.
+                    </h2>
+                    <p className="mt-2 text-sm md:text-base text-skyLight/70 max-w-xl mx-auto md:mx-0">
+                      Demos, live setups, and deep-dives across our 5G/6G Studio, GNU
+                      Radio Kit, and more — straight from our lab.
+                    </p>
+                  </div>
+
+                  {/* Divider */}
+                  <div
+                    aria-hidden
+                    className="hidden md:block h-20 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent"
+                  />
+
+                  {/* Glossy button */}
+                  <a
+                    href="https://www.youtube.com/@bixbisystemspvtltd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group shrink-0 mx-auto md:mx-0 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-b from-[#ff4136] to-[#d21e14] text-white font-semibold px-7 py-3.5 text-base shadow-lg shadow-coral/40 ring-1 ring-white/20 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-navyDeep transition"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 6.5v11l9-5.5z" />
+                    </svg>
+                    Visit our channel
+                    <ChevronRight
+                      size={18}
+                      aria-hidden="true"
+                      className="group-hover:translate-x-0.5 transition-transform"
+                    />
+                  </a>
                 </div>
               </div>
-              <a
-                href="https://www.youtube.com/@bixbisystemspvtltd"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-coral text-white font-semibold px-7 py-3.5 text-base hover:bg-coral/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-navy transition-colors"
-              >
-                <Youtube size={18} aria-hidden="true" /> Visit our channel
-              </a>
             </div>
           </Reveal>
         </div>
