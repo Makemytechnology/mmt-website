@@ -46,7 +46,10 @@ export function Header() {
             className="object-contain"
             priority
           />
-          <span className="text-[0.7rem] md:text-xs tracking-[0.22em] uppercase text-gold font-semibold">
+          <span
+            translate="no"
+            className="notranslate text-[0.7rem] md:text-xs tracking-[0.22em] uppercase text-gold font-semibold"
+          >
             MakeMyTechnology
           </span>
         </Link>

@@ -2,7 +2,10 @@ export function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="container-x py-5 md:py-6 text-center">
-        <p className="font-display text-sm md:text-base font-semibold tracking-wide text-white">
+        <p
+          translate="no"
+          className="notranslate font-display text-sm md:text-base font-semibold tracking-wide text-white"
+        >
           MakeMyTechnology
           <span className="text-coral"> · MMT</span>
         </p>
