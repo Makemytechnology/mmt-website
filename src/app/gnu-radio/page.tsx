@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Radio,
   Activity,
@@ -18,6 +19,7 @@ import { ButtonLink } from "@/components/Button";
 import { StatusPill, statusToTone } from "@/components/StatusPill";
 import { SectionCTA } from "@/components/SectionCTA";
 import { SlideDeck } from "@/components/SlideDeck";
+import { ApproxLocalPrice } from "@/components/ApproxLocalPrice";
 import {
   gnuCategories,
   gnuChapters,
@@ -133,13 +135,23 @@ export default function GnuRadioPage() {
                 </span>
               </div>
               <p className="mt-1.5 text-xs text-skyLight/70">Advanced Communication Lab Kit</p>
+              <ApproxLocalPrice inr={50000} />
               <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-coral">
                 <Radio size={13} strokeWidth={2.5} aria-hidden="true" />
                 Every kit ships with a real SDR (Software Defined Radio) — free
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <p className="mt-3 text-xs text-skyLight/70 max-w-xl">
+              <span className="font-semibold text-white/90">Enterprise version available.</span>{" "}
+              We&rsquo;re also onboarding{" "}
+              <Link href={ctaHref} className="font-semibold text-coral hover:underline">
+                distributors — get in touch
+              </Link>
+              .
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <ButtonLink href={ctaHref} variant="primary" size="lg">
                 Request a demo
               </ButtonLink>
