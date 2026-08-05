@@ -13,6 +13,9 @@ import {
   FileText,
   Download,
   Presentation,
+  Building2,
+  Handshake,
+  ChevronRight,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink } from "@/components/Button";
@@ -142,14 +145,24 @@ export default function GnuRadioPage() {
               </p>
             </div>
 
-            <p className="mt-3 text-xs text-skyLight/70 max-w-xl">
-              <span className="font-semibold text-white/90">Enterprise version available.</span>{" "}
-              We&rsquo;re also onboarding{" "}
-              <Link href={ctaHref} className="font-semibold text-coral hover:underline">
-                distributors — get in touch
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full bg-gold/10 ring-1 ring-inset ring-gold/40 px-4 py-2 text-xs md:text-sm font-semibold text-gold">
+                <Building2 size={15} strokeWidth={2} aria-hidden="true" />
+                Enterprise version available
+              </span>
+              <Link
+                href={ctaHref}
+                className="group inline-flex items-center gap-2 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-4 py-2 text-xs md:text-sm font-semibold text-coral hover:bg-coral/25 hover:ring-coral transition"
+              >
+                <Handshake size={15} strokeWidth={2} aria-hidden="true" />
+                Distributors wanted — get in touch
+                <ChevronRight
+                  size={15}
+                  aria-hidden="true"
+                  className="group-hover:translate-x-0.5 transition-transform"
+                />
               </Link>
-              .
-            </p>
+            </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <ButtonLink href={ctaHref} variant="primary" size="lg">

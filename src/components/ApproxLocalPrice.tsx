@@ -36,26 +36,55 @@ export function ApproxLocalPrice({ inr }: { inr: number }) {
   const [text, setText] = useState<string | null>(null);
 
   useEffect(() => {
-    try {
-      const lang = navigator.language || "";
-      const region =
-        new Intl.Locale(lang).maximize().region ||
-        lang.split("-")[1]?.toUpperCase();
+    let cancelled = false;
+
+    (async () => {
+      // 1) Real location via Vercel IP geolocation (accurate to the visitor's country)
+      let region = "";
+      try {
+        const res = await fetch("/api/geo", { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          region = (data.country || "").toUpperCase();
+        }
+      } catch {
+        /* ignore */
+      }
+
+      // 2) Fallback to the browser locale's region (e.g. local dev, header missing)
+      if (!region) {
+        try {
+          const lang = navigator.language || "";
+          region =
+            new Intl.Locale(lang).maximize().region ||
+            (lang.split("-")[1] || "").toUpperCase();
+        } catch {
+          /* ignore */
+        }
+      }
+
+      if (cancelled) return;
       if (!region || region === "IN") return; // ₹ stays the shown price in India
 
       const match = EUR_REGIONS.has(region) ? EUR : RATES[region];
       if (!match) return;
 
-      const value = inr * match.rate;
-      const formatted = new Intl.NumberFormat(lang, {
-        style: "currency",
-        currency: match.cur,
-        maximumFractionDigits: 0,
-      }).format(value);
-      setText(formatted);
-    } catch {
-      /* leave hidden on any error */
-    }
+      try {
+        const value = inr * match.rate;
+        const formatted = new Intl.NumberFormat(navigator.language || "en", {
+          style: "currency",
+          currency: match.cur,
+          maximumFractionDigits: 0,
+        }).format(value);
+        if (!cancelled) setText(formatted);
+      } catch {
+        /* leave hidden on any error */
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [inr]);
 
   if (!text) return null;
