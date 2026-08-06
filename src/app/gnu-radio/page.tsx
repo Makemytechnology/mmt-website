@@ -152,12 +152,12 @@ export default function GnuRadioPage() {
               </span>
               <Link
                 href={ctaHref}
-                className="group inline-flex items-center gap-2 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-4 py-2 text-xs md:text-sm font-semibold text-coral hover:bg-coral/25 hover:ring-coral transition"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-5 py-2.5 text-sm md:text-base font-semibold text-coral hover:bg-coral/25 hover:ring-coral transition"
               >
-                <Handshake size={15} strokeWidth={2} aria-hidden="true" />
+                <Handshake size={18} strokeWidth={2} aria-hidden="true" />
                 Distributors wanted — get in touch
                 <ChevronRight
-                  size={15}
+                  size={18}
                   aria-hidden="true"
                   className="group-hover:translate-x-0.5 transition-transform"
                 />
