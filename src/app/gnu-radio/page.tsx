@@ -22,7 +22,7 @@ import { ButtonLink } from "@/components/Button";
 import { StatusPill, statusToTone } from "@/components/StatusPill";
 import { SectionCTA } from "@/components/SectionCTA";
 import { SlideDeck } from "@/components/SlideDeck";
-import { LocalPrice } from "@/components/LocalPrice";
+import { KitPrice } from "@/components/KitPrice";
 import {
   gnuCategories,
   gnuChapters,
@@ -126,19 +126,8 @@ export default function GnuRadioPage() {
               <p className="text-[0.65rem] tracking-[0.18em] uppercase font-semibold text-gold">
                 Special academic price · for institutions
               </p>
-              <div className="mt-2 flex items-baseline gap-3">
-                <span className="font-display text-lg md:text-xl font-semibold text-white/40 line-through">
-                  ₹1,00,000
-                </span>
-                <span className="font-display text-4xl md:text-5xl font-bold text-gold leading-none">
-                  ₹50,000
-                </span>
-                <span className="text-xs font-semibold uppercase tracking-wide text-white/60">
-                  / kit
-                </span>
-              </div>
+              <KitPrice originalInr={100000} priceInr={50000} />
               <p className="mt-1.5 text-xs text-skyLight/70">Advanced Communication Lab Kit</p>
-              <LocalPrice inr={50000} />
               <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-coral">
                 <Radio size={13} strokeWidth={2.5} aria-hidden="true" />
                 Every kit ships with a real SDR (Software Defined Radio) — free

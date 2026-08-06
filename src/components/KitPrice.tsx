@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 
 /**
- * Shows the kit price in the visitor's local currency, based on their REAL
- * location (IP geolocation via ipwho.is). Indian / unknown visitors see ₹ only
- * (the base price shown alongside). Converted values are approximate.
+ * Renders the kit price (struck original + current) in the VISITOR'S local
+ * currency, based on their real location (IP geolocation via ipwho.is).
+ * Indian / unknown visitors see ₹. Converted amounts are approximate.
  *
- * Test override: add ?cc=US (or GB, AE, …) to any URL to force a country.
+ * Test override: add ?cc=SG (or US, GB, AE, …) to force a country.
  */
 
 // country (ISO) -> { currency, INR -> currency rate }
@@ -43,16 +43,26 @@ function currencyFor(country: string) {
   return BY_COUNTRY[country] ?? null;
 }
 
-export function LocalPrice({ inr }: { inr: number }) {
-  const [text, setText] = useState<string | null>(null);
+const inr = (n: number) =>
+  new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0,
+  }).format(n);
+
+export function KitPrice({
+  originalInr,
+  priceInr,
+}: {
+  originalInr: number;
+  priceInr: number;
+}) {
+  const [loc, setLoc] = useState<{ cur: string; rate: number } | null>(null);
 
   useEffect(() => {
     let cancelled = false;
-
     (async () => {
       let country = "";
-
-      // Test override — ?cc=US
       try {
         country = (
           new URLSearchParams(window.location.search).get("cc") || ""
@@ -60,8 +70,6 @@ export function LocalPrice({ inr }: { inr: number }) {
       } catch {
         /* ignore */
       }
-
-      // Real location via IP geolocation
       if (!country) {
         try {
           const res = await fetch("https://ipwho.is/?fields=country_code", {
@@ -75,37 +83,51 @@ export function LocalPrice({ inr }: { inr: number }) {
           /* ignore */
         }
       }
-
-      if (cancelled) return;
-      const match = currencyFor(country);
-      if (!match) return;
-
-      try {
-        const value = inr * match.rate;
-        const formatted = new Intl.NumberFormat(undefined, {
-          style: "currency",
-          currency: match.cur,
-          maximumFractionDigits: 0,
-        }).format(value);
-        if (!cancelled) setText(formatted);
-      } catch {
-        /* leave hidden */
-      }
+      if (!cancelled) setLoc(currencyFor(country));
     })();
-
     return () => {
       cancelled = true;
     };
-  }, [inr]);
+  }, []);
 
-  if (!text) return null;
+  let original = inr(originalInr);
+  let price = inr(priceInr);
+  let approx = false;
+
+  if (loc) {
+    try {
+      const fmt = (n: number) =>
+        new Intl.NumberFormat(undefined, {
+          style: "currency",
+          currency: loc.cur,
+          maximumFractionDigits: 0,
+        }).format(n);
+      original = fmt(originalInr * loc.rate);
+      price = fmt(priceInr * loc.rate);
+      approx = true;
+    } catch {
+      /* fall back to ₹ */
+    }
+  }
 
   return (
-    <p className="mt-1.5 text-sm font-semibold text-gold">
-      ≈ {text}{" "}
-      <span className="text-[0.6rem] uppercase tracking-wide text-skyLight/50">
-        approx. in your currency
-      </span>
-    </p>
+    <>
+      <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span className="font-display text-lg md:text-xl font-semibold text-white/40 line-through">
+          {original}
+        </span>
+        <span className="font-display text-4xl md:text-5xl font-bold text-gold leading-none">
+          {price}
+        </span>
+        <span className="text-xs font-semibold uppercase tracking-wide text-white/60">
+          / kit
+        </span>
+      </div>
+      {approx ? (
+        <p className="mt-1 text-[0.65rem] uppercase tracking-wide text-skyLight/45">
+          approx. in your local currency
+        </p>
+      ) : null}
+    </>
   );
 }
