@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusPill, statusToTone } from "./StatusPill";
 import { TiltCard } from "./TiltCard";
+import { CardPrice } from "./CardPrice";
 import type { Vertical } from "@/content/verticals";
 
 /**
@@ -109,8 +110,14 @@ export function VerticalCard({ v }: { v: Vertical }) {
             {v.tagline}
           </p>
 
-          {/* Optional academic price (e.g. the MMT-GNU Kit) */}
-          {v.price ? (
+          {/* Optional academic price (e.g. the MMT-GNU Kit) — local-currency aware */}
+          {v.priceInr ? (
+            <CardPrice
+              originalInr={v.priceWasInr ?? v.priceInr * 2}
+              priceInr={v.priceInr}
+              isFlagship={isFlagship}
+            />
+          ) : v.price ? (
             <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
               {v.priceWas ? (
                 <span

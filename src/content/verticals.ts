@@ -16,6 +16,10 @@ export type Vertical = {
   price?: string;
   /** Optional struck-through original price shown beside `price`. */
   priceWas?: string;
+  /** Numeric INR price — enables local-currency conversion on the card. */
+  priceInr?: number;
+  /** Numeric INR original price (struck-through) for conversion. */
+  priceWasInr?: number;
 };
 
 export const verticals: Vertical[] = [
@@ -48,6 +52,8 @@ export const verticals: Vertical[] = [
     icon: Radio,
     price: "₹50,000",
     priceWas: "₹1,00,000",
+    priceInr: 50000,
+    priceWasInr: 100000,
   },
   {
     slug: "ai",
