@@ -135,10 +135,18 @@ export default function GnuRadioPage() {
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full bg-gold/10 ring-1 ring-inset ring-gold/40 px-4 py-2 text-xs md:text-sm font-semibold text-gold">
+              <Link
+                href={ctaHref}
+                className="group inline-flex items-center gap-2 rounded-full bg-gold/10 ring-1 ring-inset ring-gold/40 px-4 py-2 text-xs md:text-sm font-semibold text-gold hover:bg-gold/20 hover:ring-gold transition"
+              >
                 <Building2 size={15} strokeWidth={2} aria-hidden="true" />
                 Enterprise version available
-              </span>
+                <ChevronRight
+                  size={15}
+                  aria-hidden="true"
+                  className="group-hover:translate-x-0.5 transition-transform"
+                />
+              </Link>
               <Link
                 href={ctaHref}
                 className="group inline-flex items-center gap-2.5 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-5 py-2.5 text-sm md:text-base font-semibold text-coral hover:bg-coral/25 hover:ring-coral transition"

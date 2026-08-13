@@ -21,18 +21,18 @@ import { SectionCTA } from "@/components/SectionCTA";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Studio gNB — Portable 5G Standalone Base Station",
+  title: "Studio NR-gNB — Portable 5G Standalone Base Station",
   description:
-    "Studio gNB is the 5G Standalone base station inside MMT 5G/6G Studio: N78 (3.3–3.8 GHz), 100 MHz TDD, 4×4 MIMO, 2× 24 dBm PA output, Rel-17 compliant. Tripod-portable RU + gNB that pairs with Studio Core and Studio TestBench.",
+    "Studio NR-gNB is the 5G Standalone base station inside MMT 5G/6G Studio: N78 (3.3–3.8 GHz), 100 MHz TDD, 4×4 MIMO, 2× 24 dBm PA output, Rel-16 compliant. Tripod-portable RU + gNB that pairs with Studio Core and Studio TestBench.",
   alternates: { canonical: "/5g-6g/studio-gnb" },
 };
 
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "MMT 5G/6G Studio — Studio gNB",
+  name: "MMT 5G/6G Studio — Studio NR-gNB",
   description:
-    "Portable 5G Standalone base station (gNB). N78 band (3.3–3.8 GHz), 100 MHz TDD carrier, 4×4 MIMO, 2× 24 dBm PA output, 3GPP Rel-17 compliant. Tripod-mounted radio unit that pairs with Studio Core (5G SA core) and Studio TestBench.",
+    "Portable 5G Standalone base station (gNB). N78 band (3.3–3.8 GHz), 100 MHz TDD carrier, 4×4 MIMO, 2× 24 dBm PA output, 3GPP Rel-16 compliant. Tripod-mounted radio unit that pairs with Studio Core (5G SA core) and Studio TestBench.",
   brand: { "@type": "Brand", name: "MakeMyTechnology" },
   category: "Telecom Radio Access Network Hardware",
 };
@@ -42,7 +42,7 @@ const specs: { label: string; value: string }[] = [
   { label: "Bandwidth", value: "100 MHz TDD" },
   { label: "MIMO", value: "4×4" },
   { label: "PA output", value: "2× 24 dBm" },
-  { label: "Release", value: "3GPP Rel-17" },
+  { label: "Release", value: "3GPP Rel-16" },
   { label: "Mode", value: "5G Standalone (SA)" },
 ];
 
@@ -73,9 +73,9 @@ const capabilities: { icon: typeof RadioTower; title: string; description: strin
   },
   {
     icon: Cpu,
-    title: "Rel-17 compliant",
+    title: "Rel-16 compliant",
     description:
-      "3GPP Release 17 signalling across NGAP, RRC and the NR physical layer, verified against the 202 test cases in Studio TestBench.",
+      "3GPP Release 16 signalling across NGAP, RRC and the NR physical layer, verified against the 202 test cases in Studio TestBench.",
   },
   {
     icon: Move,
@@ -121,9 +121,9 @@ export default function StudioGnbPage() {
             <ArrowLeft size={14} aria-hidden="true" /> Back to 5G/6G Studio
           </Link>
           <div className="text-center">
-            <p className="eyebrow mb-3">Studio gNB · MMT 5G/6G Studio</p>
+            <p className="eyebrow mb-3">Studio NR-gNB · MMT 5G/6G Studio</p>
             <h1 className="font-display font-bold tracking-tight text-3xl md:text-4xl lg:text-5xl text-white leading-tight">
-              Studio gNB.
+              Studio NR-gNB.
             </h1>
             <p className="mt-3 text-sm md:text-base italic text-coral font-display">
               A portable 5G Standalone base station.
@@ -131,7 +131,7 @@ export default function StudioGnbPage() {
             <div className="mt-4 flex flex-wrap justify-center items-center gap-3">
               <StatusPill tone="flagship">Shipping · v1.0</StatusPill>
               <StatusPill tone="dev">N78 · 100 MHz</StatusPill>
-              <StatusPill tone="research">5G SA · Rel-17</StatusPill>
+              <StatusPill tone="research">5G SA · Rel-16</StatusPill>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function StudioGnbPage() {
             <figure className="relative overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10 bg-gradient-to-b from-white/10 to-white/[0.02] shadow-2xl">
               <Image
                 src="/studio-gnb.png"
-                alt="MMT Studio gNB — a portable 5G Standalone base station: a panel radio unit with four antennas mounted on a field tripod."
+                alt="MMT Studio NR-gNB — a portable 5G Standalone base station: a panel radio unit with four antennas mounted on a field tripod."
                 width={1448}
                 height={2048}
                 className="w-full h-auto block max-h-[560px] object-contain mx-auto"
@@ -155,7 +155,7 @@ export default function StudioGnbPage() {
 
           <Reveal className="lg:col-span-7" delay={0.1}>
             <p className="lede text-white/85">
-              Studio gNB is the radio access half of the MMT 5G/6G Studio — a
+              Studio NR-gNB is the radio access half of the MMT 5G/6G Studio — a
               tripod-portable 5G Standalone base station. An N78 mid-band radio
               (3.3–3.8 GHz) with a 100 MHz TDD carrier, 4×4 MIMO and 2× 24 dBm PA
               output, it broadcasts a live 5G SA cell that COTS UEs and Studio Field

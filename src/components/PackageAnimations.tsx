@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
  * a real mobile-to-mobile call across the MMT 5G setup.
  *
  * Topology (static):
- *   - Studio gNB on the left (with antennas)
+ *   - Studio NR-gNB on the left (with antennas)
  *   - UE-1 (Caller) showing a green "Calling UE-2" screen
  *   - UE-2 (Callee) showing a coral "Incoming UE-1" ringing screen
  *   - MMT SIM cards inserted in the back of each UE (gold)
@@ -115,7 +115,7 @@ export function FiveGSetupAnimation({ className }: { className?: string }) {
         </circle>
         {/* Label */}
         <text x="0" y="106" textAnchor="middle" fontSize="9" fill="#FFFFFF" fontFamily="ui-monospace,monospace" fontWeight="700" letterSpacing="0.6">
-          Studio gNB
+          Studio NR-gNB
         </text>
       </g>
 
@@ -475,7 +475,7 @@ export function FiveGSetupAnimation({ className }: { className?: string }) {
  * Topology:
  *   - Studio Academy LMS (laptop with course/lab UI) — top centre
  *   - Three control branches going down:
- *       ① Studio Fleet (orchestrator)  ② Studio Core (5G SA core)  ③ Studio gNB
+ *       ① Studio Fleet (orchestrator)  ② Studio Core (5G SA core)  ③ Studio NR-gNB
  *   - 2× UEs at the bottom centre — driven by Studio Fleet over the wired LAN
  *   - SIMs stay inside the UEs and pre-loaded into the Core's UDM
  *
@@ -653,7 +653,7 @@ export function IntegratedLabAnimation({ className }: { className?: string }) {
         </text>
       </g>
 
-      {/* --- Studio gNB (centre) --- */}
+      {/* --- Studio NR-gNB (centre) --- */}
       <g transform="translate(0, 84)">
         {/* Tripod */}
         <line x1="0" y1="20" x2="-14" y2="58" stroke="#5A6F8A" strokeWidth="2.4" strokeLinecap="round" />
@@ -677,7 +677,7 @@ export function IntegratedLabAnimation({ className }: { className?: string }) {
           {!reduce ? <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite" /> : null}
         </circle>
         <text x="0" y="74" textAnchor="middle" fontSize="6" fill="#FFFFFF" fontFamily="ui-monospace,monospace" fontWeight="700" letterSpacing="0.5">
-          Studio gNB
+          Studio NR-gNB
         </text>
       </g>
 

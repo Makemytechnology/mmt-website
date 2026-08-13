@@ -22,7 +22,7 @@ export const documents: DocEntry[] = [
     file: "/docs/mmt-gnb-specifications.pdf",
     type: "pdf",
     backHref: "/5g-6g/studio-gnb",
-    backLabel: "Back to Studio gNB",
+    backLabel: "Back to Studio NR-gNB",
   },
   {
     slug: "studio-5g-manual",

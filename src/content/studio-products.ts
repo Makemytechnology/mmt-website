@@ -44,7 +44,7 @@ export const studioProducts: StudioProduct[] = [
   },
   {
     slug: "studio-gnb",
-    title: "Studio gNB",
+    title: "Studio NR-gNB",
     sub: "5G Base Station (gNB)",
     icon: RadioTower,
     href: "/5g-6g/studio-gnb",
@@ -53,7 +53,7 @@ export const studioProducts: StudioProduct[] = [
       "N78 band (3.3–3.8 GHz) · 100 MHz TDD",
       "4×4 MIMO",
       "2× 24 dBm PA output",
-      "5G Standalone · Rel-17 compliant",
+      "5G Standalone · Rel-16 compliant",
     ],
   },
   {
