@@ -23,6 +23,7 @@ import { StatusPill, statusToTone } from "@/components/StatusPill";
 import { SectionCTA } from "@/components/SectionCTA";
 import { SlideDeck } from "@/components/SlideDeck";
 import { KitPrice } from "@/components/KitPrice";
+import { DemoVideo } from "@/components/DemoVideo";
 import {
   gnuCategories,
   gnuChapters,
@@ -182,16 +183,7 @@ export default function GnuRadioPage() {
 
           <div className="lg:col-span-6">
             <Reveal delay={0.08}>
-              <figure className="overflow-hidden rounded-2xl ring-1 ring-inset ring-white/15 bg-black shadow-2xl">
-                <Image
-                  src="/gnu-course.png"
-                  alt="MMT-GNU Kit — the Wireless & Communication Engineering course home, showing the guided chapter list and 210-experiment catalog."
-                  width={1200}
-                  height={637}
-                  className="w-full h-auto block"
-                  priority
-                />
-              </figure>
+              <DemoVideo src="/gnu-kit-demo.mp4" label="MMT-GNU Kit demo video" />
             </Reveal>
           </div>
         </div>
