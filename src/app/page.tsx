@@ -86,8 +86,8 @@ export default function HomePage() {
                     The MMT 5G/6G Studio is free to download.
                   </h2>
                   <p className="relative mt-2 text-sm text-skyLight/80">
-                    A full 5G Standalone core plus the SA Tester software — open source. Run
-                    an end-to-end 5G network on commodity hardware, today.
+                    A full 5G Standalone core plus the SA Tester software — open source.
+                    Runs on your own system — works even on Windows.
                   </p>
                   <div className="relative mt-5">
                     <Link
