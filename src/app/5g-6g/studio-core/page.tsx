@@ -88,15 +88,23 @@ export default function StudioCorePage() {
                   See Studio TestBench
                 </ButtonLink>
               </div>
-              <div className="mt-4 flex flex-wrap justify-center items-center gap-4">
-                <ButtonLink
-                  href="https://github.com/Makemytechnology/mmt-studio-5g6g.git"
-                  variant="outlineLight"
-                  size="lg"
-                  external
-                >
-                  <Github size={18} aria-hidden="true" /> View on GitHub
-                </ButtonLink>
+              {/* Highlighted free download — the open-source 5G Standalone core */}
+              <div className="mt-6 flex justify-center">
+                <div className="inline-flex flex-col items-center gap-3 rounded-2xl bg-coral/10 ring-1 ring-inset ring-coral/40 px-6 py-5 shadow-lg shadow-coral/10">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-3 py-1 text-[0.62rem] font-bold uppercase tracking-[0.18em] text-coral">
+                    Free &amp; open-source · Full 5G Standalone (SA) core + Tester
+                  </span>
+                  <ButtonLink
+                    href="https://github.com/Makemytechnology/mmt-studio-5g6g.git"
+                    variant="primary"
+                    size="lg"
+                    external
+                  >
+                    <Github size={18} aria-hidden="true" /> Download the Studio software from GitHub
+                  </ButtonLink>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-center">
                 <ButtonLink
                   href="https://youtu.be/tbLNVpx6Tbc?si=VrFekyqN3ZrksJTL"
                   variant="outlineLight"

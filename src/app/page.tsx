@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, ChevronRight } from "lucide-react";
+import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, ChevronRight, Download, ArrowRight } from "lucide-react";
 import { VerticalCard } from "@/components/VerticalCard";
 import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
@@ -55,19 +55,57 @@ export default function HomePage() {
       {/* PLATFORMS — first section of the page */}
       <section className="bg-bg pt-8 pb-20 md:pt-10 md:pb-28">
         <div className="container-x">
-          <Reveal>
-            <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-coral">
-              Deep Edu-Tech Center of Excellence
-            </p>
-            <p className="eyebrow text-navy/60 mt-6">Six platforms</p>
-            <h1 className="display-h2 text-navy mt-3 max-w-3xl">
-              Independent platforms. Shared engineering culture.
-            </h1>
-            <p className="mt-4 text-lg text-ink2 max-w-3xl">
-              Each platform has its own product family and roadmap. 5G/6G Studio is flagship
-              and shipping today; the others are in active development with design partners.
-            </p>
-          </Reveal>
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <Reveal className="lg:col-span-7">
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-coral">
+                Deep Edu-Tech Center of Excellence
+              </p>
+              <p className="eyebrow text-navy/60 mt-6">Six platforms</p>
+              <h1 className="display-h2 text-navy mt-3">
+                Independent platforms. Shared engineering culture.
+              </h1>
+              <p className="mt-4 text-lg text-ink2">
+                Each platform has its own product family and roadmap. 5G/6G Studio is
+                flagship and shipping today; the others are in active development with
+                design partners.
+              </p>
+            </Reveal>
+
+            {/* Free & open-source Studio — download card (fills the hero's right space) */}
+            <Reveal className="lg:col-span-5" delay={0.1}>
+              <div className="relative overflow-hidden rounded-2xl p-px bg-gradient-to-br from-coral/70 via-gold/40 to-sky/50 shadow-xl shadow-black/20">
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0d2340] via-[#0A1526] to-[#0A1526] p-6 md:p-7">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-coral/25 blur-3xl"
+                  />
+                  <span className="relative inline-flex items-center gap-2 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.18em] text-coral">
+                    Free &amp; open-source
+                  </span>
+                  <h2 className="relative mt-3 font-display text-xl md:text-2xl font-bold text-white leading-tight">
+                    The MMT 5G/6G Studio is free to download.
+                  </h2>
+                  <p className="relative mt-2 text-sm text-skyLight/80">
+                    A full 5G Standalone core plus the SA Tester software — open source. Run
+                    an end-to-end 5G network on commodity hardware, today.
+                  </p>
+                  <div className="relative mt-5">
+                    <Link
+                      href="/5g-6g/studio-core"
+                      className="group inline-flex items-center justify-center gap-2 rounded-full bg-coral text-white font-semibold px-6 py-3 text-sm shadow-lg shadow-coral/40 ring-1 ring-white/15 hover:bg-coral/90 hover:brightness-110 transition"
+                    >
+                      <Download size={17} aria-hidden="true" /> Download the free Studio Core
+                      <ArrowRight
+                        size={16}
+                        aria-hidden="true"
+                        className="group-hover:translate-x-0.5 transition-transform"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
             {verticals.map((v, i) => (
               <Reveal key={v.slug} delay={i * 0.06}>
