@@ -14,6 +14,7 @@ const navLinks: { href: string; label: string }[] = [
   { href: "/ai", label: "AI" },
   { href: "/drone-corridor", label: "Robotics" },
   { href: "/quantum", label: "Quantum" },
+  { href: "/contact", label: "Contact us" },
 ];
 
 /** Tells whether a nav link should appear active for the current path. */

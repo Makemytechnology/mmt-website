@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone, Clock } from "lucide-react";
+import { Mail, Phone, Clock, Linkedin, Youtube } from "lucide-react";
 import { TallyForm } from "@/components/TallyForm";
 
 export const metadata: Metadata = {
@@ -71,6 +71,36 @@ export default function ContactPage() {
                 <dd className="mt-1 pl-6">Mon – Fri · 09:30 – 18:30 IST</dd>
               </div>
             </dl>
+
+            <div className="mt-8">
+              <p className="text-xs uppercase tracking-wider font-semibold text-muted">
+                Follow us
+              </p>
+              <p className="mt-2 text-sm text-ink2">
+                We&rsquo;re also on LinkedIn and YouTube — follow us for product updates,
+                demos, and release news first.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <a
+                  href="https://www.linkedin.com/company/makemytechnology"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="MakeMyTechnology on LinkedIn"
+                  className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-inset ring-line px-5 py-2.5 text-sm font-semibold text-navy hover:bg-[#0A66C2] hover:text-white hover:ring-[#0A66C2] transition-colors"
+                >
+                  <Linkedin size={18} aria-hidden="true" /> LinkedIn
+                </a>
+                <a
+                  href="https://www.youtube.com/@bixbisystemspvtltd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="MakeMyTechnology on YouTube"
+                  className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-inset ring-line px-5 py-2.5 text-sm font-semibold text-navy hover:bg-[#FF0000] hover:text-white hover:ring-[#FF0000] transition-colors"
+                >
+                  <Youtube size={20} aria-hidden="true" /> YouTube
+                </a>
+              </div>
+            </div>
 
             <div className="mt-10 rounded-2xl bg-bgAlt ring-1 ring-line p-6">
               <h3 className="font-display text-lg font-semibold text-navy">
