@@ -1,10 +1,10 @@
 # MMT Website
 
-Marketing site for **MakeMyTechnology (MMT)** — a deep-tech Center of Excellence in
-Bengaluru, India, building independent product families across **5G/6G, IoT, AI,
+Marketing site for **MakeMyTechnology (MMT)** — a Deep Edu-Tech Center of
+Excellence building independent product families across **5G/6G, IoT, AI,
 robotics, and quantum-safe security**.
 
-Live site: `https://makemytechnology.com` (after deployment)
+Live site: **https://www.makemytechnology.com**
 
 ---
 
@@ -12,9 +12,10 @@ Live site: `https://makemytechnology.com` (after deployment)
 
 - **Next.js 15** (App Router) · React 19 · TypeScript
 - **Tailwind CSS 3.4** with custom MMT design tokens (coral / navy / gold / sky)
-- **Framer Motion 11** for scroll-reveal, tilt cards, marquee, beam borders
+- **Framer Motion 11** for scroll-reveal, marquee, beam borders
 - **lucide-react** icons
 - **Inter** (body) + **Plus Jakarta Sans** (display) via `next/font`
+- **Vercel Web Analytics** (`@vercel/analytics`)
 - **CSS-only rotor / aurora / marquee** animations (GPU-cheap, scroll-friendly)
 
 ---
@@ -23,17 +24,21 @@ Live site: `https://makemytechnology.com` (after deployment)
 
 | Path | Purpose |
 |---|---|
-| `/` | Homepage — 5 vertical cards (5G/6G · IoT · AI · Robotics · Quantum), stats counter, tech marquee, "From the field" workshop photo, closing CTA |
-| `/5g-6g` | Flagship — MMT 5G/6G Studio overview with the 6-product family grid + workshop showcase |
-| `/5g-6g/studio-core` | Studio Core — 5G SA core in Python + C/DPDK · demo video · NF list · DNN service domains |
+| `/` | Homepage — 6 platform cards, hero "Download the free Studio Core" card, "We're on YouTube" banner, tech marquee, "From the field" **setup slideshow** (workshop → PES → Sona) |
+| `/5g-6g` | MMT 5G/6G Studio overview — the 6-product family grid + live-setup slideshow |
+| `/5g-6g/studio-core` | Studio Core — 5G SA core in Python + C/DPDK · demo video · highlighted free open-source download (GitHub) · NF list · DNN domains |
+| `/5g-6g/studio-nr-gnb` (URL slug `/5g-6g/studio-gnb`) | **Studio NR-gNB** — portable 5G Standalone base station · N78 · 4×4 MIMO · **3GPP Rel-16** |
 | `/5g-6g/studio-testbench` | Studio TestBench — SA tester (gNB + UE emulator) · 202 cases · 19 Robot suites |
-| `/5g-6g/studio-fleet` | Studio Fleet — Python / Flask orchestrator · 26 blueprints · 25 services · 8 Robot libs |
+| `/5g-6g/studio-fleet` | Studio Fleet — Python / Flask orchestrator · 26 blueprints · 25 services |
 | `/5g-6g/studio-field` | Studio Field — Kotlin / Jetpack Compose Android app · DIAG · 7-day Pro trial |
+| `/5g-6g/studio-academy` | Studio Academy — AI-powered Django LMS · course player · live-equipment labs |
+| `/gnu-radio` | **MMT-GNU Kit** — 210 SDR experiments · hero demo video · auto-playing overview deck · manual · flyer · **local-currency pricing** · free-SDR badge · enterprise/distributor CTAs |
 | `/iot`, `/ai`, `/drone-corridor`, `/quantum` | In-development verticals |
-| `/contact` | Contact form (embedded [Tally](https://tally.so) form — Tally hosts it and emails submissions) + sidebar with email, phone, address, map |
+| `/documents/[slug]` | In-site document viewer — PDFs render natively; DOCX via the Microsoft Office online viewer; each has a Download button (gNB spec, Studio manual, COTS manual, 5G syllabus) |
+| `/contact` | Contact page — embedded **[Tally](https://tally.so)** form (Tally hosts it and emails submissions) with conditional logic + Get-in-touch sidebar (email, phone, hours, Follow us) |
+| `/privacy`, `/terms` | Legal pages |
 
-`/contact` is intentionally **not** in the top navigation. It's reachable via every
-SectionCTA and the "Talk to us" buttons.
+**"Contact us" is in the top navigation** and every page's footer links to it.
 
 ---
 
@@ -55,45 +60,55 @@ npm run start
 
 ---
 
+## Location-aware pricing (MMT-GNU Kit)
+
+The GNU Kit price shows in the **visitor's local currency**, based on their real
+IP location (via [ipwho.is](https://ipwho.is)). Indian / unknown visitors see the
+base **₹** price; ~37 countries map to a local currency (USD, GBP, EUR, AED, SGD,
+AUD, CAD, JPY, CHF, SAR, ZAR, and more). Converted amounts are **approximate** and
+the rates are hardcoded in `src/lib/localCurrency.ts` (easy to refresh).
+
+- Shared logic: `src/lib/localCurrency.ts`
+- Home platform card: `src/components/CardPrice.tsx`
+- GNU Kit hero price: `src/components/KitPrice.tsx`
+- **Test override:** append `?cc=US` (or `GB`, `SG`, `DE`, …) to any URL to force a country.
+
+---
+
+## Regional language
+
+The site is **translation-friendly** for the browser's built-in "Translate page"
+feature: `lang="en"` is set as the source language, and the brand name is marked
+`translate="no"`. Visitors can view the site in their own language via the
+browser translate prompt (no in-app i18n / language switcher).
+
+---
+
 ## Hosting — Vercel + GoDaddy domain
 
-The recommended deployment is **Vercel** (free Hobby tier) with the GoDaddy
-domain pointed at it via DNS. See `docs/HOSTING.md` for the full walk-through.
+Deployed on **Vercel** with the GoDaddy domain pointed at it via DNS. Every push
+to `main` auto-deploys. See `docs/HOSTING.md` for the full walk-through.
 
-**Quick version:**
+> ⚠️ **The GitHub repo must be public** on Vercel's Hobby plan — Hobby cannot
+> deploy a **private** repo owned by a GitHub **organization**. Keep it public,
+> upgrade to Vercel Pro, or move the repo to a personal account if you need it
+> private.
 
-1. Push this repo to GitHub.
-2. Sign in to **vercel.com** with GitHub → "Add New Project" → import the repo.
-3. Vercel auto-detects Next.js → Deploy. Site is live at `<project>.vercel.app`.
-4. In Vercel → Project → Settings → Domains → add `makemytechnology.com`.
-5. In GoDaddy → DNS → add the **A** + **CNAME** records Vercel shows.
-6. ~30 min DNS propagation → SSL auto-issued → live at `https://makemytechnology.com`.
-
-**Cost:** ₹0/month hosting · only the GoDaddy domain renewal (~₹1,200/year).
+**Canonical domain is `www`** — the non-www host 308-redirects to www, so
+`metadataBase`, `sitemap.ts`, `robots.txt`, and the DOCX viewer origin all use
+`https://www.makemytechnology.com`.
 
 ### Size budget for Vercel Hobby
 
 | Limit | Value | Current usage |
 |---|---|---|
-| Single file in `public/` | 100 MB | Largest file: `setup.jpg` (20 MB) ✓ |
-| Total deployment (compressed) | 100 MB | ~45 MB ✓ |
+| Single file in `public/` | 100 MB | Largest: `gnu-kit-demo.mp4` (~61 MB) ✓ |
 | Bandwidth per month | 100 GB | Plenty for a B2B marketing site |
-| Function execution | 100 GB-hours | Contact form uses microseconds per call |
-| Image optimisation (source images) | 1,000 | ~10 ✓ |
+| Image optimisation (source images) | 1,000 | Comfortably under |
 | Custom domains | Unlimited | Used: 1 |
 
-**Do not check in files larger than 100 MB to `public/`** — Vercel will reject
-the deployment. Use `.vercelignore` if you have a large file you need locally
-but not on Vercel.
-
-### When to upgrade to Vercel Pro
-
-Pro is **$20/month per member**. You only need it when one of these is true:
-
-- More than ~10,000 monthly visitors (bandwidth pressure)
-- You want team members on the project
-- You need the formal commercial-use licence (Hobby is technically personal-use)
-- You want extras: password-protected previews, faster builds, web analytics > 2,500 events/mo
+**Do not commit files larger than 100 MB to `public/`.** The GNU demo video is
+~61 MB — consider compressing large videos before adding more.
 
 ---
 
@@ -101,146 +116,104 @@ Pro is **$20/month per member**. You only need it when one of these is true:
 
 ```
 mmt-website/
-├── public/                   Static assets served at site root
-│   ├── logo.png              MMT brand mark
-│   ├── setup.jpg             Workshop / field-deployment photo
-│   ├── base-station.png      gNB hardware shot
-│   ├── studio-core-demo.mp4  Studio Core walkthrough
-│   ├── studio-fleet-demo.mp4 Studio Fleet walkthrough
-│   ├── fleet-dashboard.png   Real COTS dashboard screenshot
-│   ├── 5g-6g-studio-core.html  Solution doc (opens in new tab, print-to-PDF)
+├── public/                      Static assets served at site root
+│   ├── logo.png                 MMT brand mark
+│   ├── og-image.png             1200×630 social share image
+│   ├── setup.jpg / setup-pes.jpg / setup-sona.jpg   Live-deployment slideshow
+│   ├── studio-gnb.png           Portable gNB hardware shot
+│   ├── gnu-*.png                MMT-GNU Kit UI screenshots (course, hardware, …)
+│   ├── gnu-slides/              Exported overview deck (slide-01…12.png)
+│   ├── gnu-kit-demo.mp4         GNU Kit hero demo video
+│   ├── studio-core-demo.mp4     Studio Core / TestBench walkthrough
+│   ├── studio-academy-*.jpg     Studio Academy screenshots
+│   ├── docs/                    Downloadable docs (gNB spec, Studio manual,
+│   │                            COTS manual, 5G syllabus)
+│   ├── 5g-6g-studio-core.html   Studio Core solution doc
 │   └── robots.txt
 │
 ├── src/
-│   ├── app/                  Next.js App Router pages + API
-│   │   ├── layout.tsx        Root layout · Header · Footer · fonts
-│   │   ├── page.tsx          Home — verticals first, stats, marquee, setup, CTA
-│   │   ├── 5g-6g/            Studio family pages
-│   │   ├── iot/ ai/ ...      Vertical pages
-│   │   ├── contact/          Tally form embed + sidebar
-│   │   ├── icon.png          Tab favicon (auto-injected by Next.js)
-│   │   ├── apple-icon.png    iOS home-screen icon
-│   │   ├── sitemap.ts        Auto-generated sitemap.xml for SEO
-│   │   └── globals.css       Tailwind layer + custom keyframes
+│   ├── app/
+│   │   ├── layout.tsx           Root layout · Header · Footer · fonts · Analytics
+│   │   ├── page.tsx             Home
+│   │   ├── 5g-6g/               Studio family pages (core, gnb, testbench, fleet, field, academy)
+│   │   ├── gnu-radio/           MMT-GNU Kit
+│   │   ├── iot/ ai/ ...         Vertical pages
+│   │   ├── documents/[slug]/    In-site document viewer
+│   │   ├── contact/             Tally form embed + sidebar
+│   │   ├── privacy/ terms/      Legal pages
+│   │   ├── sitemap.ts           Auto-generated sitemap.xml
+│   │   └── globals.css          Tailwind layer + custom keyframes
 │   │
-│   ├── components/           Shared UI
-│   │   ├── Header.tsx        Top nav + phone + email + active-page indicator
-│   │   ├── Footer.tsx        Address + Google Maps link
-│   │   ├── VerticalCard.tsx  Five-up card grid card (flagship + 4 others)
-│   │   ├── StudioProductCard.tsx  Studio family card
-│   │   ├── BaseStationTower.tsx   Animated cell-tower SVG (with drone)
-│   │   ├── Drone.tsx              DJI-style cartoon drone SVG
-│   │   ├── PackageAnimations.tsx  Animated call-flow + LMS orchestration SVGs
-│   │   ├── DemoVideo.tsx          HTML5 video player with native controls + auto-unmute
-│   │   ├── TiltCard.tsx           3-D mouse-tilt wrapper
-│   │   ├── BeamBorder.tsx         Animated conic-gradient card border
-│   │   ├── AuroraBg.tsx           Drifting radial-gradient background
-│   │   ├── Sparkles.tsx           Twinkling-dot overlay
-│   │   ├── Marquee.tsx            Infinite-scroll tag strip
-│   │   ├── Counter.tsx            Animated stat counter
-│   │   └── Reveal.tsx             Scroll-triggered fade-in
+│   ├── components/
+│   │   ├── Header.tsx           Top nav (incl. "Contact us") + phone + email
+│   │   ├── Footer.tsx           Get in touch + brand + LinkedIn/YouTube + Privacy/Terms
+│   │   ├── VerticalCard.tsx     Home platform card (with local-currency CardPrice)
+│   │   ├── StudioProductCard.tsx  Studio family card (whole-card link + doc button)
+│   │   ├── SetupSlideshow.tsx   Auto-advancing live-setup slideshow
+│   │   ├── SlideDeck.tsx        Auto-playing image deck (GNU overview)
+│   │   ├── KitPrice.tsx / CardPrice.tsx  Local-currency price components
+│   │   ├── DemoVideo.tsx        HTML5 video player + auto-unmute
+│   │   ├── TiltCard.tsx         Card container with a hover lift (no 3-D tilt)
+│   │   ├── PackageAnimations.tsx / BaseStationTower.tsx / Drone.tsx  SVG art
+│   │   ├── Marquee.tsx / Counter.tsx / Reveal.tsx / Sparkles.tsx / AuroraBg.tsx / BeamBorder.tsx
+│   │   └── Button.tsx / StatusPill.tsx
 │   │
-│   ├── content/              Typed copy / data
-│   │   ├── verticals.ts      Five vertical cards on the home page
-│   │   ├── studio-products.ts  Studio family cards on /5g-6g
-│   │   ├── nfs.ts            13 5G core NFs + 8 higher-layer services
-│   │   ├── dnns.ts           8 DNN service domains
-│   │   ├── use-cases.ts      ·
-│   │   ├── verticals-detail.ts  IoT / AI / Robotics / Quantum page detail
-│   │   ├── engagement-models.ts ·
-│   │   ├── positioning.ts ·
-│   │   ├── roadmap.ts ·
-│   │   ├── security.ts ·
-│   │   └── iot-use-cases.ts ·
+│   ├── content/                 Typed copy / data
+│   │   ├── verticals.ts         Home platform cards (incl. GNU Kit priceInr)
+│   │   ├── studio-products.ts   Studio family cards on /5g-6g
+│   │   ├── documents.ts         Document-viewer registry
+│   │   ├── gnu-radio.ts         GNU Kit content
+│   │   ├── nfs.ts / dnns.ts / use-cases.ts / verticals-detail.ts / …
 │   │
-│   └── lib/                  Small utilities
+│   └── lib/
+│       ├── localCurrency.ts     Country → currency + rates + IP lookup
+│       └── utils.ts
 │
-├── next.config.mjs           Next.js config
-├── tailwind.config.ts        Design tokens (colours, fonts, spacing)
-├── postcss.config.mjs
-├── tsconfig.json
-└── package.json
+├── next.config.mjs · tailwind.config.ts · tsconfig.json · package.json
 ```
 
-**Marketing copy lives in typed TypeScript** under `src/content/`. Editing
-verticals / Studio products / NFs / DNNs is a one-file change.
+**Marketing copy lives in typed TypeScript** under `src/content/` — edits are
+one-file changes; push and Vercel redeploys.
 
 ---
 
-## SEO checklist — already wired in
+## Documents
 
-The site ships with SEO essentials baked in:
+Downloadable docs live in `public/docs/` and are surfaced through the in-site
+viewer at `/documents/[slug]` (registered in `src/content/documents.ts`):
+
+- **PDFs** render inline in the browser's native viewer.
+- **DOCX** render via the Microsoft Office online viewer (fetches the file from
+  the public `www` URL — so DOCX previews only work on the deployed site, not
+  `localhost`). The Download button always works.
+
+---
+
+## SEO — wired in
 
 | Feature | Where |
 |---|---|
-| Server-side rendering (App Router) | All pages |
-| Per-page `<title>` + `<meta description>` | Each page's `export const metadata` |
-| Canonical URLs | `metadata.alternates.canonical` on every page |
-| OpenGraph + Twitter cards | `src/app/layout.tsx` |
+| SSR (App Router) | All pages |
+| Per-page title + description | Each page's `export const metadata` |
+| Canonical URLs (**www**) | `metadata.alternates.canonical` |
+| OpenGraph + Twitter cards + `og-image.png` | `src/app/layout.tsx` + `public/og-image.png` |
 | Structured data (JSON-LD) | Organisation on `/`, Product on Studio sub-pages |
-| `sitemap.xml` | Auto-served by Next.js from `src/app/sitemap.ts` |
+| `sitemap.xml` | `src/app/sitemap.ts` |
 | `robots.txt` | `public/robots.txt` |
 | Favicon + iOS icon | `src/app/icon.png` + `apple-icon.png` |
-| `next/image` (AVIF/WebP optimisation) | All non-decorative images |
-| `next/font` (zero render-blocking fonts) | Inter + Plus Jakarta Sans |
-| Mobile responsive (Tailwind breakpoints) | Throughout |
-| HTTPS + global CDN | Free with Vercel |
+| `next/image` (AVIF/WebP) + `next/font` | Throughout |
 
-### Post-launch SEO steps
-
-After deploying to Vercel:
-
-1. **Google Search Console** — add `makemytechnology.com`, verify, submit `https://makemytechnology.com/sitemap.xml`.
-2. **Google Analytics 4** — paste the GA4 snippet into `src/app/layout.tsx` (or use Vercel Web Analytics).
-3. **Open Graph image** — drop a 1200×630 PNG at `public/og-image.png` for social link previews. `layout.tsx` already references it.
-
----
-
-## Content
-
-All marketing copy lives in **typed TypeScript** under `src/content/` so copy
-edits are single-file changes. No CMS, no rebuild scripts — change the string,
-push, Vercel redeploys.
-
-### How to update a Studio product card
-
-`src/content/studio-products.ts` — change the `bullets` / `sub` / `title` for
-any product. The card updates everywhere it appears (home, 5G/6G overview).
-
-### How to swap a demo video
-
-Drop your MP4 in `public/<product>-demo.mp4`. The `DemoVideo` component on
-each Studio page references it by path. If the file is missing, the component
-shows a "Coming soon" placeholder.
-
-### How to fix a typo on the home page
-
-`src/app/page.tsx` — every visible string is right there.
-
----
-
-## Animations & 3D effects
-
-The site uses a mix of techniques tuned for smooth scroll on mobile:
-
-- **Framer Motion** for scroll-reveal, hero counters, sequenced call-flow arrows
-- **Pure CSS keyframes** for the drone propellers, marquee scroll, gradient
-  text, beam-border spin — these run on the GPU compositor (cheap, don't
-  stutter under scroll)
-- **CSS perspective + transform** on TiltCard for 3-D mouse-follow tilt
-- **prefers-reduced-motion** respected everywhere
-- **Touch-device detection** disables AuroraBg + Sparkles on phones to keep
-  scroll buttery
+**Google Search Console:** a **Domain property** (`sc-domain:makemytechnology.com`)
+is verified via DNS (covers www + non-www); `sitemap.xml` is submitted.
 
 ---
 
 ## Contact
 
-Questions about the site or the brand:
-
 - **info@makemytechnology.com**
 - **+91 63610 31970**
-- VTU Regional Center, Bengaluru, India
+- LinkedIn: https://www.linkedin.com/company/makemytechnology
+- YouTube: https://www.youtube.com/@bixbisystemspvtltd
 
 ---
 
