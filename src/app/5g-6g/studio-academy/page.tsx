@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
-import { SectionCTA } from "@/components/SectionCTA";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
@@ -163,22 +162,22 @@ const courses: {
 
 const screenshots: { src: string; title: string; caption: string }[] = [
   {
-    src: "/studio-academy-modules.jpg",
-    title: "Course modules",
+    src: "/studio-academy-certificate.png",
+    title: "Certificates",
     caption:
-      "The 8-module 5G System Engineering course — per-chapter progress, steps, and estimated time.",
+      "Request, preview and download a certificate of completion for every course you finish — approved by the admin.",
   },
   {
-    src: "/studio-academy-lab.jpg",
-    title: "Live-equipment lab",
+    src: "/studio-academy-tutor.png",
+    title: "MMT-AI-Tutor",
     caption:
-      "Lab E1.1 runs a robot registration test against Studio Core, with a pre-flight health check and sample output to compare against.",
+      "A personal AI tutor that runs on-device in the browser (≈470 MB, private) or on Claude, GPT, Gemini and Ollama.",
   },
   {
-    src: "/studio-academy-quiz.jpg",
-    title: "Timed quiz",
+    src: "/studio-academy-resume.png",
+    title: "Resume Builder",
     caption:
-      "Auto-graded chapter quizzes with a countdown timer and per-question marks.",
+      "Build a resume that pulls in your course progress automatically, with a live preview and multiple templates.",
   },
 ];
 
@@ -223,10 +222,10 @@ export default function StudioAcademyPage() {
             <div className="max-w-5xl mx-auto">
               <figure className="overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10 bg-black shadow-2xl">
                 <Image
-                  src="/studio-academy-player.jpg"
-                  alt="Studio Academy — the chapter player: narrated auto-advancing slides with an AI tutor, chapter navigation, and a mark-complete flow."
-                  width={1600}
-                  height={1400}
+                  src="/studio-academy-courses.png"
+                  alt="Studio Academy — the Courses dashboard: three enrolled courses (5G System Engineering and GNU Radio & Wireless, Basics and Advanced) with progress and a Continue button on each."
+                  width={1920}
+                  height={602}
                   className="w-full h-auto block"
                   priority
                 />
@@ -246,8 +245,17 @@ export default function StudioAcademyPage() {
               </p>
               <div className="mt-6 flex flex-wrap justify-center items-center gap-4">
                 <ButtonLink
-                  href="/contact?vertical=5g-6g&package=studio-academy"
+                  href="https://studioacademy.makemytechnology.com/"
+                  external
                   variant="primary"
+                  size="lg"
+                >
+                  Explore the courses on Studio Academy
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </ButtonLink>
+                <ButtonLink
+                  href="/contact?vertical=5g-6g&package=studio-academy"
+                  variant="outlineLight"
                   size="lg"
                 >
                   Request a demo
@@ -263,6 +271,13 @@ export default function StudioAcademyPage() {
                   Labs run on Studio Core
                 </ButtonLink>
               </div>
+              <p className="mt-3 text-xs text-skyLight/60">
+                <ArrowUpRight size={12} className="inline align-[-1px]" aria-hidden="true" />{" "}
+                The live Studio Academy LMS —{" "}
+                <span className="text-skyLight/85 font-medium">
+                  studioacademy.makemytechnology.com
+                </span>
+              </p>
             </div>
           </Reveal>
 
@@ -390,22 +405,25 @@ export default function StudioAcademyPage() {
               <div>
                 <p className="eyebrow !text-coral !mb-1">The live platform</p>
                 <h2 className="font-display text-xl md:text-2xl font-bold text-white leading-tight">
-                  This is where you take all the courses.
+                  Go through the courses. Earn your certificate.
                 </h2>
                 <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-2xl">
-                  Sign in to Studio Academy to access every course — 5G System
-                  Engineering and GNU Radio &amp; Wireless (Basics &amp; Advanced) —
-                  with the AI tutor, quizzes and live-equipment labs.
+                  Studio Academy is live at
+                  <span className="text-white font-semibold"> studioacademy.makemytechnology.com</span> —
+                  sign in and work through every course (5G System Engineering and GNU
+                  Radio &amp; Wireless, Basics &amp; Advanced) with the AI tutor and
+                  live-equipment labs, then download your certificate of completion when
+                  you finish.
                 </p>
               </div>
               <a
                 href="https://studioacademy.makemytechnology.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Studio Academy — the live learning platform"
-                className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-coral hover:bg-coral/90 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-coral/30 ring-1 ring-inset ring-white/15 transition focus-ring"
+                aria-label="Start learning on Studio Academy — the live learning platform"
+                className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-coral hover:bg-coral/90 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-coral/30 ring-1 ring-inset ring-white/15 transition focus-ring"
               >
-                Visit here
+                Start learning now
                 <ArrowUpRight size={18} aria-hidden="true" />
               </a>
             </div>
@@ -419,21 +437,23 @@ export default function StudioAcademyPage() {
           <Reveal>
             <h2 className="display-h3 text-navy">Inside the platform.</h2>
             <p className="mt-2 text-sm text-muted max-w-2xl">
-              Courses, live-equipment labs, and quizzes — all wired to the real
-              Studio stack.
+              Certificates, an on-device AI tutor, and a resume builder — all part of
+              the live Studio Academy platform.
             </p>
           </Reveal>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             {screenshots.map((s, i) => (
               <Reveal key={s.src} delay={i * 0.06}>
-                <figure className="group overflow-hidden rounded-2xl ring-1 ring-line shadow-md bg-black">
-                  <Image
-                    src={s.src}
-                    alt={`${s.title} — ${s.caption}`}
-                    width={1200}
-                    height={800}
-                    className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
-                  />
+                <figure className="group overflow-hidden rounded-2xl ring-1 ring-line shadow-md bg-navyDeep">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={s.src}
+                      alt={`${s.title} — ${s.caption}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-contain group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                  </div>
                   <figcaption className="bg-white px-4 py-3">
                     <div className="text-[0.6rem] tracking-[0.18em] uppercase font-bold text-coral">
                       {s.title}
@@ -446,12 +466,6 @@ export default function StudioAcademyPage() {
           </div>
         </div>
       </section>
-
-      <SectionCTA
-        headline="Want Studio Academy for your team or campus? Let’s talk."
-        href="/contact?vertical=5g-6g&package=studio-academy"
-        buttonLabel="Get in touch"
-      />
     </>
   );
 }
