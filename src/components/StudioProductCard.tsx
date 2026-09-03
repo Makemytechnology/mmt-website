@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TiltCard } from "./TiltCard";
 import { BeamBorder } from "./BeamBorder";
@@ -89,6 +89,19 @@ export function StudioProductCard({ p }: { p: StudioProduct }) {
             </a>
           ) : null}
         </div>
+
+        {p.visit ? (
+          <a
+            href={p.visit.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${p.title} — ${p.visit.label} (opens the live site)`}
+            className="relative z-10 inline-flex items-center justify-center gap-2 rounded-full bg-coral hover:bg-coral/90 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-coral/30 ring-1 ring-inset ring-white/15 transition focus-ring"
+          >
+            {p.visit.label}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        ) : null}
       </div>
     </>
   );

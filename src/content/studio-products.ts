@@ -10,6 +10,7 @@ export type StudioProduct = {
   href?: string; // when set, card is a link; otherwise it renders as a static card
   flagship?: boolean;
   doc?: { href: string; label: string }; // optional downloadable document (spec/manual/syllabus)
+  visit?: { href: string; label: string }; // optional external CTA (e.g. the live product/site)
 };
 
 export const studioProducts: StudioProduct[] = [
@@ -90,6 +91,7 @@ export const studioProducts: StudioProduct[] = [
     icon: GraduationCap,
     href: "/5g-6g/studio-academy",
     doc: { href: "/documents/5g-system-engineering-syllabus", label: "Syllabus" },
+    visit: { href: "https://studioacademy.makemytechnology.com/", label: "Visit here" },
     bullets: [
       "Django LMS with 11 apps",
       "AI Tutor across Claude, GPT, Gemini, Ollama",
