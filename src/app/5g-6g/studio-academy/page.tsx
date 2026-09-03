@@ -182,28 +182,6 @@ const screenshots: { src: string; title: string; caption: string }[] = [
   },
 ];
 
-// GNU Radio & Wireless course visuals — reused from the MMT GNU Radio Kit.
-const gnuShots: { src: string; title: string; caption: string }[] = [
-  {
-    src: "/gnu-experiments.png",
-    title: "Experiment library",
-    caption:
-      "The GNU Radio courses draw on 210 SDR experiments across 15 categories — DSP, modulation, OFDM, MIMO, channel coding and more.",
-  },
-  {
-    src: "/gnu-runlab.png",
-    title: "Run Lab · live spectrum",
-    caption:
-      "Each experiment's workbench — tune parameters and run on real SDR (ADALM-Pluto / bladeRF) or simulation, with live spectrum and constellation plots.",
-  },
-  {
-    src: "/gnu-grc.png",
-    title: "GRC Lab",
-    caption:
-      "Generate a runnable GNU Radio Companion .grc flowgraph for any experiment, or upload one to inspect it.",
-  },
-];
-
 export default function StudioAcademyPage() {
   return (
     <>
@@ -456,44 +434,6 @@ export default function StudioAcademyPage() {
                     height={800}
                     className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
                   />
-                  <figcaption className="bg-white px-4 py-3">
-                    <div className="text-[0.6rem] tracking-[0.18em] uppercase font-bold text-coral">
-                      {s.title}
-                    </div>
-                    <p className="mt-1 text-sm text-ink2 leading-snug">{s.caption}</p>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GNU Radio & Wireless — course visuals (reused from the MMT GNU Radio Kit) */}
-      <section className="bg-bg section-y">
-        <div className="container-x">
-          <Reveal>
-            <p className="eyebrow text-coral">New · GNU Radio &amp; Wireless</p>
-            <h2 className="display-h3 text-navy mt-2">Two SDR wireless courses, on real radios.</h2>
-            <p className="mt-2 text-sm text-muted max-w-2xl">
-              The Basics and Advanced tracks are built on the MMT GNU Radio platform —
-              210 hands-on SDR experiments across 15 categories, running on real
-              ADALM-Pluto and bladeRF hardware.
-            </p>
-          </Reveal>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {gnuShots.map((s, i) => (
-              <Reveal key={s.src} delay={i * 0.06}>
-                <figure className="group overflow-hidden rounded-2xl ring-1 ring-line shadow-md bg-black">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-black">
-                    <Image
-                      src={s.src}
-                      alt={`${s.title} — ${s.caption}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
-                    />
-                  </div>
                   <figcaption className="bg-white px-4 py-3">
                     <div className="text-[0.6rem] tracking-[0.18em] uppercase font-bold text-coral">
                       {s.title}
