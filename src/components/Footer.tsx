@@ -90,6 +90,13 @@ export function Footer() {
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
           <p>© {new Date().getFullYear()} MakeMyTechnology. All rights reserved.</p>
           <div className="flex items-center gap-5">
+            <a
+              href="https://studioacademy.makemytechnology.com/"
+              className="hover:text-white/80 transition-colors"
+              title="Studio Academy — 5G &amp; wireless training by MakeMyTechnology"
+            >
+              Studio Academy
+            </a>
             <Link href="/privacy" className="hover:text-white/80 transition-colors">
               Privacy
             </Link>
