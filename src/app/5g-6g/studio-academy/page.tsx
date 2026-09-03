@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
+  ArrowUpRight,
   GraduationCap,
   Sparkles,
   BookOpen,
@@ -21,9 +22,9 @@ import { SectionCTA } from "@/components/SectionCTA";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Studio Academy — AI-Powered 5G Learning Platform",
+  title: "Studio Academy — AI-Powered 5G & Wireless Learning Platform",
   description:
-    "Studio Academy is the AI-powered LMS inside MMT 5G/6G Studio: a Django learning platform with an AI Tutor (Claude, GPT, Gemini, Ollama), slide-and-animation courses, timed quizzes, and live-equipment labs that run robot tests against Studio Core and Studio TestBench.",
+    "Studio Academy is the AI-powered LMS inside MMT 5G/6G Studio: a Django learning platform with three courses — 5G System Engineering plus GNU Radio & Wireless (Basics and Advanced) — an AI Tutor (Claude, GPT, Gemini, Ollama), slide-and-animation lessons, timed quizzes, and live-equipment labs on real hardware.",
   alternates: { canonical: "/5g-6g/studio-academy" },
 };
 
@@ -32,15 +33,15 @@ const productJsonLd = {
   "@type": "Product",
   name: "MMT 5G/6G Studio — Studio Academy",
   description:
-    "AI-powered learning management system for 5G. Django LMS with 11 apps, an AI Tutor spanning Claude, GPT, Gemini and Ollama, a slide-and-animation course player, timed quizzes, and live-equipment labs that execute robot tests against Studio Core and Studio TestBench.",
+    "AI-powered learning management system for 5G and wireless. Django LMS with 11 apps and three courses — 5G System Engineering plus GNU Radio & Wireless (Basics and Advanced) — an AI Tutor spanning Claude, GPT, Gemini and Ollama, a slide-and-animation course player, timed quizzes, and live-equipment labs on real hardware (Studio Core, Studio TestBench, ADALM-Pluto, bladeRF).",
   brand: { "@type": "Brand", name: "MakeMyTechnology" },
   category: "Education Technology Software",
 };
 
 const stats = [
+  { number: "3", label: "Courses" },
+  { number: "24", label: "Chapters" },
   { number: "11", label: "Django apps" },
-  { number: "8", label: "Course modules" },
-  { number: "16 hrs", label: "Guided curriculum" },
 ];
 
 const capabilities: { icon: typeof GraduationCap; title: string; description: string }[] = [
@@ -100,15 +101,64 @@ const capabilities: { icon: typeof GraduationCap; title: string; description: st
   },
 ];
 
-const chapters: { n: string; title: string; note: string }[] = [
-  { n: "01", title: "Foundations", note: "Apps drive innovation · 1G→5G · baseband · standards bodies" },
-  { n: "02", title: "5G Fundamentals", note: "Spectrum, numerology, the NR air interface" },
-  { n: "03", title: "BSS / OSS", note: "Business & operations support systems" },
-  { n: "04", title: "5G Core", note: "NFs, service-based architecture, PDU sessions" },
-  { n: "05", title: "O-RAN", note: "Disaggregated RAN, RU / DU / CU, interfaces" },
-  { n: "06", title: "Call Flows", note: "Registration, session setup, mobility signalling" },
-  { n: "07", title: "RF, KPIs & Drive Test", note: "Measuring a live network with COTS phones" },
-  { n: "08", title: "Hands-On Lab", note: "Build and test your own 5G SA network" },
+const courses: {
+  code: string;
+  title: string;
+  meta: string;
+  blurb: string;
+  chapters: string[];
+}[] = [
+  {
+    code: "MMT-5G-SE",
+    title: "5G System Engineering",
+    meta: "8 chapters · concepts → live 5G SA lab",
+    blurb:
+      "A practical, end-to-end path through how 5G networks are designed, built, operated and measured — ending on a hands-on lab against a real 5G Standalone core.",
+    chapters: [
+      "Foundations",
+      "5G Fundamentals",
+      "BSS / OSS",
+      "5G Core",
+      "O-RAN",
+      "Call Flows",
+      "RF, KPIs & Drive Test",
+      "Hands-On Lab",
+    ],
+  },
+  {
+    code: "GNU-BASICS",
+    title: "GNU Radio & Wireless — Basics",
+    meta: "8 chapters · SDR from first principles",
+    blurb:
+      "Hands-on wireless & communication engineering with GNU Radio and ADALM-Pluto — the Basics track, from SDR fundamentals and DSP through analog/digital modulation to channel models.",
+    chapters: [
+      "Getting Started: SDR, GNU Radio & ADALM-Pluto",
+      "DSP Foundations",
+      "RF & Spectrum Analysis",
+      "Analog Modulation",
+      "Digital Modulation",
+      "Synchronization & Estimation",
+      "Channel Coding & Error Correction",
+      "Channel Models & Propagation",
+    ],
+  },
+  {
+    code: "GNU-ADVANCED",
+    title: "GNU Radio & Wireless — Advanced",
+    meta: "8 chapters · OFDM, MIMO, radar & cognitive radio",
+    blurb:
+      "The Advanced track — modern multi-carrier and multi-antenna systems, wireless standards (Wi-Fi → 4G/5G/6G), radar & sensing and cognitive radio, all on real SDR hardware.",
+    chapters: [
+      "OFDM & Multi-Carrier",
+      "Spread Spectrum",
+      "MIMO & Antenna Systems",
+      "Wireless Standards & Protocols (Wi-Fi → 4G/5G/6G)",
+      "Radar & Sensing",
+      "Adaptive & Cognitive Radio",
+      "Audio & Multimedia",
+      "Advanced Topics",
+    ],
+  },
 ];
 
 const screenshots: { src: string; title: string; caption: string }[] = [
@@ -129,6 +179,28 @@ const screenshots: { src: string; title: string; caption: string }[] = [
     title: "Timed quiz",
     caption:
       "Auto-graded chapter quizzes with a countdown timer and per-question marks.",
+  },
+];
+
+// GNU Radio & Wireless course visuals — reused from the MMT GNU Radio Kit.
+const gnuShots: { src: string; title: string; caption: string }[] = [
+  {
+    src: "/gnu-experiments.png",
+    title: "Experiment library",
+    caption:
+      "The GNU Radio courses draw on 210 SDR experiments across 15 categories — DSP, modulation, OFDM, MIMO, channel coding and more.",
+  },
+  {
+    src: "/gnu-runlab.png",
+    title: "Run Lab · live spectrum",
+    caption:
+      "Each experiment's workbench — tune parameters and run on real SDR (ADALM-Pluto / bladeRF) or simulation, with live spectrum and constellation plots.",
+  },
+  {
+    src: "/gnu-grc.png",
+    title: "GRC Lab",
+    caption:
+      "Generate a runnable GNU Radio Companion .grc flowgraph for any experiment, or upload one to inspect it.",
   },
 ];
 
@@ -155,7 +227,7 @@ export default function StudioAcademyPage() {
               Studio Academy.
             </h1>
             <p className="mt-3 text-sm md:text-base italic text-coral font-display">
-              An AI-powered 5G learning platform.
+              An AI-powered platform for 5G &amp; wireless.
             </p>
             <div className="mt-4 flex flex-wrap justify-center items-center gap-3">
               <StatusPill tone="flagship">Shipping · v1.0</StatusPill>
@@ -189,10 +261,10 @@ export default function StudioAcademyPage() {
               <p className="lede text-white/85">
                 Studio Academy is the learning half of the MMT 5G/6G Studio — a
                 Django LMS that turns the whole Studio stack into a hands-on
-                classroom. Narrated slide-and-animation courses, an AI tutor across
-                Claude, GPT, Gemini and Ollama, timed quizzes, and live-equipment
-                labs that run real robot tests against Studio Core and Studio
-                TestBench.
+                classroom. Three guided courses — 5G System Engineering plus GNU
+                Radio &amp; Wireless at Basics and Advanced levels — with narrated
+                slide-and-animation lessons, an AI tutor across Claude, GPT, Gemini
+                and Ollama, timed quizzes, and live-equipment labs on real hardware.
               </p>
               <div className="mt-6 flex flex-wrap justify-center items-center gap-4">
                 <ButtonLink
@@ -250,7 +322,8 @@ export default function StudioAcademyPage() {
             <h2 className="display-h2 text-navy max-w-3xl">What it does.</h2>
             <p className="mt-4 text-lg text-ink2 max-w-3xl">
               A complete learning platform built on top of the Studio stack — teach
-              5G from first principles to a passing test run on a real 5G core.
+              5G and wireless/SDR from first principles all the way to hands-on labs
+              on real hardware.
             </p>
           </Reveal>
 
@@ -277,43 +350,88 @@ export default function StudioAcademyPage() {
         </div>
       </section>
 
-      {/* Flagship course — 8 modules */}
+      {/* The courses — 3 tracks */}
       <section className="bg-navyDeep text-white section-y">
         <div className="container-x">
           <Reveal>
             <div className="flex items-center gap-2">
               <GraduationCap size={18} className="text-gold" aria-hidden="true" />
-              <p className="eyebrow !text-gold !mb-0">MMT-5G-SE · 16 hours · 8 modules</p>
+              <p className="eyebrow !text-gold !mb-0">3 courses · 24 chapters</p>
             </div>
-            <h2 className="display-h2 text-white mt-3 max-w-3xl">
-              5G System Engineering.
-            </h2>
+            <h2 className="display-h2 text-white mt-3 max-w-3xl">The courses.</h2>
             <p className="mt-4 text-lg text-skyLight/80 max-w-3xl">
-              An eight-part course for engineers and students who want a practical,
-              end-to-end understanding of how 5G networks are designed, built,
-              operated and measured. Each chapter is a self-contained 2-hour lab —
-              slides, an interactive animation, a quiz, and a hands-on lab.
+              Three guided tracks on one platform — 5G System Engineering plus GNU
+              Radio &amp; Wireless at Basics and Advanced levels. Every chapter moves
+              from concepts and animations to a quiz and a hands-on lab.
             </p>
           </Reveal>
-          <ol className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-3">
-            {chapters.map((ch, i) => (
-              <Reveal key={ch.n} delay={(i % 2) * 0.04}>
-                <li className="flex gap-4 rounded-xl bg-white/5 ring-1 ring-inset ring-white/10 px-4 py-4 hover:ring-coral/40 transition">
-                  <span className="font-mono text-sm text-coral font-semibold shrink-0 w-8">
-                    {ch.n}
-                  </span>
-                  <div>
-                    <div className="font-display text-base font-semibold text-white">
-                      {ch.title}
-                    </div>
-                    <p className="mt-0.5 text-sm text-skyLight/70 leading-snug">
-                      {ch.note}
-                    </p>
+
+          <div className="mt-10 space-y-6">
+            {courses.map((co, ci) => (
+              <Reveal key={co.code} delay={ci * 0.05}>
+                <article className="rounded-2xl bg-white/5 ring-1 ring-inset ring-white/10 p-6 md:p-7 hover:ring-coral/40 transition">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="inline-flex items-center rounded-full bg-coral/20 text-coral font-mono text-xs font-semibold px-3 py-1">
+                      {co.code}
+                    </span>
+                    <span className="text-[0.7rem] tracking-[0.16em] uppercase font-semibold text-skyLight/60">
+                      {co.meta}
+                    </span>
                   </div>
-                </li>
+                  <h3 className="mt-3 font-display text-xl md:text-2xl font-semibold text-white">
+                    {co.title}
+                  </h3>
+                  <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-3xl leading-relaxed">
+                    {co.blurb}
+                  </p>
+                  <ol className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+                    {co.chapters.map((ch, i) => (
+                      <li
+                        key={ch}
+                        className="flex gap-2.5 rounded-lg bg-white/5 ring-1 ring-inset ring-white/10 px-3 py-2.5"
+                      >
+                        <span className="font-mono text-xs text-coral font-semibold shrink-0">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-xs text-white/85 leading-snug">{ch}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </article>
               </Reveal>
             ))}
-          </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* Live-platform CTA — "this is where you take the courses" */}
+      <section className="bg-navyDeep">
+        <div className="container-x pb-14 md:pb-20">
+          <Reveal>
+            <div className="rounded-2xl bg-gradient-to-br from-coral/20 via-navy to-navy ring-1 ring-inset ring-coral/30 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5">
+              <div>
+                <p className="eyebrow !text-coral !mb-1">The live platform</p>
+                <h2 className="font-display text-xl md:text-2xl font-bold text-white leading-tight">
+                  This is where you take all the courses.
+                </h2>
+                <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-2xl">
+                  Sign in to Studio Academy to access every course — 5G System
+                  Engineering and GNU Radio &amp; Wireless (Basics &amp; Advanced) —
+                  with the AI tutor, quizzes and live-equipment labs.
+                </p>
+              </div>
+              <a
+                href="https://studioacademy.makemytechnology.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Studio Academy — the live learning platform"
+                className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-coral hover:bg-coral/90 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-coral/30 ring-1 ring-inset ring-white/15 transition focus-ring"
+              >
+                Visit here
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -338,6 +456,44 @@ export default function StudioAcademyPage() {
                     height={800}
                     className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
                   />
+                  <figcaption className="bg-white px-4 py-3">
+                    <div className="text-[0.6rem] tracking-[0.18em] uppercase font-bold text-coral">
+                      {s.title}
+                    </div>
+                    <p className="mt-1 text-sm text-ink2 leading-snug">{s.caption}</p>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GNU Radio & Wireless — course visuals (reused from the MMT GNU Radio Kit) */}
+      <section className="bg-bg section-y">
+        <div className="container-x">
+          <Reveal>
+            <p className="eyebrow text-coral">New · GNU Radio &amp; Wireless</p>
+            <h2 className="display-h3 text-navy mt-2">Two SDR wireless courses, on real radios.</h2>
+            <p className="mt-2 text-sm text-muted max-w-2xl">
+              The Basics and Advanced tracks are built on the MMT GNU Radio platform —
+              210 hands-on SDR experiments across 15 categories, running on real
+              ADALM-Pluto and bladeRF hardware.
+            </p>
+          </Reveal>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {gnuShots.map((s, i) => (
+              <Reveal key={s.src} delay={i * 0.06}>
+                <figure className="group overflow-hidden rounded-2xl ring-1 ring-line shadow-md bg-black">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-black">
+                    <Image
+                      src={s.src}
+                      alt={`${s.title} — ${s.caption}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                  </div>
                   <figcaption className="bg-white px-4 py-3">
                     <div className="text-[0.6rem] tracking-[0.18em] uppercase font-bold text-coral">
                       {s.title}
