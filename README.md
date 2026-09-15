@@ -32,7 +32,7 @@ Live site: **https://www.makemytechnology.com**
 | `/5g-6g/studio-fleet` | Studio Fleet — Python / Flask orchestrator · 26 blueprints · 25 services |
 | `/5g-6g/studio-field` | Studio Field — Kotlin / Jetpack Compose Android app · DIAG · 7-day Pro trial |
 | `/5g-6g/studio-academy` | Studio Academy — AI-powered Django LMS · course player · live-equipment labs |
-| `/gnu-radio` | **MMT-GNU Kit** — 210 SDR experiments · hero demo video · auto-playing overview deck · manual · flyer · **local-currency pricing** · free-SDR badge · enterprise/distributor CTAs |
+| `/gnu-radio` | **MMT-GNU Kit** — 210 SDR experiments · hero demo video · auto-playing overview deck · manual · flyer · free-SDR badge · enterprise/distributor CTAs |
 | `/iot`, `/ai`, `/drone-corridor`, `/quantum` | In-development verticals |
 | `/documents/[slug]` | In-site document viewer — PDFs render natively; DOCX via the Microsoft Office online viewer; each has a Download button (gNB spec, Studio manual, COTS manual, 5G syllabus) |
 | `/contact` | Contact page — embedded **[Tally](https://tally.so)** form (Tally hosts it and emails submissions) with conditional logic + Get-in-touch sidebar (email, phone, hours, Follow us) |
@@ -57,21 +57,6 @@ Open http://localhost:3000.
 npm run build
 npm run start
 ```
-
----
-
-## Location-aware pricing (MMT-GNU Kit)
-
-The GNU Kit price shows in the **visitor's local currency**, based on their real
-IP location (via [ipwho.is](https://ipwho.is)). Indian / unknown visitors see the
-base **₹** price; ~37 countries map to a local currency (USD, GBP, EUR, AED, SGD,
-AUD, CAD, JPY, CHF, SAR, ZAR, and more). Converted amounts are **approximate** and
-the rates are hardcoded in `src/lib/localCurrency.ts` (easy to refresh).
-
-- Shared logic: `src/lib/localCurrency.ts`
-- Home platform card: `src/components/CardPrice.tsx`
-- GNU Kit hero price: `src/components/KitPrice.tsx`
-- **Test override:** append `?cc=US` (or `GB`, `SG`, `DE`, …) to any URL to force a country.
 
 ---
 
@@ -147,11 +132,10 @@ mmt-website/
 │   ├── components/
 │   │   ├── Header.tsx           Top nav (incl. "Contact us") + phone + email
 │   │   ├── Footer.tsx           Get in touch + brand + LinkedIn/YouTube + Privacy/Terms
-│   │   ├── VerticalCard.tsx     Home platform card (with local-currency CardPrice)
+│   │   ├── VerticalCard.tsx     Home platform card
 │   │   ├── StudioProductCard.tsx  Studio family card (whole-card link + doc button)
 │   │   ├── SetupSlideshow.tsx   Auto-advancing live-setup slideshow
 │   │   ├── SlideDeck.tsx        Auto-playing image deck (GNU overview)
-│   │   ├── KitPrice.tsx / CardPrice.tsx  Local-currency price components
 │   │   ├── DemoVideo.tsx        HTML5 video player + auto-unmute
 │   │   ├── TiltCard.tsx         Card container with a hover lift (no 3-D tilt)
 │   │   ├── PackageAnimations.tsx / BaseStationTower.tsx / Drone.tsx  SVG art
@@ -159,14 +143,13 @@ mmt-website/
 │   │   └── Button.tsx / StatusPill.tsx
 │   │
 │   ├── content/                 Typed copy / data
-│   │   ├── verticals.ts         Home platform cards (incl. GNU Kit priceInr)
+│   │   ├── verticals.ts         Home platform cards
 │   │   ├── studio-products.ts   Studio family cards on /5g-6g
 │   │   ├── documents.ts         Document-viewer registry
 │   │   ├── gnu-radio.ts         GNU Kit content
 │   │   ├── nfs.ts / dnns.ts / use-cases.ts / verticals-detail.ts / …
 │   │
 │   └── lib/
-│       ├── localCurrency.ts     Country → currency + rates + IP lookup
 │       └── utils.ts
 │
 ├── next.config.mjs · tailwind.config.ts · tsconfig.json · package.json

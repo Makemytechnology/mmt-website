@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusPill, statusToTone } from "./StatusPill";
 import { TiltCard } from "./TiltCard";
-import { CardPrice } from "./CardPrice";
 import type { Vertical } from "@/content/verticals";
 
 /**
@@ -109,34 +108,6 @@ export function VerticalCard({ v }: { v: Vertical }) {
           >
             {v.tagline}
           </p>
-
-          {/* Optional academic price (e.g. the MMT-GNU Kit) — local-currency aware */}
-          {v.priceInr ? (
-            <CardPrice
-              originalInr={v.priceWasInr ?? v.priceInr * 2}
-              priceInr={v.priceInr}
-              isFlagship={isFlagship}
-            />
-          ) : v.price ? (
-            <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-              {v.priceWas ? (
-                <span
-                  className={cn(
-                    "text-[0.65rem] line-through",
-                    isFlagship ? "text-white/60" : "text-white/45",
-                  )}
-                >
-                  {v.priceWas}
-                </span>
-              ) : null}
-              <span className="font-display text-lg font-bold text-gold leading-none">
-                {v.price}
-              </span>
-              <span className="text-[0.6rem] font-semibold uppercase tracking-wide text-white/60">
-                / kit
-              </span>
-            </div>
-          ) : null}
 
           {/* === Block 5: Explore (always pinned to the bottom) === */}
           <div

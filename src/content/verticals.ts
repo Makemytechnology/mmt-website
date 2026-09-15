@@ -12,14 +12,6 @@ export type Vertical = {
   tagline: string;
   icon: LucideIcon;
   flagship?: boolean;
-  /** Optional academic price shown on the home card (e.g. the GNU kit). */
-  price?: string;
-  /** Optional struck-through original price shown beside `price`. */
-  priceWas?: string;
-  /** Numeric INR price — enables local-currency conversion on the card. */
-  priceInr?: number;
-  /** Numeric INR original price (struck-through) for conversion. */
-  priceWasInr?: number;
 };
 
 export const verticals: Vertical[] = [
@@ -50,10 +42,6 @@ export const verticals: Vertical[] = [
     status: "SHIPPING",
     tagline: "210 SDR experiments on real ADALM-Pluto hardware. Powered by GNU Radio.",
     icon: Radio,
-    price: "₹50,000",
-    priceWas: "₹1,00,000",
-    priceInr: 50000,
-    priceWasInr: 100000,
   },
   {
     slug: "ai",
