@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SetupSlideshow } from "@/components/SetupSlideshow";
 import Link from "next/link";
-import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, ChevronRight, Download, ArrowRight, GraduationCap, Award } from "lucide-react";
+import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, ChevronRight, Download, ArrowRight, Award } from "lucide-react";
 import { VerticalCard } from "@/components/VerticalCard";
 import { Reveal } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
@@ -230,78 +230,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CERTIFIED COURSES — Studio Academy */}
-      <section className="bg-bg py-12 md:py-16">
-        <div className="container-x">
-          <Reveal>
-            <Link
-              href="/5g-6g/studio-academy#certification"
-              aria-label="Studio Academy certified courses — learn 5G and wireless and earn a certificate"
-              className="group relative block overflow-hidden rounded-[1.75rem] bg-navyDeep ring-1 ring-white/10 shadow-2xl shadow-black/30 focus-ring"
-            >
-              {/* glows */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-20 -top-16 h-64 w-64 rounded-full bg-gold/20 blur-3xl"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-coral/20 blur-3xl"
-              />
-              {/* halftone dots */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-y-0 right-0 w-2/3"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(rgba(255,255,255,0.12) 1.1px, transparent 1.1px)",
-                  backgroundSize: "15px 15px",
-                  WebkitMaskImage: "linear-gradient(to right, transparent, black 85%)",
-                  maskImage: "linear-gradient(to right, transparent, black 85%)",
-                }}
-              />
-
-              <div className="relative flex flex-col md:flex-row md:items-center gap-6 md:gap-8 px-6 py-8 md:px-10 md:py-10">
-                {/* Icon with certificate ribbon */}
-                <div className="relative shrink-0 mx-auto md:mx-0">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gold/15 ring-1 ring-gold/40 text-gold">
-                    <GraduationCap size={32} strokeWidth={1.75} aria-hidden="true" />
-                  </div>
-                  <span className="absolute -bottom-2 -right-2 inline-flex items-center justify-center w-8 h-8 rounded-full bg-coral text-white ring-2 ring-navyDeep shadow-md">
-                    <Award size={16} strokeWidth={2} aria-hidden="true" />
-                  </span>
-                </div>
-
-                {/* Text */}
-                <div className="flex-1 min-w-0 text-center md:text-left">
-                  <p className="text-[0.7rem] md:text-xs font-bold uppercase tracking-[0.24em] text-gold">
-                    Studio Academy · Certified courses
-                  </p>
-                  <h2 className="mt-2 font-display text-2xl md:text-3xl font-bold text-white leading-tight">
-                    Learn 5G &amp; wireless — and earn a certificate.
-                  </h2>
-                  <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-2xl mx-auto md:mx-0">
-                    Our hands-on courses — 5G System Engineering and GNU Radio &amp; Wireless —
-                    are certified. Complete a course and get a shareable certificate of
-                    completion.
-                  </p>
-                </div>
-
-                {/* CTA */}
-                <span className="shrink-0 mx-auto md:mx-0 inline-flex items-center gap-2 rounded-full bg-coral text-white font-semibold px-6 py-3 text-sm md:text-base shadow-lg shadow-coral/30 ring-1 ring-white/15 group-hover:bg-coral/90 group-hover:brightness-110 transition">
-                  See the courses &amp; certification
-                  <ArrowRight
-                    size={18}
-                    aria-hidden="true"
-                    className="group-hover:translate-x-0.5 transition-transform"
-                  />
-                </span>
-              </div>
-            </Link>
           </Reveal>
         </div>
       </section>

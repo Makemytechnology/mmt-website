@@ -4,9 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Mail, Phone } from "lucide-react";
+import { Menu, X, Mail, Phone, ArrowUpRight } from "lucide-react";
 
-const navLinks: { href: string; label: string }[] = [
+const LMS_URL = "https://studioacademy.makemytechnology.com/";
+
+const navLinks: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/5g-6g", label: "5G/6G Studio" },
   { href: "/iot", label: "IoT" },
@@ -14,6 +16,7 @@ const navLinks: { href: string; label: string }[] = [
   { href: "/ai", label: "AI" },
   { href: "/drone-corridor", label: "Robotics" },
   { href: "/quantum", label: "Quantum" },
+  { href: LMS_URL, label: "Certification", external: true },
   { href: "/contact", label: "Contact us" },
 ];
 
@@ -58,6 +61,20 @@ export function Header() {
         {/* Desktop nav — active link gets coral text + a coral underline pill */}
         <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
           {navLinks.map((l) => {
+            if (l.external) {
+              return (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative inline-flex items-center gap-1 px-3 py-2 text-xs uppercase tracking-wider font-semibold rounded-md focus-ring transition-colors text-white/75 hover:text-coral hover:bg-white/5"
+                >
+                  {l.label}
+                  <ArrowUpRight size={13} aria-hidden />
+                </a>
+              );
+            }
             const active = isActive(l.href, pathname);
             return (
               <Link
@@ -139,6 +156,21 @@ export function Header() {
               You are here
             </p>
             {navLinks.map((l) => {
+              if (l.external) {
+                return (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between px-3 py-2.5 text-sm font-semibold rounded-md focus-ring transition-colors text-white/85 hover:text-coral hover:bg-white/5"
+                  >
+                    <span>{l.label}</span>
+                    <ArrowUpRight size={16} aria-hidden className="text-coral" />
+                  </a>
+                );
+              }
               const active = isActive(l.href, pathname);
               return (
                 <Link
