@@ -216,7 +216,20 @@ export default function StudioAcademyPage() {
       <section className="bg-navyDeep">
         <div className="container-x pb-12 md:pb-16">
           <Reveal>
-            <div className="max-w-5xl mx-auto">
+            <div className="relative max-w-5xl mx-auto">
+              {/* Floating attention badge — links to the certification section */}
+              <a
+                href="#certification"
+                aria-label="Earn a certificate for every course — jump to certification"
+                className="group absolute -top-3 right-3 md:-top-4 md:right-6 z-20 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-coral text-white text-xs md:text-sm font-semibold px-4 py-2 md:px-5 md:py-2.5 shadow-lg shadow-coral/40 ring-2 ring-navyDeep hover:bg-coral/90 transition focus-ring"
+              >
+                <span aria-hidden className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-white/80 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+                </span>
+                <Award size={15} aria-hidden="true" />
+                Earn a certificate for every course
+              </a>
               <figure className="overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10 bg-black shadow-2xl">
                 <Image
                   src="/studio-academy-courses.png"
@@ -395,7 +408,7 @@ export default function StudioAcademyPage() {
       </section>
 
       {/* Certification program */}
-      <section className="bg-bgAlt section-y">
+      <section id="certification" className="bg-bgAlt section-y scroll-mt-24">
         <div className="container-x">
           <Reveal>
             <div className="flex items-center gap-2">
