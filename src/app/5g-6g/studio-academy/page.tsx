@@ -15,6 +15,9 @@ import {
   Layers,
   Presentation,
   FileText,
+  Award,
+  Mail,
+  Download,
 } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
@@ -161,12 +164,6 @@ const courses: {
 ];
 
 const screenshots: { src: string; title: string; caption: string }[] = [
-  {
-    src: "/studio-academy-certificate.png",
-    title: "Certificates",
-    caption:
-      "Request, preview and download a certificate of completion for every course you finish — approved by the admin.",
-  },
   {
     src: "/studio-academy-tutor.png",
     title: "MMT-AI-Tutor",
@@ -397,6 +394,123 @@ export default function StudioAcademyPage() {
         </div>
       </section>
 
+      {/* Certification program */}
+      <section className="bg-bgAlt section-y">
+        <div className="container-x">
+          <Reveal>
+            <div className="flex items-center gap-2">
+              <Award size={18} className="text-coral" aria-hidden="true" />
+              <p className="eyebrow !text-coral !mb-0">Certification</p>
+            </div>
+            <h2 className="display-h2 text-navy mt-3 max-w-3xl">
+              Earn a certificate for every course.
+            </h2>
+            <p className="mt-4 text-lg text-ink2 max-w-3xl">
+              Complete a Studio Academy course and earn a shareable certificate of
+              completion — emailed to you automatically and downloadable any time from
+              your account.
+            </p>
+          </Reveal>
+
+          {/* Certificate preview */}
+          <Reveal delay={0.08}>
+            <figure className="mt-10 max-w-4xl mx-auto overflow-hidden rounded-2xl ring-1 ring-line shadow-lg bg-white">
+              <Image
+                src="/studio-academy-certificate.png"
+                alt="A Studio Academy certificate of completion, issued by MakeMyTechnology, with the learner's name, the course, and the completion date."
+                width={1920}
+                height={890}
+                className="w-full h-auto block"
+              />
+            </figure>
+          </Reveal>
+
+          {/* Certificates you can earn — one per course */}
+          <Reveal delay={0.12}>
+            <p className="mt-14 text-center text-[0.65rem] tracking-[0.2em] uppercase font-bold text-navy/50">
+              Certificates you can earn
+            </p>
+            <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+              {courses.map((co) => (
+                <article
+                  key={co.code}
+                  className="rounded-2xl bg-white ring-1 ring-line p-6 text-center hover:ring-coral/40 hover:shadow-md transition"
+                >
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-coralLight text-coral">
+                    <Award size={24} strokeWidth={1.75} aria-hidden="true" />
+                  </div>
+                  <span className="mt-4 block font-mono text-xs font-semibold text-coral">
+                    {co.code}
+                  </span>
+                  <h3 className="mt-1.5 font-display text-lg font-semibold text-navy leading-snug">
+                    {co.title}
+                  </h3>
+                  <p className="mt-2 text-xs tracking-wide uppercase font-semibold text-muted">
+                    Certificate of Completion
+                  </p>
+                </article>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* How it works — 3 steps */}
+          <Reveal delay={0.16}>
+            <ol className="mt-12 grid gap-4 sm:grid-cols-3 max-w-4xl mx-auto">
+              {[
+                {
+                  icon: ClipboardCheck,
+                  title: "Complete the course",
+                  body: "Work through every chapter, quiz and hands-on lab in the course.",
+                },
+                {
+                  icon: Award,
+                  title: "Request your certificate",
+                  body: "Ask for your certificate from your account — approved by the Studio Academy admin.",
+                },
+                {
+                  icon: Mail,
+                  title: "Emailed & downloadable",
+                  body: "It's emailed to you automatically and downloadable any time — share it or add it to your resume.",
+                },
+              ].map((step, i) => {
+                const Icon = step.icon;
+                return (
+                  <li
+                    key={step.title}
+                    className="relative rounded-2xl bg-white ring-1 ring-line p-6"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-navy text-white font-display text-sm font-bold shrink-0">
+                        {i + 1}
+                      </span>
+                      <Icon size={20} className="text-coral" aria-hidden="true" />
+                    </div>
+                    <h3 className="mt-4 font-display text-base font-semibold text-navy">
+                      {step.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-ink2 leading-relaxed">{step.body}</p>
+                  </li>
+                );
+              })}
+            </ol>
+          </Reveal>
+
+          {/* CTA row */}
+          <Reveal delay={0.2}>
+            <div className="mt-10 flex flex-wrap justify-center items-center gap-4">
+              <ButtonLink
+                href="https://studioacademy.makemytechnology.com/"
+                external
+                variant="primary"
+                size="lg"
+              >
+                <Download size={18} aria-hidden="true" /> Start a course &amp; earn yours
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Live-platform CTA — "this is where you take the courses" */}
       <section className="bg-navyDeep">
         <div className="container-x pb-14 md:pb-20">
@@ -437,11 +551,11 @@ export default function StudioAcademyPage() {
           <Reveal>
             <h2 className="display-h3 text-navy">Inside the platform.</h2>
             <p className="mt-2 text-sm text-muted max-w-2xl">
-              Certificates, an on-device AI tutor, and a resume builder — all part of
-              the live Studio Academy platform.
+              An on-device AI tutor and a resume builder — all part of the live Studio
+              Academy platform.
             </p>
           </Reveal>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {screenshots.map((s, i) => (
               <Reveal key={s.src} delay={i * 0.06}>
                 <figure className="group overflow-hidden rounded-2xl ring-1 ring-line shadow-md bg-navyDeep">
