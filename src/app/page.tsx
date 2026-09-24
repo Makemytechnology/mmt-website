@@ -93,6 +93,30 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+
+              {/* Small, unobtrusive certified-courses note */}
+              <Link
+                href="/5g-6g/studio-academy#certification"
+                aria-label="Studio Academy certified courses — earn a certificate"
+                className="group mt-3 flex items-center gap-3 rounded-xl bg-white ring-1 ring-line px-4 py-2.5 hover:ring-coral/40 hover:shadow-sm transition"
+              >
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-coral/10 text-coral shrink-0">
+                  <Award size={16} strokeWidth={1.75} aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xs font-semibold text-navy leading-tight">
+                    Certified courses — earn a certificate
+                  </span>
+                  <span className="block text-[0.7rem] text-muted leading-snug">
+                    Studio Academy · 5G &amp; wireless
+                  </span>
+                </span>
+                <ArrowRight
+                  size={15}
+                  aria-hidden="true"
+                  className="text-coral shrink-0 group-hover:translate-x-0.5 transition-transform"
+                />
+              </Link>
             </Reveal>
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
