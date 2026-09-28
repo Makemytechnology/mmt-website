@@ -3,11 +3,12 @@ import { Reveal } from "@/components/Reveal";
 import { StudioProductCard } from "@/components/StudioProductCard";
 import { SetupSlideshow } from "@/components/SetupSlideshow";
 import { studioProducts } from "@/content/studio-products";
+import { wirelessGroupProducts } from "@/content/wireless-group";
 
 export const metadata: Metadata = {
-  title: "MMT 5G/6G Studio — Core, Test, Field, Fleet, Learn",
+  title: "Wireless & Networks — MMT 5G/6G Studio, GNU Radio Kit, USRP, OAI",
   description:
-    "MMT 5G/6G Studio is a complete 5G product family: Studio Core, TestBench, gNB, Field, Fleet, and Academy.",
+    "The Wireless & Networks group: MMT 5G/6G Studio (Studio Core, TestBench, gNB, Field, Fleet, Academy), the MMT-GNU Kit, and USRP and OpenAirInterface tracks. The radio link or the network itself is the deliverable.",
   alternates: { canonical: "/5g-6g" },
 };
 
@@ -17,11 +18,17 @@ export default function StudioOverviewPage() {
       {/* Compact tagline header */}
       <section className="bg-navyDeep text-white">
         <div className="container-x py-6 md:py-8 text-center">
+          <p className="eyebrow !mb-3">Wireless &amp; Networks · MMT CoE</p>
           <h1 className="font-display font-bold tracking-tight text-2xl md:text-3xl lg:text-4xl text-white leading-tight">
             MMT 5G/6G Studio.
           </h1>
           <p className="mt-2 text-sm md:text-base italic text-coral font-display">
             A complete 5G product family — core, test, field, fleet, learn.
+          </p>
+          <p className="mt-3 max-w-2xl mx-auto text-xs md:text-sm text-skyLight/70">
+            Flagship of the Wireless &amp; Networks group, where the radio link or the
+            network itself is the deliverable. The MMT-GNU Kit and the USRP and
+            OpenAirInterface tracks sit alongside it below.
           </p>
         </div>
       </section>
@@ -88,6 +95,30 @@ export default function StudioOverviewPage() {
         <div className="container-x">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {studioProducts.map((p, i) => (
+              <Reveal key={p.slug} delay={(i % 3) * 0.05}>
+                <StudioProductCard p={p} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Rest of the Wireless & Networks group */}
+      <section className="bg-bgAlt pt-12 pb-20 md:pt-16 md:pb-24 border-t border-line">
+        <div className="container-x">
+          <Reveal>
+            <p className="eyebrow text-coral">Also in Wireless &amp; Networks</p>
+            <h2 className="display-h2 text-navy mt-2 max-w-3xl">
+              GNU Radio, USRP and OpenAirInterface.
+            </h2>
+            <p className="mt-4 max-w-2xl text-ink2">
+              Same group, same rule: you finish with a working radio or network. The
+              GNU Kit ships today on ADALM-Pluto and bladeRF hardware; the USRP and
+              OpenAirInterface tracks are in development in Studio Academy.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {wirelessGroupProducts.map((p, i) => (
               <Reveal key={p.slug} delay={(i % 3) * 0.05}>
                 <StudioProductCard p={p} />
               </Reveal>

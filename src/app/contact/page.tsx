@@ -107,9 +107,10 @@ export default function ContactPage() {
                 Design partner programme
               </h3>
               <p className="mt-2 text-sm text-ink2 leading-relaxed">
-                IoT, AI, Robotics, and Quantum verticals are pre-launch. Mention which
-                vertical you&rsquo;re interested in and we&rsquo;ll bring you into the
-                relevant design-partner cohort.
+                The IoT &amp; Edge, Robotics &amp; Autonomy, AI &amp; Automation, and
+                Quantum &amp; Security groups are pre-launch. Mention which group
+                you&rsquo;re interested in and we&rsquo;ll bring you into the relevant
+                design-partner cohort.
               </p>
             </div>
           </aside>

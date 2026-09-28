@@ -101,7 +101,7 @@ export default function GnuRadioPage() {
       <section className="relative bg-navyDeep text-white overflow-hidden">
         <div className="container-x relative pt-16 pb-16 md:pt-20 md:pb-20 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-6">
-            <p className="eyebrow mb-6">GNU Radio Vertical · MMT CoE</p>
+            <p className="eyebrow mb-6">Wireless &amp; Networks · MMT CoE</p>
             <h1 className="display-h1 text-white">MMT-GNU Kit</h1>
             <p className="mt-6 text-2xl md:text-3xl italic text-coral font-display max-w-2xl">
               210 wireless experiments on real software-defined radio.

@@ -3,6 +3,10 @@ export type VerticalDetail = {
   vertical: string;
   product: string;
   status: "IN DEVELOPMENT" | "RESEARCH PHASE";
+  /** The grouping rule: what the deliverable is for everything in this group. */
+  groupRule: string;
+  /** Products and tracks that live in this group. */
+  groupIncludes: string[];
   heroSubhead: string;
   problem: string[];
   solution: string[];
@@ -13,9 +17,11 @@ export type VerticalDetail = {
 export const verticalDetails: Record<string, VerticalDetail> = {
   iot: {
     slug: "iot",
-    vertical: "IoT",
+    vertical: "IoT & Edge",
     product: "MMT IoT Fabric",
     status: "IN DEVELOPMENT",
+    groupRule: "Devices and their data are the deliverable. The network is a means, not the subject.",
+    groupIncludes: ["IoT Fabric", "oneM2M CSE", "Edge gateways", "Device-to-cloud data", "NB-IoT and RedCap device courses"],
     heroSubhead: "A multi-tenant oneM2M platform for industrial IoT at scale.",
     problem: [
       "Industrial IoT deployments are a tangle of vendor-specific gateways, proprietary cloud backends, and brittle MQTT brokers.",
@@ -45,9 +51,11 @@ export const verticalDetails: Record<string, VerticalDetail> = {
   },
   ai: {
     slug: "ai",
-    vertical: "AI",
+    vertical: "AI & Automation",
     product: "MMT Cognify",
     status: "IN DEVELOPMENT",
+    groupRule: "A model or an agent is the deliverable.",
+    groupIncludes: ["Cognify", "RAG pipelines", "Agentic automation", "Studio Academy on-device tutor"],
     heroSubhead: "A multi-model RAG and agentic automation platform for enterprises.",
     problem: [
       "Enterprises are trapped between expensive hosted AI APIs and under-resourced self-hosted efforts.",
@@ -77,9 +85,11 @@ export const verticalDetails: Record<string, VerticalDetail> = {
   },
   "drone-corridor": {
     slug: "drone-corridor",
-    vertical: "Drone Corridor",
+    vertical: "Robotics & Autonomy",
     product: "MMT SkyShield · DroneWay",
     status: "IN DEVELOPMENT",
+    groupRule: "Something that moves and decides is the deliverable.",
+    groupIncludes: ["SkyShield", "DroneWay", "Ground station", "V2X and A2X", "Flight control"],
     heroSubhead: "Defence-grade drone command and civilian BVLOS corridor management.",
     problem: [
       "Defence drone operators depend on commercial C2 stacks that leak RF signatures and lack counter-UAS.",
@@ -109,9 +119,11 @@ export const verticalDetails: Record<string, VerticalDetail> = {
   },
   quantum: {
     slug: "quantum",
-    vertical: "Quantum",
+    vertical: "Quantum & Security",
     product: "MMT QGuard",
     status: "RESEARCH PHASE",
+    groupRule: "Protecting or proving something is the deliverable.",
+    groupIncludes: ["QGuard", "Post-quantum crypto", "QKD", "5G security", "Lawful intercept"],
     heroSubhead: "Post-quantum cryptography and QKD integration for defence and BFSI.",
     problem: [
       "“Harvest now, decrypt later” is not a hypothetical — adversaries are archiving encrypted traffic today.",

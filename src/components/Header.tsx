@@ -10,11 +10,10 @@ const LMS_URL = "https://studioacademy.makemytechnology.com/";
 
 const navLinks: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Home" },
-  { href: "/5g-6g", label: "5G/6G Studio" },
-  { href: "/iot", label: "IoT" },
-  { href: "/gnu-radio", label: "MMT-GNU Kit" },
-  { href: "/ai", label: "AI" },
+  { href: "/5g-6g", label: "Wireless" },
+  { href: "/iot", label: "IoT & Edge" },
   { href: "/drone-corridor", label: "Robotics" },
+  { href: "/ai", label: "AI" },
   { href: "/quantum", label: "Quantum" },
   { href: LMS_URL, label: "Certification", external: true },
   { href: "/contact", label: "Contact us" },

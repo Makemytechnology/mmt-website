@@ -6,9 +6,9 @@ import { TiltCard } from "./TiltCard";
 import type { Vertical } from "@/content/verticals";
 
 /**
- * Vertical card used in the home-page "Five programmes" grid.
+ * Product-group card used in the home-page "Five product groups" grid.
  *
- * - The flagship (5G/6G) keeps the coral fill for emphasis.
+ * - The flagship (Wireless & Networks) keeps the coral fill for emphasis.
  * - The other four are navy with a coral top accent.
  * - All five render at exactly the same dimensions — same padding, same
  *   borders, no extra wrappers. Grid `items-stretch` (default) ensures
@@ -102,12 +102,32 @@ export function VerticalCard({ v }: { v: Vertical }) {
                  vertical position for the Explore link) === */}
           <p
             className={cn(
-              "text-xs leading-relaxed min-h-[72px]",
+              "text-xs leading-relaxed min-h-[56px]",
               isFlagship ? "text-white/95" : "text-white/80",
             )}
           >
             {v.tagline}
           </p>
+
+          {/* === Block 4b: Group members (fixed min-height chip row) === */}
+          <ul
+            className="mt-3 min-h-[3.5rem] flex flex-wrap content-start gap-1.5"
+            aria-label={`${v.name} includes`}
+          >
+            {v.includes.map((item) => (
+              <li
+                key={item}
+                className={cn(
+                  "rounded-full px-2 py-0.5 text-[0.6rem] font-semibold leading-tight ring-1 ring-inset",
+                  isFlagship
+                    ? "bg-white/15 text-white ring-white/30"
+                    : "bg-white/5 text-white/85 ring-white/15",
+                )}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
 
           {/* === Block 5: Explore (always pinned to the bottom) === */}
           <div

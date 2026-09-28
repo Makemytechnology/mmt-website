@@ -14,7 +14,7 @@ export function VerticalPage({ d }: { d: VerticalDetail }) {
       <section className="relative bg-navyDeep text-white overflow-hidden min-h-[68vh] flex items-center">
         <div className="container-x relative pt-20 pb-20 md:pt-28 md:pb-24 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-8">
-            <p className="eyebrow mb-6">{d.vertical} Vertical · MMT CoE</p>
+            <p className="eyebrow mb-6">{d.vertical} · MMT CoE</p>
             <h1 className="display-h1 text-white">{d.product}</h1>
             <p className="mt-6 text-2xl md:text-3xl italic text-coral font-display max-w-3xl">
               {d.heroSubhead}
@@ -25,6 +25,20 @@ export function VerticalPage({ d }: { d: VerticalDetail }) {
             <p className="mt-6 max-w-2xl text-sm md:text-base italic text-skyLight/70 leading-relaxed">
               Part of the MMT Center of Excellence. Early access available to design-partner customers.
             </p>
+            <div className="mt-8 max-w-2xl rounded-2xl bg-white/5 ring-1 ring-inset ring-white/10 p-5">
+              <p className="eyebrow !mb-2 !text-coral">{d.vertical} group</p>
+              <p className="text-sm text-skyLight/85 leading-relaxed">{d.groupRule}</p>
+              <ul className="mt-3 flex flex-wrap gap-2" aria-label={`${d.vertical} includes`}>
+                {d.groupIncludes.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-full bg-white/10 ring-1 ring-inset ring-white/20 px-2.5 py-1 text-[0.7rem] font-semibold text-white"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="mt-10">
               <ButtonLink href={ctaHref} variant="primary" size="lg">
                 Request early access

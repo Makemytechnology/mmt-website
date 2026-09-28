@@ -19,7 +19,7 @@ const industryVerticals = [
 export const metadata: Metadata = {
   title: "MakeMyTechnology",
   description:
-    "Deep Edu-Tech Center of Excellence with six platforms — 5G/6G Studio, IoT Fabric, GNU Radio Kit, Cognify, QGuard, and Robotics Solutions — serving Railways, Defence, Smart City, Energy, Ports, and Mining. Spec-faithful engineering. Production-ready software and hardware.",
+    "Deep Edu-Tech Center of Excellence with five product groups — Wireless & Networks (5G/6G Studio, GNU Radio Kit), IoT & Edge (IoT Fabric), Robotics & Autonomy (SkyShield, DroneWay), AI & Automation (Cognify), and Quantum & Security (QGuard) — serving Railways, Defence, Smart City, Energy, Ports, and Mining. Spec-faithful engineering. Production-ready software and hardware.",
   alternates: { canonical: "/" },
 };
 
@@ -30,7 +30,7 @@ const orgJsonLd = {
   url: "https://makemytechnology.com",
   email: "info@makemytechnology.com",
   description:
-    "MakeMyTechnology builds independent deep-tech products across 5G/6G, IoT, AI, robotics, and quantum-safe security.",
+    "MakeMyTechnology builds independent deep-tech products across wireless and networks, IoT and edge, robotics and autonomy, AI and automation, and quantum-safe security.",
 };
 
 export default function HomePage() {
@@ -49,13 +49,14 @@ export default function HomePage() {
               <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-coral">
                 Deep Edu-Tech Center of Excellence
               </p>
-              <p className="eyebrow text-navy/60 mt-6">Six platforms</p>
+              <p className="eyebrow text-navy/60 mt-6">Five product groups</p>
               <h1 className="display-h2 text-navy mt-3">
                 Independent platforms. Shared engineering culture.
               </h1>
               <p className="mt-4 text-lg text-ink2">
-                Each platform has its own product family and roadmap. 5G/6G Studio is
-                flagship and shipping today; the others are in active development with
+                Each group has its own product family and roadmap, grouped by what you
+                end up with rather than the technology underneath. Wireless &amp; Networks
+                is flagship and shipping today; the others are in active development with
                 design partners.
               </p>
             </Reveal>
@@ -119,7 +120,7 @@ export default function HomePage() {
               </Link>
             </Reveal>
           </div>
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             {verticals.map((v, i) => (
               <Reveal key={v.slug} delay={i * 0.06}>
                 <VerticalCard v={v} />
