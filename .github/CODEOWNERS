@@ -1,0 +1,7 @@
+# Changes need review from an owner once branch protection with
+# "Require review from Code Owners" is enabled on main.
+*                     @kanthuru
+/.github/             @kanthuru
+/next.config.mjs      @kanthuru
+/package.json         @kanthuru
+/package-lock.json    @kanthuru
