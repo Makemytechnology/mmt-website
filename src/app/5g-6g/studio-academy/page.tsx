@@ -18,10 +18,13 @@ import {
   Award,
   Mail,
   Download,
+  Rocket,
 } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
 import { Reveal } from "@/components/Reveal";
+import { CountdownTimer } from "@/components/CountdownTimer";
+import { COURSE_LAUNCH_ISO, upcomingCourses } from "@/content/launch";
 
 export const metadata: Metadata = {
   title: "Studio Academy — AI-Powered 5G & Wireless Learning Platform",
@@ -313,6 +316,95 @@ export default function StudioAcademyPage() {
                 AI Tutor across Claude / GPT / Gemini / Ollama · slides + animation ·
                 timed quizzes · live-equipment labs on the real Studio stack.
               </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* NEW COURSES — launch countdown */}
+      <section className="bg-navyDeep">
+        <div className="container-x pb-12 md:pb-16">
+          <Reveal>
+            <div className="relative overflow-hidden rounded-[1.5rem] p-px bg-gradient-to-r from-coral/70 via-gold/45 to-sky/60 shadow-2xl shadow-black/40">
+              <div className="relative overflow-hidden rounded-[1.45rem] bg-[#0A1526] p-6 md:p-8">
+                {/* glows */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -left-20 -top-16 h-56 w-56 rounded-full bg-coral/25 blur-3xl"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-16 bottom-0 h-56 w-56 rounded-full bg-gold/15 blur-3xl"
+                />
+
+                <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
+                  {/* Left — headline + countdown */}
+                  <div>
+                    <span className="inline-flex items-center gap-2 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.18em] text-coral">
+                      <Rocket size={13} aria-hidden="true" /> New courses · Launching soon
+                    </span>
+                    <h2 className="mt-4 font-display text-2xl md:text-3xl font-bold text-white leading-tight">
+                      New courses drop in&nbsp;…
+                    </h2>
+                    <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-xl">
+                      Two brand-new hands-on tracks are landing on Studio Academy — each with
+                      the AI tutor, live labs and a certificate on completion.
+                    </p>
+                    <div className="mt-5">
+                      <CountdownTimer target={COURSE_LAUNCH_ISO} />
+                    </div>
+                    <div className="mt-6 flex flex-wrap items-center gap-4">
+                      <ButtonLink
+                        href="https://studioacademy.makemytechnology.com/"
+                        external
+                        variant="primary"
+                        size="lg"
+                      >
+                        Explore Studio Academy
+                        <ArrowUpRight size={18} aria-hidden="true" />
+                      </ButtonLink>
+                      <span className="text-xs text-skyLight/60">
+                        Be first in line when they go live.
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Right — the two upcoming courses */}
+                  <div className="grid gap-3">
+                    {upcomingCourses.map((c) => (
+                      <article
+                        key={c.code}
+                        className="rounded-xl bg-white/5 ring-1 ring-inset ring-white/10 p-4 md:p-5 hover:ring-coral/40 transition"
+                      >
+                        <div className="flex flex-wrap items-center gap-2.5">
+                          <span className="inline-flex items-center rounded-full bg-coral/20 text-coral font-mono text-[0.65rem] font-semibold px-2.5 py-0.5">
+                            {c.code}
+                          </span>
+                          <span className="inline-flex items-center gap-1 text-[0.6rem] tracking-[0.14em] uppercase font-bold text-gold">
+                            <Sparkles size={11} aria-hidden="true" /> Coming soon
+                          </span>
+                        </div>
+                        <h3 className="mt-2.5 font-display text-base md:text-lg font-semibold text-white leading-snug">
+                          {c.title}
+                        </h3>
+                        <p className="mt-1.5 text-xs md:text-sm text-skyLight/75 leading-relaxed">
+                          {c.blurb}
+                        </p>
+                        <ul className="mt-3 flex flex-wrap gap-1.5">
+                          {c.tags.map((t) => (
+                            <li
+                              key={t}
+                              className="rounded-full bg-white/5 ring-1 ring-inset ring-white/10 px-2.5 py-0.5 text-[0.65rem] font-medium text-white/80"
+                            >
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>
