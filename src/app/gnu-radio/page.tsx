@@ -33,7 +33,7 @@ import {
 export const metadata: Metadata = {
   title: "MMT GNU Radio Kit — Wireless Experiments Platform",
   description:
-    "MMT GNU Radio Kit: a hands-on Wireless & Communication Engineering learning platform with 210 SDR experiments across 15 categories, running on real ADALM-Pluto and bladeRF hardware. Powered by GNU Radio.",
+    "MMT GNU Radio Kit: a hands-on Wireless & Communication Engineering learning platform with 210 SDR experiments across 15 categories, running on real ADALM-Pluto, bladeRF and USRP B210 hardware. Powered by GNU Radio.",
   alternates: { canonical: "/gnu-radio" },
 };
 
@@ -47,8 +47,8 @@ const overviewSlides = Array.from(
 
 // Hardware / platform facts (mmt-gnu README + catalog)
 const platformFacts: { icon: typeof Radio; label: string; detail: string }[] = [
-  { icon: Radio, label: "ADALM-Pluto · bladeRF", detail: "Real SDR · TX→RX loopback" },
-  { icon: Activity, label: "183 / 210 hardware-real", detail: "176 SISO + 7 MIMO (bladeRF 2×2)" },
+  { icon: Radio, label: "ADALM-Pluto · bladeRF · USRP B210", detail: "Real SDR · TX→RX loopback" },
+  { icon: Activity, label: "183 / 210 hardware-real", detail: "176 SISO + 7 MIMO (bladeRF · USRP B210, 2×2)" },
   { icon: Cpu, label: "Simulation fallback", detail: "Built-in AWGN / fading channel" },
   { icon: Boxes, label: "GNU Radio Companion", detail: "Generated .grc per experiment" },
   { icon: GraduationCap, label: "Course → Chapter → Exp", detail: "16-chapter guided curriculum" },
@@ -66,7 +66,7 @@ const screenshots: { src: string; title: string; caption: string }[] = [
     src: "/gnu-hardware.png",
     title: "Hardware & radios",
     caption:
-      "The TX→RX loopback signal chain with live device detection — ADALM-Pluto, bladeRF 2×2, and the built-in channel simulator.",
+      "The TX→RX loopback signal chain with live device detection — ADALM-Pluto, bladeRF 2×2, USRP B210, and the built-in channel simulator.",
   },
   {
     src: "/gnu-runlab.png",
@@ -113,8 +113,8 @@ export default function GnuRadioPage() {
               A hands-on Wireless &amp; Communication Engineering learning platform. Every
               experiment ships with theory, an inline animation, a slide deck, a hands-on lab, a
               quiz and an auto-graded challenge — and runs on real SDR hardware
-              (ADALM-Pluto, bladeRF) through a TX→RX loopback, falling back to a built-in channel
-              simulator when no radio is attached.
+              (ADALM-Pluto, bladeRF, USRP B210) through a TX→RX loopback, falling back to a
+              built-in channel simulator when no radio is attached.
             </p>
 
             {/* Kit highlight — free SDR promo */}

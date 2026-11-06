@@ -38,7 +38,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "MMT 5G/6G Studio — Studio Academy",
   description:
-    "AI-powered learning management system for 5G and wireless. Django LMS with 11 apps and three courses — 5G System Engineering plus GNU Radio & Wireless (Basics and Advanced) — an AI Tutor spanning Claude, GPT, Gemini and Ollama, a slide-and-animation course player, timed quizzes, and live-equipment labs on real hardware (Studio Core, Studio TestBench, ADALM-Pluto, bladeRF).",
+    "AI-powered learning management system for 5G and wireless. Django LMS with 11 apps and three courses — 5G System Engineering plus GNU Radio & Wireless (Basics and Advanced) — an AI Tutor spanning Claude, GPT, Gemini and Ollama, a slide-and-animation course player, timed quizzes, and live-equipment labs on real hardware (Studio Core, Studio TestBench, ADALM-Pluto, bladeRF, USRP B210).",
   brand: { "@type": "Brand", name: "MakeMyTechnology" },
   category: "Education Technology Software",
 };

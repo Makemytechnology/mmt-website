@@ -40,7 +40,7 @@ export const verticals: Vertical[] = [
     name: "MMT-GNU Kit",
     product: "Advanced Communication Lab Kit",
     status: "SHIPPING",
-    tagline: "210 SDR experiments on real ADALM-Pluto hardware. Powered by GNU Radio.",
+    tagline: "210 SDR experiments on real ADALM-Pluto, bladeRF & USRP B210 hardware. Powered by GNU Radio.",
     icon: Radio,
   },
   {
