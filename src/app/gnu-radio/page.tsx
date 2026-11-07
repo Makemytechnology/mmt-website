@@ -417,17 +417,18 @@ export default function GnuRadioPage() {
             </p>
           </Reveal>
           <Reveal delay={0.06}>
-            <div className="mt-8 max-w-4xl mx-auto">
+            <div className="mt-8 max-w-2xl mx-auto">
               <div className="rounded-2xl overflow-hidden ring-1 ring-line bg-white shadow-md">
-                <iframe
-                  src="/docs/mmt-gnu-flyer.pdf#view=FitH"
-                  title="MMT GNU Radio Kit flyer"
-                  className="w-full h-[70vh] min-h-[520px] block border-0"
-                  loading="lazy"
+                <Image
+                  src="/docs/mmt-gnu-flyer.png"
+                  alt="MMT Advanced Lab Kit flyer — Bring your own SDR. Now compatible with USRP, BladeRF and ADALM-Pluto. 210 hands-on experiments, 3 SDR platforms supported, 100% open-source GNU Radio core."
+                  width={1080}
+                  height={1350}
+                  className="w-full h-auto block"
                 />
               </div>
               <div className="mt-4 flex justify-center">
-                <ButtonLink href="/docs/mmt-gnu-flyer.pdf" variant="outlineDark" size="lg" external>
+                <ButtonLink href="/docs/mmt-gnu-flyer.png" variant="outlineDark" size="lg" external>
                   <Download size={18} aria-hidden="true" /> Download flyer
                 </ButtonLink>
               </div>
