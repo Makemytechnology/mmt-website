@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin, Youtube, ArrowRight, Mail, Phone } from "lucide-react";
 
 export function Footer() {
@@ -84,6 +85,28 @@ export function Footer() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Membership / credibility badge */}
+        <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+          <p className="text-[0.65rem] tracking-[0.22em] uppercase font-semibold text-white/50">
+            Proud member of
+          </p>
+          <a
+            href="https://www.nvidia.com/en-us/startups/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="MakeMyTechnology is a member of the NVIDIA Inception Program"
+            className="inline-flex overflow-hidden rounded-lg bg-white ring-1 ring-white/10 shadow-md hover:shadow-lg transition-shadow"
+          >
+            <Image
+              src="/nvidia-inception.png"
+              alt="NVIDIA Inception Program member"
+              width={678}
+              height={452}
+              className="w-[150px] md:w-[168px] h-auto"
+            />
+          </a>
         </div>
 
         {/* Bottom bar */}
