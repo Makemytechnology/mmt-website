@@ -1,33 +1,38 @@
 /**
- * Upcoming Studio Academy course launch.
+ * New & upcoming Studio Academy courses (source: the live LMS).
  *
- * `COURSE_LAUNCH_ISO` is the fixed target the countdown counts down to — set to
- * 7 days from the 2026-11-02 announcement, at local (IST) midnight. Change this
- * one value to move the launch date everywhere the countdown appears.
+ * `newlyLiveCourses` are already published and link to the LMS.
+ * `upcomingCourses` are announced but not yet uploaded — no launch date yet,
+ * so there is no countdown.
  */
-export const COURSE_LAUNCH_ISO = "2026-11-09T00:00:00+05:30";
-
-export type UpcomingCourse = {
+export type Course = {
   code: string;
   title: string;
   blurb: string;
   tags: string[];
+  /** External link to the live course (only for published courses). */
+  href?: string;
 };
 
-/** The new courses landing on Studio Academy (source: the live LMS). */
-export const upcomingCourses: UpcomingCourse[] = [
+/** Just published on Studio Academy. */
+export const newlyLiveCourses: Course[] = [
+  {
+    code: "MMT-OAI-USRP",
+    title: "Private 5G SA with OpenAirInterface",
+    blurb:
+      "Build a complete private 5G Standalone network from open-source code on your own laptop — the OpenAirInterface 5G Core, gNB and nrUE in the RF simulator — and read it at every layer in Wireshark. No radio hardware needed; optional chapters move the gNB onto a real USRP B210.",
+    tags: ["5G SA · OAI", "RF simulator", "USRP B210 (optional)"],
+    href: "https://studioacademy.makemytechnology.com/",
+  },
+];
+
+/** Announced but not yet uploaded — no launch date yet. */
+export const upcomingCourses: Course[] = [
   {
     code: "DRONE",
     title: "Drone Technology & UAV Systems",
     blurb:
       "Hands-on training in drone hardware, flight control, and autonomous UAV systems — a brand-new track.",
     tags: ["Flight control", "Aerial imaging"],
-  },
-  {
-    code: "OAI · USRP",
-    title: "Private 5G SA with OpenAirInterface & USRP",
-    blurb:
-      "Build and run your own private 5G Standalone network over the air — the OpenAirInterface gNB and core with a USRP B210. A 16-chapter course with heavy Wireshark & Linux practice.",
-    tags: ["5G SA · RAN & Core", "USRP B210 radio"],
   },
 ];

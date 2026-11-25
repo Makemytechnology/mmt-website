@@ -23,8 +23,7 @@ import {
 import { ButtonLink } from "@/components/Button";
 import { StatusPill } from "@/components/StatusPill";
 import { Reveal } from "@/components/Reveal";
-import { CountdownTimer } from "@/components/CountdownTimer";
-import { COURSE_LAUNCH_ISO, upcomingCourses } from "@/content/launch";
+import { newlyLiveCourses, upcomingCourses } from "@/content/launch";
 
 export const metadata: Metadata = {
   title: "Studio Academy — AI-Powered 5G & Wireless Learning Platform",
@@ -321,7 +320,7 @@ export default function StudioAcademyPage() {
         </div>
       </section>
 
-      {/* NEW COURSES — launch countdown */}
+      {/* NEW COURSES — now live + coming soon */}
       <section className="bg-navyDeep">
         <div className="container-x pb-12 md:pb-16">
           <Reveal>
@@ -338,21 +337,22 @@ export default function StudioAcademyPage() {
                 />
 
                 <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
-                  {/* Left — headline + countdown */}
+                  {/* Left — headline */}
                   <div>
                     <span className="inline-flex items-center gap-2 rounded-full bg-coral/15 ring-1 ring-inset ring-coral/50 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.18em] text-coral">
-                      <Rocket size={13} aria-hidden="true" /> New courses · Launching soon
+                      <Rocket size={13} aria-hidden="true" /> New on Studio Academy
                     </span>
                     <h2 className="mt-4 font-display text-2xl md:text-3xl font-bold text-white leading-tight">
-                      New courses drop in&nbsp;…
+                      Fresh courses, just added.
                     </h2>
                     <p className="mt-2 text-sm md:text-base text-skyLight/80 max-w-xl">
-                      Two brand-new hands-on tracks are landing on Studio Academy — each with
-                      the AI tutor, live labs and a certificate on completion.
+                      <span className="font-semibold text-white">
+                        Private 5G SA with OpenAirInterface
+                      </span>{" "}
+                      is live now — build your own 5G Standalone network from open-source code,
+                      with the AI tutor, hands-on labs and a certificate on completion. More
+                      tracks are on the way.
                     </p>
-                    <div className="mt-5">
-                      <CountdownTimer target={COURSE_LAUNCH_ISO} />
-                    </div>
                     <div className="mt-6 flex flex-wrap items-center gap-4">
                       <ButtonLink
                         href="https://studioacademy.makemytechnology.com/"
@@ -363,21 +363,60 @@ export default function StudioAcademyPage() {
                         Explore Studio Academy
                         <ArrowUpRight size={18} aria-hidden="true" />
                       </ButtonLink>
-                      <span className="text-xs text-skyLight/60">
-                        Be first in line when they go live.
-                      </span>
                     </div>
                   </div>
 
-                  {/* Right — the two upcoming courses */}
+                  {/* Right — live course + coming-soon course */}
                   <div className="grid gap-3">
-                    {upcomingCourses.map((c) => (
+                    {newlyLiveCourses.map((c) => (
                       <article
                         key={c.code}
-                        className="rounded-xl bg-white/5 ring-1 ring-inset ring-white/10 p-4 md:p-5 hover:ring-coral/40 transition"
+                        className="rounded-xl bg-white/5 ring-1 ring-inset ring-coral/30 p-4 md:p-5 hover:ring-coral/50 transition"
                       >
                         <div className="flex flex-wrap items-center gap-2.5">
                           <span className="inline-flex items-center rounded-full bg-coral/20 text-coral font-mono text-[0.65rem] font-semibold px-2.5 py-0.5">
+                            {c.code}
+                          </span>
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#22c55e]/15 text-[#4ade80] ring-1 ring-inset ring-[#22c55e]/35 text-[0.6rem] tracking-[0.14em] uppercase font-bold px-2 py-0.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80]" aria-hidden /> Now live
+                          </span>
+                        </div>
+                        <h3 className="mt-2.5 font-display text-base md:text-lg font-semibold text-white leading-snug">
+                          {c.title}
+                        </h3>
+                        <p className="mt-1.5 text-xs md:text-sm text-skyLight/75 leading-relaxed">
+                          {c.blurb}
+                        </p>
+                        <ul className="mt-3 flex flex-wrap gap-1.5">
+                          {c.tags.map((t) => (
+                            <li
+                              key={t}
+                              className="rounded-full bg-white/5 ring-1 ring-inset ring-white/10 px-2.5 py-0.5 text-[0.65rem] font-medium text-white/80"
+                            >
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                        {c.href ? (
+                          <a
+                            href={c.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-coral hover:text-coral/80 transition"
+                          >
+                            View course <ArrowUpRight size={13} aria-hidden="true" />
+                          </a>
+                        ) : null}
+                      </article>
+                    ))}
+
+                    {upcomingCourses.map((c) => (
+                      <article
+                        key={c.code}
+                        className="rounded-xl bg-white/5 ring-1 ring-inset ring-white/10 p-4 md:p-5"
+                      >
+                        <div className="flex flex-wrap items-center gap-2.5">
+                          <span className="inline-flex items-center rounded-full bg-white/10 text-white/70 font-mono text-[0.65rem] font-semibold px-2.5 py-0.5">
                             {c.code}
                           </span>
                           <span className="inline-flex items-center gap-1 text-[0.6rem] tracking-[0.14em] uppercase font-bold text-gold">

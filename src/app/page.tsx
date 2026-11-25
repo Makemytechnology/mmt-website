@@ -5,9 +5,7 @@ import { TrainFront, Shield, Building2, Zap, Anchor, Pickaxe, ChevronRight, Down
 import { VerticalCard } from "@/components/VerticalCard";
 import { Reveal } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
-import { CountdownTimer } from "@/components/CountdownTimer";
 import { verticals } from "@/content/verticals";
-import { COURSE_LAUNCH_ISO } from "@/content/launch";
 
 const industryVerticals = [
   { name: "Railways", icon: TrainFront },
@@ -131,32 +129,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW COURSES — Studio Academy launch countdown */}
+      {/* NEW COURSE — Studio Academy */}
       <section className="bg-navyDeep border-t border-white/5">
         <div className="container-x py-8 md:py-10">
           <Reveal>
             <div className="rounded-2xl bg-gradient-to-r from-coral/20 via-navy to-navy ring-1 ring-inset ring-coral/30 px-6 py-6 md:px-8 md:py-7 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8 justify-between">
               <div className="min-w-0">
                 <p className="inline-flex items-center gap-2 text-[0.65rem] md:text-xs font-bold uppercase tracking-[0.2em] text-coral">
-                  <Rocket size={14} aria-hidden="true" /> Studio Academy · New courses
+                  <Rocket size={14} aria-hidden="true" /> Studio Academy · New course
                 </p>
                 <h2 className="mt-2 font-display text-xl md:text-2xl font-bold text-white leading-tight">
-                  Two new courses launching soon.
+                  Now live: Private 5G SA with OpenAirInterface.
                 </h2>
                 <p className="mt-1.5 text-sm text-skyLight/75 max-w-xl">
-                  Drone Technology &amp; UAV Systems and Private 5G SA with OpenAirInterface &amp;
-                  USRP — hands-on, with a certificate on completion.
+                  Build your own 5G Standalone network from open-source code — hands-on, with a
+                  certificate on completion. Drone Technology &amp; UAV Systems is coming soon.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-5 shrink-0">
-                <CountdownTimer target={COURSE_LAUNCH_ISO} size="sm" />
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 shrink-0">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#22c55e]/15 text-[#4ade80] ring-1 ring-inset ring-[#22c55e]/35 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80]" aria-hidden /> Now live
+                </span>
                 <a
                   href="https://studioacademy.makemytechnology.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-coral text-white font-semibold px-5 py-2.5 text-sm shadow-lg shadow-coral/30 ring-1 ring-white/15 hover:bg-coral/90 transition whitespace-nowrap"
                 >
-                  Explore Studio Academy
+                  View the course
                   <ArrowUpRight
                     size={16}
                     aria-hidden="true"
